@@ -2,133 +2,162 @@
 <html lang="uz">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>AQLJANGI</title>
+
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#090914;color:#fff;min-height:100vh}
-.wrap{max-width:650px;margin:auto;padding:18px}
-.top{text-align:center;padding:12px 0 18px}
-.logo{font-size:52px}.title{font-size:34px;font-weight:800}.sub{color:#aaa;margin-top:7px}
-.badges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:15px 0}
-.badge{background:#17172a;border:1px solid #30304b;border-radius:20px;padding:8px 13px;color:#ddd;font-size:13px}
-.card{background:#121221;border:1px solid #292944;border-radius:22px;padding:22px;margin-top:14px;box-shadow:0 12px 35px #0005}
+body{
+ margin:0;
+ font-family:Arial,sans-serif;
+ background:linear-gradient(135deg,#090914,#17102c);
+ color:white;
+ min-height:100vh;
+}
+.container{
+ max-width:600px;
+ margin:auto;
+ padding:25px 18px;
+}
+.card{
+ background:rgba(255,255,255,.08);
+ border:1px solid rgba(255,255,255,.12);
+ border-radius:22px;
+ padding:22px;
+ margin-top:18px;
+ backdrop-filter:blur(10px);
+}
+.logo{
+ text-align:center;
+ font-size:55px;
+}
+h1{
+ text-align:center;
+ font-size:34px;
+ margin:5px 0;
+}
+.subtitle{
+ text-align:center;
+ opacity:.7;
+ margin-bottom:25px;
+}
+.info{
+ display:flex;
+ justify-content:space-between;
+ margin-bottom:15px;
+ opacity:.8;
+}
+.question{
+ font-size:22px;
+ line-height:1.4;
+ margin-bottom:20px;
+}
+.answer{
+ width:100%;
+ padding:16px;
+ margin:8px 0;
+ border:0;
+ border-radius:15px;
+ background:#292443;
+ color:white;
+ font-size:17px;
+ text-align:left;
+}
+.answer:active{transform:scale(.98)}
+.answer.correct{background:#168a4a}
+.answer.wrong{background:#a82c43}
+button.start{
+ width:100%;
+ border:0;
+ padding:18px;
+ border-radius:17px;
+ color:white;
+ font-size:19px;
+ font-weight:bold;
+ background:linear-gradient(90deg,#7b3ff2,#b24cff);
+}
 .center{text-align:center}
-.btn{width:100%;border:0;border-radius:17px;padding:16px;font-size:18px;font-weight:800;color:#fff;background:linear-gradient(135deg,#6d45ff,#a33cff);margin-top:18px;cursor:pointer}
-.btn:disabled{opacity:.5}
-.progress{height:8px;background:#24243a;border-radius:20px;overflow:hidden;margin:8px 0 20px}
-.bar{height:100%;width:0;background:linear-gradient(90deg,#6d45ff,#d34cff);transition:.3s}
-.qnum{color:#aaa;font-size:14px}
-.question{font-size:22px;font-weight:700;line-height:1.35;margin:14px 0 20px}
-.opt{display:block;width:100%;text-align:left;background:#19192b;color:#fff;border:1px solid #30304a;border-radius:15px;padding:15px;margin:10px 0;font-size:16px;cursor:pointer}
-.opt.correct{border-color:#39d98a;background:#123728}
-.opt.wrong{border-color:#ff5c6c;background:#3b1720}
-.opt:disabled{cursor:default}
-.score{font-size:52px;font-weight:900;margin:15px 0}
-.small{color:#aaa;font-size:14px;line-height:1.5}
-.err{background:#3a1720;border:1px solid #ff5c6c;padding:13px;border-radius:14px;margin-top:14px;color:#ffd9de}
-.hide{display:none}
-.spin{display:inline-block;width:20px;height:20px;border:3px solid #ffffff55;border-top-color:#fff;border-radius:50%;animation:spin .8s linear infinite;vertical-align:middle}
-@keyframes spin{to{transform:rotate(360deg)}}
+.score{
+ font-size:50px;
+ font-weight:bold;
+ margin:20px;
+}
+.hidden{display:none}
+.loading{
+ text-align:center;
+ padding:30px;
+ opacity:.8;
+}
 </style>
 </head>
 
 <body>
-<div class="wrap">
 
-<div id="home">
-<div class="top">
-<div class="logo">🧠</div>
-<div class="title">AQLJANGI</div>
-<div class="sub">Bilimingizni sinab ko‘ring!</div>
+<div class="container">
 
-<div class="badges">
-<div class="badge">10 ta savol</div>
-<div class="badge">100 ball</div>
-<div class="badge">🏆 Reyting</div>
-</div>
-</div>
+<!-- START -->
+<div id="startScreen">
+ <div class="logo">🧠</div>
+ <h1>AQLJANGI</h1>
+ <div class="subtitle">Bilimingizni sinab ko‘ring!</div>
 
-<div class="card">
-<h3>🎮 O‘yin qoidalari</h3>
-<p class="small">
-Har bir o‘yinda 10 ta savol beriladi.
-Har bir to‘g‘ri javob uchun 10 ball.
-Savollar bazadan tasodifiy olinadi.
-</p>
-
-<button class="btn" id="startBtn">
-🚀 O‘yinni boshlash
-</button>
-
-<div id="homeErr"></div>
-</div>
+ <div class="card">
+   <div class="info">
+     <span>❓ Savollar</span>
+     <b>10</b>
+   </div>
+   <div class="info">
+     <span>🏆 Maksimal ball</span>
+     <b>100</b>
+   </div>
+   <br>
+   <button class="start" onclick="startGame()">
+     🚀 Boshlash
+   </button>
+ </div>
 </div>
 
+<!-- GAME -->
+<div id="gameScreen" class="hidden">
 
-<div id="game" class="hide">
-<div class="card">
+ <div class="info">
+   <span id="progress">1 / 10</span>
+   <span id="score">0 ball</span>
+ </div>
 
-<div class="qnum" id="qnum">1 / 10</div>
+ <div class="card">
+   <div id="loading" class="loading">
+     Savollar yuklanmoqda...
+   </div>
 
-<div class="progress">
-<div class="bar" id="bar"></div>
-</div>
-
-<div class="question" id="question">
-Yuklanmoqda...
-</div>
-
-<div id="options"></div>
-
-<button class="btn hide" id="nextBtn">
-Keyingi savol ➜
-</button>
-
-</div>
-</div>
-
-
-<div id="result" class="hide">
-<div class="card center">
-
-<div class="logo">🏆</div>
-<h2>Natija</h2>
-
-<div class="score" id="score">
-0 / 100
-</div>
-
-<div id="resultText" class="small"></div>
-
-<button class="btn" id="againBtn">
-🔄 Yana o‘ynash
-</button>
-
-</div>
-</div>
+   <div id="questionBox" class="hidden">
+     <div id="question" class="question"></div>
+     <div id="answers"></div>
+   </div>
+ </div>
 
 </div>
 
+<!-- RESULT -->
+<div id="resultScreen" class="hidden">
+ <div class="logo">🏆</div>
+ <h1>Natija</h1>
+
+ <div class="card center">
+   <div id="finalScore" class="score">0</div>
+   <div id="finalText"></div>
+   <br>
+   <button class="start" onclick="startGame()">
+     🔄 Qayta o‘ynash
+   </button>
+ </div>
+</div>
+
+</div>
 
 <script>
-
-const tg =
-window.Telegram &&
-window.Telegram.WebApp
-?
-window.Telegram.WebApp
-:
-null;
-
-if(tg){
-tg.ready();
-tg.expand();
-}
-
-
-/* SUPABASE */
 
 const SUPABASE_URL =
 "https://ayzdzhodjdzsoxovckrc.supabase.co";
@@ -138,598 +167,229 @@ const SUPABASE_KEY =
 
 const GAME_SIZE = 10;
 
+let questions = [];
+let current = 0;
+let score = 0;
 
-/* DEMO */
+const tg = window.Telegram?.WebApp;
 
-const demo = [
-
-{
-question:"O‘zbekiston poytaxti qaysi shahar?",
-option_a:"Samarqand",
-option_b:"Toshkent",
-option_c:"Buxoro",
-option_d:"Termiz",
-correct_answer:"B"
-},
-
-{
-question:"1 kilometr necha metr?",
-option_a:"100",
-option_b:"500",
-option_c:"1000",
-option_d:"10",
-correct_answer:"C"
-},
-
-{
-question:"Quyosh tizimining markazida nima joylashgan?",
-option_a:"Oy",
-option_b:"Quyosh",
-option_c:"Yer",
-option_d:"Mars",
-correct_answer:"B"
-},
-
-{
-question:"Suvning kimyoviy formulasi qaysi?",
-option_a:"CO2",
-option_b:"O2",
-option_c:"H2O",
-option_d:"NaCl",
-correct_answer:"C"
-},
-
-{
-question:"Yerning tabiiy yo‘ldoshi nima?",
-option_a:"Mars",
-option_b:"Oy",
-option_c:"Quyosh",
-option_d:"Venera",
-correct_answer:"B"
-},
-
-{
-question:"Alisher Navoiy qaysi asrda yashagan?",
-option_a:"XV asr",
-option_b:"XIX asr",
-option_c:"XX asr",
-option_d:"X asr",
-correct_answer:"A"
-},
-
-{
-question:"Inson tanasida nechta yurak bor?",
-option_a:"1",
-option_b:"2",
-option_c:"3",
-option_d:"4",
-correct_answer:"A"
-},
-
-{
-question:"Yerning tabiiy yo‘ldoshi nima?",
-option_a:"Quyosh",
-option_b:"Oy",
-option_c:"Mars",
-option_d:"Yupiter",
-correct_answer:"B"
-},
-
-{
-question:"Eng katta okean qaysi?",
-option_a:"Atlantika",
-option_b:"Hind",
-option_c:"Tinch",
-option_d:"Shimoliy Muz",
-correct_answer:"C"
-},
-
-{
-question:"2 + 2 nechaga teng?",
-option_a:"3",
-option_b:"4",
-option_c:"5",
-option_d:"6",
-correct_answer:"B"
+if(tg){
+ tg.ready();
+ tg.expand();
 }
 
-];
-
-
-let questions=[];
-let index=0;
-let score=0;
-let answered=false;
-
-
-/* ESCAPE */
-
-function esc(v){
-
-return String(v ?? "")
-.replace(/[&<>"']/g,m=>
-({
-"&":"&amp;",
-"<":"&lt;",
-">":"&gt;",
-'"':"&quot;",
-"'":"&#039;"
-}[m])
-);
-
+function headers(){
+ return {
+   "apikey": SUPABASE_KEY,
+   "Authorization":"Bearer "+SUPABASE_KEY
+ };
 }
 
-
-/* SHUFFLE */
-
-function shuffle(a){
-
-a=[...a];
-
-for(
-let i=a.length-1;
-i>0;
-i--
-){
-
-const j=
-Math.floor(
-Math.random()*(i+1)
-);
-
-[a[i],a[j]]
-=
-[a[j],a[i]];
-
-}
-
-return a;
-
-}
-
-
-/* GET QUESTIONS */
-
+/* 1 mln+ savoldan random 10 ta olish */
 async function getQuestions(){
 
-/* SUPABASE RPC */
+ const random = Math.random();
 
-try{
+ let url =
+ SUPABASE_URL+
+ "/rest/v1/questions"+
+ "?select=id,question,option_a,option_b,option_c,option_d,correct_answer,category"+
+ "&random_key=gte."+random+
+ "&order=random_key.asc"+
+ "&limit=10";
 
-const r=
-await fetch(
-SUPABASE_URL+
-"/rest/v1/rpc/get_random_questions",
-{
+ let response = await fetch(url,{
+   headers:headers()
+ });
 
-method:"POST",
+ if(!response.ok){
+   throw new Error("Supabase API xatosi: "+response.status);
+ }
 
-headers:{
-"apikey":SUPABASE_KEY,
-"Authorization":
-"Bearer "+SUPABASE_KEY,
-"Content-Type":
-"application/json"
-},
+ let data = await response.json();
 
-body:
-JSON.stringify({
-p_limit:GAME_SIZE
-})
+ /* Agar random nuqtadan keyin 10 ta chiqmasa,
+    boshidan qolganlarini olamiz */
+ if(data.length < GAME_SIZE){
 
-}
-);
+   const need = GAME_SIZE-data.length;
 
-if(r.ok){
+   const url2 =
+   SUPABASE_URL+
+   "/rest/v1/questions"+
+   "?select=id,question,option_a,option_b,option_c,option_d,correct_answer,category"+
+   "&random_key=lt."+random+
+   "&order=random_key.asc"+
+   "&limit="+need;
 
-const data=
-await r.json();
+   const response2 = await fetch(url2,{
+     headers:headers()
+   });
 
-if(
-Array.isArray(data)
-&&
-data.length
-){
+   if(!response2.ok){
+     throw new Error("Savollarni olishda xato");
+   }
 
-return shuffle(data)
-.slice(0,GAME_SIZE);
+   const data2 = await response2.json();
 
-}
+   data = data.concat(data2);
+ }
 
-}
+ if(data.length < GAME_SIZE){
+   throw new Error("Bazadagi savollar soni 10 tadan kam.");
+ }
 
-}catch(e){}
-
-
-/* TABLE */
-
-try{
-
-const url=
-SUPABASE_URL+
-"/rest/v1/questions"+
-"?select=question,option_a,option_b,option_c,option_d,correct_answer,difficulty"+
-"&limit=1000";
-
-const r=
-await fetch(
-url,
-{
-
-headers:{
-"apikey":SUPABASE_KEY,
-"Authorization":
-"Bearer "+SUPABASE_KEY
-}
-
-}
-);
-
-if(r.ok){
-
-const data=
-await r.json();
-
-if(
-Array.isArray(data)
-&&
-data.length
-){
-
-return shuffle(data)
-.slice(0,GAME_SIZE);
-
-}
-
-}
-
-}catch(e){}
-
-
-/* DEMO */
-
-return shuffle(demo);
-
+ return data.slice(0,GAME_SIZE);
 }
 
 
-/* START */
-
+/* O‘yinni boshlash */
 async function startGame(){
 
-const startBtn=
-document.getElementById("startBtn");
+ document.getElementById("startScreen").classList.add("hidden");
+ document.getElementById("resultScreen").classList.add("hidden");
+ document.getElementById("gameScreen").classList.remove("hidden");
 
-startBtn.disabled=true;
+ document.getElementById("loading").classList.remove("hidden");
+ document.getElementById("questionBox").classList.add("hidden");
 
-startBtn.innerHTML=
-'<span class="spin"></span> Yuklanmoqda...';
+ current=0;
+ score=0;
+ questions=[];
 
-document.getElementById(
-"homeErr"
-).innerHTML="";
+ try{
 
-try{
+   questions = await getQuestions();
 
-questions=
-await getQuestions();
+   document.getElementById("loading").classList.add("hidden");
+   document.getElementById("questionBox").classList.remove("hidden");
 
-if(!questions.length)
-throw new Error(
-"Savollar topilmadi"
-);
+   showQuestion();
 
-index=0;
-score=0;
+ }catch(error){
 
-document
-.getElementById("home")
-.classList.add("hide");
+   document.getElementById("loading").innerHTML =
+   "❌ Savollarni yuklashda xato.<br><br>"+
+   error.message+
+   "<br><br>Supabase sozlamalarini tekshiring.";
 
-document
-.getElementById("result")
-.classList.add("hide");
-
-document
-.getElementById("game")
-.classList.remove("hide");
-
-showQuestion();
-
-}
-
-catch(e){
-
-document.getElementById(
-"homeErr"
-).innerHTML=
-'<div class="err">'+
-'Savollarni yuklashda xatolik. '+
-'Supabase sozlamalarini tekshiring.'+
-'</div>';
-
-}
-
-finally{
-
-startBtn.disabled=false;
-
-startBtn.textContent=
-"🚀 O‘yinni boshlash";
-
-}
-
+   console.error(error);
+ }
 }
 
 
-/* SHOW QUESTION */
-
+/* Savolni ko‘rsatish */
 function showQuestion(){
 
-answered=false;
+ const q = questions[current];
 
-const q=
-questions[index];
+ document.getElementById("progress").innerText =
+ (current+1)+" / "+GAME_SIZE;
 
-document.getElementById(
-"qnum"
-).textContent=
-(index+1)+
-" / "+
-questions.length;
+ document.getElementById("score").innerText =
+ score+" ball";
 
-document.getElementById(
-"bar"
-).style.width=
-((index/questions.length)*100)+
-"%";
+ document.getElementById("question").innerText =
+ q.question;
 
-document.getElementById(
-"question"
-).textContent=
-q.question ||
-q.text ||
-"Savol";
+ const answers = document.getElementById("answers");
 
+ answers.innerHTML="";
 
-const opts=[
+ const options=[
+   q.option_a,
+   q.option_b,
+   q.option_c,
+   q.option_d
+ ];
 
-["A",q.option_a],
-["B",q.option_b],
-["C",q.option_c],
-["D",q.option_d]
+ options.forEach((text,index)=>{
 
-];
+   const btn=document.createElement("button");
 
+   btn.className="answer";
+   btn.innerText=
+   String.fromCharCode(65+index)+") "+text;
 
-const box=
-document.getElementById(
-"options"
-);
+   btn.onclick=()=>answer(btn,index,q.correct_answer);
 
-box.innerHTML=
-opts.map(
-([key,val])=>
-
-`<button class="opt"
-data-key="${key}">
-<b>${key}.</b>
-${esc(val)}
-</button>`
-
-).join("");
-
-
-box
-.querySelectorAll(".opt")
-.forEach(
-b=>
-b.onclick=
-()=>
-answer(
-b,
-q.correct_answer
-)
-);
-
-
-document
-.getElementById("nextBtn")
-.classList.add("hide");
-
+   answers.appendChild(btn);
+ });
 }
 
 
-/* ANSWER */
+/* Javob */
+function answer(button,index,correct){
 
-function answer(btn,correct){
+ const buttons =
+ document.querySelectorAll(".answer");
 
-if(answered)return;
+ buttons.forEach(b=>b.disabled=true);
 
-answered=true;
+ let correctIndex;
 
-const selected=
-btn.dataset.key;
+ /* Eski bazadagi 0,1,2,3 format */
+ if(typeof correct === "number"){
+   correctIndex=correct;
+ }
 
-const normalized=
-String(correct||"")
-.trim()
-.toUpperCase();
+ /* A,B,C,D format */
+ else{
+   const value=String(correct).trim().toUpperCase();
 
+   if(value==="A") correctIndex=0;
+   else if(value==="B") correctIndex=1;
+   else if(value==="C") correctIndex=2;
+   else if(value==="D") correctIndex=3;
+   else correctIndex=parseInt(value);
+ }
 
-document
-.querySelectorAll(".opt")
-.forEach(b=>{
+ if(index===correctIndex){
 
-b.disabled=true;
+   button.classList.add("correct");
+   score+=10;
 
-if(
-b.dataset.key===
-normalized
-){
+ }else{
 
-b.classList.add(
-"correct"
-);
+   button.classList.add("wrong");
 
-}
+   if(buttons[correctIndex]){
+     buttons[correctIndex].classList.add("correct");
+   }
+ }
 
-});
+ setTimeout(()=>{
 
+   current++;
 
-if(
-selected===
-normalized
-){
+   if(current>=GAME_SIZE){
+     finishGame();
+   }else{
+     showQuestion();
+   }
 
-score+=10;
-
-}else{
-
-btn.classList.add(
-"wrong"
-);
-
-}
-
-
-document.getElementById(
-"bar"
-).style.width=
-(((index+1)/
-questions.length)*100)+
-"%";
-
-
-const next=
-document.getElementById(
-"nextBtn"
-);
-
-next.textContent=
-index===
-questions.length-1
-?
-"🏆 Natijani ko‘rish"
-:
-"Keyingi savol ➜";
-
-next.classList.remove(
-"hide"
-);
-
+ },700);
 }
 
 
-/* NEXT */
+/* Natija */
+function finishGame(){
 
-function nextQuestion(){
+ document.getElementById("gameScreen").classList.add("hidden");
+ document.getElementById("resultScreen").classList.remove("hidden");
 
-if(!answered)return;
+ document.getElementById("finalScore").innerText =
+ score+" / 100";
 
-if(
-index<
-questions.length-1
-){
+ let text="";
 
-index++;
+ if(score>=90) text="🔥 Ajoyib natija!";
+ else if(score>=70) text="👏 Juda yaxshi!";
+ else if(score>=50) text="👍 Yaxshi!";
+ else text="💪 Yana bir bor urinib ko‘ring!";
 
-showQuestion();
-
-}else{
-
-showResult();
-
+ document.getElementById("finalText").innerText=text;
 }
-
-}
-
-
-/* RESULT */
-
-function showResult(){
-
-document
-.getElementById("game")
-.classList.add("hide");
-
-document
-.getElementById("result")
-.classList.remove("hide");
-
-document.getElementById(
-"score"
-).textContent=
-score+
-" / 100";
-
-
-let text=
-score>=90
-?
-"🔥 Ajoyib natija!"
-:
-score>=70
-?
-"👏 Juda yaxshi!"
-:
-score>=50
-?
-"👍 Yaxshi!"
-:
-"💪 Yana urinib ko‘ring!";
-
-
-document.getElementById(
-"resultText"
-).textContent=text;
-
-
-if(
-tg &&
-tg.HapticFeedback
-){
-
-tg.HapticFeedback
-.notificationOccurred(
-score>=70
-?
-"success"
-:
-"warning"
-);
-
-}
-
-}
-
-
-/* BUTTONS */
-
-document.getElementById(
-"startBtn"
-).onclick=
-startGame;
-
-document.getElementById(
-"nextBtn"
-).onclick=
-nextQuestion;
-
-document.getElementById(
-"againBtn"
-).onclick=
-()=>{
-
-document
-.getElementById("result")
-.classList.add("hide");
-
-document
-.getElementById("home")
-.classList.remove("hide");
-
-};
 
 </script>
 
