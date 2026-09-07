@@ -2,14 +2,1058 @@
 <html lang="uz">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport"
+content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+
 <title>TOPQIR</title>
 
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
 <style>
-*{box-sizing:border-box}
+*{
+ box-sizing:border-box;
+ -webkit-tap-highlight-color:transparent;
+}
 
 body{
  margin:0;
- font-family:Arial
+ font-family:Arial,sans-serif;
+ background:
+ linear-gradient(135deg,#090914,#17102c);
+ color:white;
+ min-height:100vh;
+}
+
+.container{
+ max-width:600px;
+ margin:auto;
+ padding:25px 18px 35px;
+}
+
+.hidden{
+ display:none!important;
+}
+
+.logo{
+ text-align:center;
+ font-size:65px;
+ margin-top:20px;
+}
+
+h1{
+ text-align:center;
+ font-size:38px;
+ margin:8px 0;
+}
+
+.subtitle{
+ text-align:center;
+ opacity:.7;
+ font-size:18px;
+ margin-bottom:28px;
+}
+
+.card{
+ background:rgba(255,255,255,.07);
+ border:1px solid rgba(255,255,255,.14);
+ border-radius:25px;
+ padding:20px;
+ margin-top:18px;
+ backdrop-filter:blur(15px);
+}
+
+.info{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ font-size:18px;
+ margin-bottom:15px;
+}
+
+button{
+ font-family:Arial,sans-serif;
+ cursor:pointer;
+}
+
+.start{
+ width:100%;
+ border:0;
+ padding:18px;
+ border-radius:18px;
+ color:white;
+ font-size:19px;
+ font-weight:bold;
+ background:linear-gradient(90deg,#7438f5,#b34cff);
+ margin-top:10px;
+}
+
+.categoryGrid{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:14px;
+}
+
+.category{
+ width:100%;
+ min-height:95px;
+ border:0;
+ border-radius:20px;
+ background:#292443;
+ color:white;
+ font-size:18px;
+ font-weight:bold;
+ padding:15px 8px;
+}
+
+.category:active,
+.start:active,
+.answer:active,
+.backBtn:active{
+ transform:scale(.97);
+}
+
+.category span{
+ display:block;
+ font-size:32px;
+ margin-bottom:7px;
+}
+
+.help{
+ width:100%;
+ margin-top:16px;
+ padding:18px;
+ border:0;
+ border-radius:18px;
+ color:white;
+ font-size:19px;
+ font-weight:bold;
+ background:linear-gradient(90deg,#7438f5,#b34cff);
+}
+
+.backBtn{
+ width:100%;
+ padding:17px;
+ margin-bottom:18px;
+ border:0;
+ border-radius:18px;
+ background:#292443;
+ color:white;
+ font-size:18px;
+ font-weight:bold;
+}
+
+.progress{
+ display:flex;
+ justify-content:space-between;
+ font-size:18px;
+ margin-bottom:12px;
+}
+
+.question{
+ font-size:23px;
+ line-height:1.45;
+ margin-bottom:20px;
+}
+
+.answer{
+ width:100%;
+ padding:17px 15px;
+ margin:7px 0;
+ border:0;
+ border-radius:16px;
+ background:#292443;
+ color:white;
+ font-size:17px;
+ text-align:left;
+}
+
+.answer.correct{
+ background:#168a4a;
+}
+
+.answer.wrong{
+ background:#a82c43;
+}
+
+.answer:disabled{
+ opacity:1;
+}
+
+.loading{
+ text-align:center;
+ padding:35px 10px;
+ font-size:18px;
+ opacity:.8;
+}
+
+.error{
+ text-align:center;
+ line-height:1.6;
+ color:#ff8e9e;
+}
+
+.score{
+ font-size:52px;
+ font-weight:bold;
+ margin:20px;
+ text-align:center;
+}
+
+.center{
+ text-align:center;
+}
+
+.resultText{
+ font-size:20px;
+ margin-bottom:15px;
+}
+
+@media(max-width:420px){
+ .category{
+   min-height:90px;
+   font-size:17px;
+ }
+ .question{
+   font-size:21px;
+ }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- ================= KATEGORIYA ================= -->
+
+<div id="categoryScreen">
+
+ <div class="logo">📚</div>
+
+ <h1>Fan tanlang</h1>
+
+ <div class="subtitle">
+ O‘zingiz xohlagan kategoriyani tanlang
+ </div>
+
+ <div class="card">
+
+  <div class="categoryGrid">
+
+   <button class="category"
+   onclick="startGame('Mantiq')">
+    <span>🧠</span>
+    Mantiq
+   </button>
+
+   <button class="category"
+   onclick="startGame('Tarix')">
+    <span>📜</span>
+    Tarix
+   </button>
+
+   <button class="category"
+   onclick="startGame('Geografiya')">
+    <span>🌍</span>
+    Geografiya
+   </button>
+
+   <button class="category"
+   onclick="startGame('Biologiya')">
+    <span>🧬</span>
+    Biologiya
+   </button>
+
+   <button class="category"
+   onclick="startGame('Fan')">
+    <span>🔬</span>
+    Fan
+   </button>
+
+   <button class="category"
+   onclick="startGame('Texnologiya')">
+    <span>💻</span>
+    Texnologiya
+   </button>
+
+   <button class="category"
+   onclick="startGame('O‘zbekiston')">
+    <span>🇺🇿</span>
+    O‘zbekiston
+   </button>
+
+   <button class="category"
+   onclick="startGame('Adabiyot')">
+    <span>📚</span>
+    Adabiyot
+   </button>
+
+   <button class="category"
+   onclick="startGame('Matematika')">
+    <span>➗</span>
+    Matematika
+   </button>
+
+   <button class="category"
+   onclick="startGame('Umumiy bilim')">
+    <span>🎯</span>
+    Umumiy bilim
+   </button>
+
+  </div>
+
+ </div>
+
+ <button class="help"
+ onclick="openHelp()">
+  👨‍💻 Yordam
+ </button>
+
+</div>
+
+
+<!-- ================= GAME ================= -->
+
+<div id="gameScreen" class="hidden">
+
+ <button class="backBtn"
+ onclick="backToCategories()">
+  ↩️ Kategoriyalarga qaytish
+ </button>
+
+ <div class="progress">
+
+  <span id="categoryName">
+   Matematika
+  </span>
+
+  <span id="progress">
+   1 / 10
+  </span>
+
+  <span id="score">
+   0 ball
+  </span>
+
+ </div>
+
+ <div class="card">
+
+  <div id="loading"
+  class="loading">
+   ⏳ Savollar yuklanmoqda...
+  </div>
+
+  <div id="questionBox"
+  class="hidden">
+
+   <div id="question"
+   class="question"></div>
+
+   <div id="answers"></div>
+
+  </div>
+
+ </div>
+
+</div>
+
+
+<!-- ================= RESULT ================= -->
+
+<div id="resultScreen" class="hidden">
+
+ <div class="logo">
+  🏆
+ </div>
+
+ <h1>Natija</h1>
+
+ <div class="card center">
+
+  <div id="finalScore"
+  class="score">
+   0 / 100
+  </div>
+
+  <div id="finalText"
+  class="resultText">
+  </div>
+
+  <button class="start"
+  onclick="backToCategories()">
+   📚 Boshqa fan tanlash
+  </button>
+
+  <button class="backBtn"
+  onclick="restartGame()">
+   🔄 Qayta o‘ynash
+  </button>
+
+ </div>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* =========================================
+   TELEGRAM
+========================================= */
+
+const tg = window.Telegram?.WebApp;
+
+if(tg){
+
+ tg.ready();
+
+ tg.expand();
+
+}
+
+
+/* =========================================
+   SUPABASE
+========================================= */
+
+const SUPABASE_URL =
+"https://ayzdzhodjdzsoxovckrc.supabase.co";
+
+const SUPABASE_KEY =
+"sb_publishable_SVjbLTpmwn4z3lYtC3kZhg_obMt1k8p";
+
+
+/* =========================================
+   O‘YIN SOZLAMALARI
+========================================= */
+
+const GAME_SIZE = 10;
+
+let questions = [];
+
+let current = 0;
+
+let score = 0;
+
+let selectedCategory = "";
+
+
+/* =========================================
+   HEADERS
+========================================= */
+
+function headers(){
+
+ return {
+
+  "apikey":SUPABASE_KEY,
+
+  "Authorization":
+  "Bearer "+SUPABASE_KEY,
+
+  "Content-Type":
+  "application/json"
+
+ };
+
+}
+
+
+/* =========================================
+   HELP
+========================================= */
+
+function openHelp(){
+
+ window.open(
+  "https://t.me/Zafarbe0",
+  "_blank"
+ );
+
+}
+
+
+/* =========================================
+   KATEGORIYAGA QAYTISH
+========================================= */
+
+function backToCategories(){
+
+ questions=[];
+
+ current=0;
+
+ score=0;
+
+ document
+ .getElementById("gameScreen")
+ .classList.add("hidden");
+
+ document
+ .getElementById("resultScreen")
+ .classList.add("hidden");
+
+ document
+ .getElementById("categoryScreen")
+ .classList.remove("hidden");
+
+}
+
+
+/* =========================================
+   TELEGRAM BACK BUTTON
+========================================= */
+
+if(tg){
+
+ tg.BackButton.onClick(function(){
+
+  if(
+   !document
+   .getElementById("gameScreen")
+   .classList.contains("hidden")
+  ){
+
+   backToCategories();
+
+  }
+
+ });
+
+}
+
+
+/* =========================================
+   1 000 000 SAVOLDAN RANDOM OLISH
+========================================= */
+
+async function getQuestions(category){
+
+ const random =
+ Math.random();
+
+ const encodedCategory =
+ encodeURIComponent(category);
+
+ let url =
+ SUPABASE_URL+
+ "/rest/v1/questions"+
+ "?select=id,question,option_a,option_b,option_c,option_d,correct_answer,category"+
+ "&category=eq."+encodedCategory+
+ "&random_key=gte."+random+
+ "&order=random_key.asc"+
+ "&limit="+GAME_SIZE;
+
+
+ let response =
+ await fetch(
+  url,
+  {
+   method:"GET",
+   headers:headers()
+  }
+ );
+
+
+ if(!response.ok){
+
+  let text="";
+
+  try{
+   text=await response.text();
+  }catch(e){}
+
+  throw new Error(
+   "Supabase API xatosi: "+
+   response.status+
+   "<br><small>"+
+   text+
+   "</small>"
+  );
+
+ }
+
+
+ let data =
+ await response.json();
+
+
+ /* Agar 10 ta chiqmasa,
+    random_key boshidan olamiz */
+
+ if(data.length < GAME_SIZE){
+
+  const need =
+  GAME_SIZE-data.length;
+
+  const url2 =
+  SUPABASE_URL+
+  "/rest/v1/questions"+
+  "?select=id,question,option_a,option_b,option_c,option_d,correct_answer,category"+
+  "&category=eq."+encodedCategory+
+  "&random_key=lt."+random+
+  "&order=random_key.asc"+
+  "&limit="+need;
+
+
+  const response2 =
+  await fetch(
+   url2,
+   {
+    method:"GET",
+    headers:headers()
+   }
+  );
+
+
+  if(!response2.ok){
+
+   throw new Error(
+    "Qo‘shimcha savollarni olishda xato: "+
+    response2.status
+   );
+
+  }
+
+
+  const data2 =
+  await response2.json();
+
+  data =
+  data.concat(data2);
+
+ }
+
+
+ if(data.length < GAME_SIZE){
+
+  throw new Error(
+   "Bu kategoriyada yetarli savol topilmadi."
+  );
+
+ }
+
+
+ return data.slice(0,GAME_SIZE);
+
+}
+
+
+/* =========================================
+   O‘YINNI BOSHLASH
+========================================= */
+
+async function startGame(category){
+
+ selectedCategory =
+ category;
+
+ current=0;
+
+ score=0;
+
+ questions=[];
+
+
+ document
+ .getElementById("categoryScreen")
+ .classList.add("hidden");
+
+
+ document
+ .getElementById("resultScreen")
+ .classList.add("hidden");
+
+
+ document
+ .getElementById("gameScreen")
+ .classList.remove("hidden");
+
+
+ document
+ .getElementById("categoryName")
+ .innerText=
+ category;
+
+
+ document
+ .getElementById("progress")
+ .innerText=
+ "1 / 10";
+
+
+ document
+ .getElementById("score")
+ .innerText=
+ "0 ball";
+
+
+ document
+ .getElementById("loading")
+ .classList.remove("hidden");
+
+
+ document
+ .getElementById("questionBox")
+ .classList.add("hidden");
+
+
+ document
+ .getElementById("loading")
+ .innerHTML=
+ "⏳ "+category+
+ " savollari yuklanmoqda...";
+
+
+ if(tg){
+
+  tg.BackButton.show();
+
+ }
+
+
+ try{
+
+  questions =
+  await getQuestions(category);
+
+
+  document
+  .getElementById("loading")
+  .classList.add("hidden");
+
+
+  document
+  .getElementById("questionBox")
+  .classList.remove("hidden");
+
+
+  showQuestion();
+
+
+ }catch(error){
+
+  document
+  .getElementById("loading")
+  .innerHTML=
+  "❌ Savollarni yuklashda xato.<br><br>"+
+  error.message+
+  "<br><br>"+
+  "Internet yoki Supabase sozlamalarini tekshiring.";
+
+
+  console.error(error);
+
+ }
+
+}
+
+
+/* =========================================
+   SAVOLNI KO‘RSATISH
+========================================= */
+
+function showQuestion(){
+
+ const q =
+ questions[current];
+
+
+ document
+ .getElementById("progress")
+ .innerText=
+ (current+1)+
+ " / "+
+ GAME_SIZE;
+
+
+ document
+ .getElementById("score")
+ .innerText=
+ score+
+ " ball";
+
+
+ document
+ .getElementById("question")
+ .innerText=
+ q.question;
+
+
+ const answers =
+ document.getElementById("answers");
+
+
+ answers.innerHTML="";
+
+
+ const options=[
+
+  q.option_a,
+
+  q.option_b,
+
+  q.option_c,
+
+  q.option_d
+
+ ];
+
+
+ options.forEach(
+  function(text,index){
+
+   const btn =
+   document.createElement("button");
+
+
+   btn.className=
+   "answer";
+
+
+   btn.innerText=
+   String.fromCharCode(65+index)+
+   ") "+
+   text;
+
+
+   btn.onclick=
+   function(){
+
+    answer(
+     btn,
+     index,
+     q.correct_answer
+    );
+
+   };
+
+
+   answers.appendChild(btn);
+
+  }
+ );
+
+}
+
+
+/* =========================================
+   JAVOBNI TEKSHIRISH
+========================================= */
+
+function answer(
+ button,
+ index,
+ correct
+){
+
+ const buttons =
+ document.querySelectorAll(
+  ".answer"
+ );
+
+
+ buttons.forEach(
+  function(btn){
+
+   btn.disabled=true;
+
+  }
+ );
+
+
+ let correctIndex=-1;
+
+
+ const value =
+ String(correct)
+ .trim()
+ .toUpperCase();
+
+
+ if(value==="A"){
+  correctIndex=0;
+ }
+
+ else if(value==="B"){
+  correctIndex=1;
+ }
+
+ else if(value==="C"){
+  correctIndex=2;
+ }
+
+ else if(value==="D"){
+  correctIndex=3;
+ }
+
+ else{
+
+  const number =
+  parseInt(value);
+
+  if(!isNaN(number)){
+   correctIndex=number;
+  }
+
+ }
+
+
+ if(index===correctIndex){
+
+  button.classList.add(
+   "correct"
+  );
+
+  score+=10;
+
+ }
+
+ else{
+
+  button.classList.add(
+   "wrong"
+  );
+
+
+  if(buttons[correctIndex]){
+
+   buttons[
+    correctIndex
+   ].classList.add(
+    "correct"
+   );
+
+  }
+
+ }
+
+
+ document
+ .getElementById("score")
+ .innerText=
+ score+" ball";
+
+
+ setTimeout(
+  function(){
+
+   current++;
+
+
+   if(
+    current>=GAME_SIZE
+   ){
+
+    finishGame();
+
+   }
+
+   else{
+
+    showQuestion();
+
+   }
+
+  },
+  700
+ );
+
+}
+
+
+/* =========================================
+   NATIJA
+========================================= */
+
+function finishGame(){
+
+ document
+ .getElementById("gameScreen")
+ .classList.add("hidden");
+
+
+ document
+ .getElementById("resultScreen")
+ .classList.remove("hidden");
+
+
+ document
+ .getElementById("finalScore")
+ .innerText=
+ score+
+ " / 100";
+
+
+ let text="";
+
+
+ if(score===100){
+
+  text=
+  "👑 Mukammal natija!";
+
+ }
+
+ else if(score>=90){
+
+  text=
+  "🔥 Ajoyib natija!";
+
+ }
+
+ else if(score>=70){
+
+  text=
+  "👏 Juda yaxshi!";
+
+ }
+
+ else if(score>=50){
+
+  text=
+  "👍 Yaxshi!";
+
+ }
+
+ else{
+
+  text=
+  "💪 Yana bir bor urinib ko‘ring!";
+
+ }
+
+
+ document
+ .getElementById("finalText")
+ .innerText=
+ text;
+
+
+ if(tg){
+
+  tg.BackButton.hide();
+
+ }
+
+}
+
+
+/* =========================================
+   QAYTA O‘YNASH
+========================================= */
+
+function restartGame(){
+
+ startGame(
+  selectedCategory
+ );
+
+}
+
+</script>
+
+</body>
+</html>
