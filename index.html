@@ -96,6 +96,7 @@ h1{
  background:#292443;
  color:white;
  font-size:16px;
+ font-weight:bold;
 }
 
 .info{
@@ -103,6 +104,7 @@ h1{
  justify-content:space-between;
  margin-bottom:15px;
  opacity:.85;
+ gap:8px;
 }
 
 .question{
@@ -178,10 +180,6 @@ h1{
  font-weight:bold;
 }
 
-.selected{
- border:2px solid #b24cff;
-}
-
 .small{
  font-size:13px;
  opacity:.6;
@@ -194,6 +192,7 @@ h1{
 <body>
 
 <div class="container">
+
 
 <!-- ================= BOSH SAHIFA ================= -->
 
@@ -227,15 +226,17 @@ h1{
 
  </div>
 
- <button class="category help" style="width:100%;margin-top:12px"
- onclick="openHelp()">
+ <button
+  class="category help"
+  style="width:100%;margin-top:12px"
+  onclick="openHelp()">
   👨‍💻 Yordam
  </button>
 
 </div>
 
 
-<!-- ================= KATEGORIYA ================= -->
+<!-- ================= KATEGORIYALAR ================= -->
 
 <div id="categoryScreen" class="hidden">
 
@@ -305,14 +306,15 @@ h1{
 
  </div>
 
- <button class="category help"
- style="width:100%;margin-top:12px"
- onclick="openHelp()">
+ <button
+  class="category help"
+  style="width:100%;margin-top:12px"
+  onclick="openHelp()">
   👨‍💻 Yordam
  </button>
 
  <button class="back" onclick="goHome()">
-  🔙 Orqaga
+  🔙 Bosh sahifaga
  </button>
 
 </div>
@@ -343,7 +345,7 @@ h1{
  </div>
 
  <button class="back" onclick="goHome()">
-  🔙 Orqaga
+  🔙 Bosh sahifaga
  </button>
 
 </div>
@@ -353,7 +355,12 @@ h1{
 
 <div id="gameScreen" class="hidden">
 
- <div class="info">
+ <!-- ORQAGA TUGMASI -->
+ <button class="back" onclick="openCategories()">
+  🔙 Kategoriyalarga qaytish
+ </button>
+
+ <div class="info" style="margin-top:18px">
 
   <span id="categoryName">
    Matematika
@@ -438,12 +445,14 @@ const SUPABASE_URL =
 const SUPABASE_KEY =
 "sb_publishable_SVjbLTpmwn4z3lYtC3kZhg_obMt1k8p";
 
-
 const GAME_SIZE = 10;
 
 let questions = [];
+
 let current = 0;
+
 let score = 0;
+
 let selectedCategory = "";
 
 
@@ -454,8 +463,11 @@ let selectedCategory = "";
 const tg = window.Telegram?.WebApp;
 
 if(tg){
+
  tg.ready();
+
  tg.expand();
+
 }
 
 
@@ -466,9 +478,15 @@ if(tg){
 function headers(){
 
  return {
+
   "apikey":SUPABASE_KEY,
-  "Authorization":"Bearer "+SUPABASE_KEY,
-  "Content-Type":"application/json"
+
+  "Authorization":
+  "Bearer "+SUPABASE_KEY,
+
+  "Content-Type":
+  "application/json"
+
  };
 
 }
@@ -509,7 +527,8 @@ function goHome(){
 
  document
  .getElementById("homeScreen")
- .classList.remove("hidden");
+ .classList
+ .remove("hidden");
 
 }
 
@@ -520,7 +539,8 @@ function openCategories(){
 
  document
  .getElementById("categoryScreen")
- .classList.remove("hidden");
+ .classList
+ .remove("hidden");
 
 }
 
@@ -531,13 +551,14 @@ function openHelp(){
 
  document
  .getElementById("helpScreen")
- .classList.remove("hidden");
+ .classList
+ .remove("hidden");
 
 }
 
 
 /* =========================
-   KATEGORIYA TANLASH
+   KATEGORIYA
 ========================= */
 
 function selectCategory(category){
@@ -622,7 +643,7 @@ async function getQuestions(){
 
 
 /* =========================
-   O‘YIN
+   O‘YINNI BOSHLASH
 ========================= */
 
 async function startGame(){
@@ -631,17 +652,20 @@ async function startGame(){
 
  document
  .getElementById("gameScreen")
- .classList.remove("hidden");
+ .classList
+ .remove("hidden");
 
 
  document
  .getElementById("loading")
- .classList.remove("hidden");
+ .classList
+ .remove("hidden");
 
 
  document
  .getElementById("questionBox")
- .classList.add("hidden");
+ .classList
+ .add("hidden");
 
 
  document
@@ -651,7 +675,9 @@ async function startGame(){
 
 
  current=0;
+
  score=0;
+
  questions=[];
 
 
@@ -659,6 +685,12 @@ async function startGame(){
  .getElementById("categoryName")
  .innerText =
  selectedCategory;
+
+
+ document
+ .getElementById("score")
+ .innerText =
+ "0 ball";
 
 
  try{
@@ -669,7 +701,8 @@ async function startGame(){
 
   document
   .getElementById("loading")
-  .classList.add("hidden");
+  .classList
+  .add("hidden");
 
 
   document
@@ -692,8 +725,11 @@ async function startGame(){
   "<div class='error'>"+
   "❌ Savollarni yuklashda xato.<br><br>"+
   error.message+
+  "<br><br>"+
+  "<button class='back' onclick='openCategories()'>"+
+  "🔙 Kategoriyalarga qaytish"+
+  "</button>"+
   "</div>";
-
 
  }
 
@@ -701,7 +737,7 @@ async function startGame(){
 
 
 /* =========================
-   SAVOL
+   SAVOLNI KO‘RSATISH
 ========================= */
 
 function showQuestion(){
@@ -739,10 +775,15 @@ function showQuestion(){
 
 
  const options=[
+
   q.option_a,
+
   q.option_b,
+
   q.option_c,
+
   q.option_d
+
  ];
 
 
@@ -776,7 +817,6 @@ function showQuestion(){
   answers.appendChild(btn);
 
  });
-
 
 }
 
@@ -833,7 +873,8 @@ function answer(
 
   score += 10;
 
- }else{
+ }
+ else{
 
   button
   .classList
@@ -867,7 +908,8 @@ function answer(
 
    finishGame();
 
-  }else{
+  }
+  else{
 
    showQuestion();
 
