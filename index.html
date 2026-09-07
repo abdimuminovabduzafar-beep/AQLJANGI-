@@ -3,348 +3,168 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AQLJANGI</title>
-
+<meta name="theme-color" content="#090b18">
+<title>🧠 AQLJANGI</title>
 <style>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: Arial, sans-serif;
-  background: linear-gradient(135deg,#090b18,#171b35);
-  color: white;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.game {
-  width: 100%;
-  max-width: 430px;
-  min-height: 100vh;
-  padding: 25px 18px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.logo {
-  text-align: center;
-  font-size: 42px;
-  font-weight: 900;
-  margin-bottom: 10px;
-}
-
-.subtitle {
-  text-align: center;
-  color: #aeb4d0;
-  margin-bottom: 35px;
-}
-
-.card {
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 24px;
-  padding: 25px;
-  backdrop-filter: blur(15px);
-}
-
-.question-number {
-  color: #8f96ff;
-  font-weight: bold;
-  margin-bottom: 15px;
-}
-
-.question {
-  font-size: 23px;
-  font-weight: bold;
-  line-height: 1.35;
-  margin-bottom: 25px;
-}
-
-.answers {
-  display: grid;
-  gap: 12px;
-}
-
-.answer {
-  border: none;
-  border-radius: 15px;
-  padding: 17px;
-  background: #252a4a;
-  color: white;
-  font-size: 16px;
-  text-align: left;
-  cursor: pointer;
-}
-
-.answer:active {
-  transform: scale(0.98);
-}
-
-.correct {
-  background: #168c59 !important;
-}
-
-.wrong {
-  background: #b8324b !important;
-}
-
-.start {
-  width: 100%;
-  padding: 18px;
-  border: none;
-  border-radius: 16px;
-  background: linear-gradient(90deg,#6c63ff,#9b5cff);
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.score {
-  text-align: center;
-  font-size: 20px;
-  margin: 20px 0;
-}
-
-.hidden {
-  display: none;
-}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:radial-gradient(circle at 50% 0%,#25205a 0,#11152d 38%,#070914 100%);color:#fff;min-height:100vh}
+.game{width:100%;max-width:470px;min-height:100vh;margin:auto;padding:22px 16px 30px;display:flex;flex-direction:column;justify-content:center}
+.logo{text-align:center;font-size:40px;font-weight:900;letter-spacing:-1px;text-shadow:0 0 25px #6c63ff;margin-bottom:7px}
+.subtitle{text-align:center;color:#aeb4d0;margin-bottom:24px}
+.badges{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.badge{padding:7px 11px;border:1px solid #ffffff1c;background:#ffffff0c;border-radius:999px;color:#cfd3eb;font-size:12px}
+.card{background:linear-gradient(145deg,#ffffff12,#ffffff06);border:1px solid #ffffff16;border-radius:26px;padding:23px;box-shadow:0 18px 55px #0007;backdrop-filter:blur(18px)}
+.rules-title{font-size:20px;font-weight:800;margin-bottom:12px}
+.rules{color:#b8bdd5;line-height:1.65;margin-bottom:20px}
+.start{width:100%;padding:18px;border:0;border-radius:17px;background:linear-gradient(90deg,#6c63ff,#a855f7);color:white;font-size:18px;font-weight:800;box-shadow:0 10px 28px #765cff55;cursor:pointer}
+.start:active{transform:scale(.98)}
+.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;color:#cbd0e8;font-size:13px}
+.progress{height:7px;background:#ffffff12;border-radius:20px;overflow:hidden;margin-bottom:18px}
+.progress span{display:block;height:100%;background:linear-gradient(90deg,#6c63ff,#b45cff);border-radius:20px;transition:.3s}
+.question{font-size:23px;font-weight:800;line-height:1.35;margin-bottom:22px}
+.answers{display:grid;gap:11px}
+.answer{border:1px solid #ffffff10;border-radius:15px;padding:16px;background:#252a4a;color:#fff;font-size:16px;text-align:left;cursor:pointer;transition:.15s}
+.answer:active{transform:scale(.985)}
+.answer.correct{background:#168c59!important;border-color:#35d993}
+.answer.wrong{background:#b8324b!important;border-color:#ff7085}
+.answer:disabled{cursor:default}
+.score{text-align:center;font-size:22px;margin:17px 0;color:#f4f5ff}
+.bigscore{font-size:45px;font-weight:900;text-shadow:0 0 25px #9b5cff}
+.hidden{display:none!important}
+.loading{text-align:center;padding:25px;color:#cbd0e8}
+.small{font-size:12px;color:#8f96b4;text-align:center;margin-top:12px}
 </style>
 </head>
-
 <body>
-
 <div class="game">
-
   <div id="home">
     <div class="logo">🧠 AQLJANGI</div>
     <div class="subtitle">Bilimingizni sinab ko‘ring!</div>
-
+    <div class="badges">
+      <div class="badge">🎯 10 ta savol</div>
+      <div class="badge">⭐ 100 ball</div>
+      <div class="badge">🔥 Reyting</div>
+    </div>
     <div class="card">
-      <p style="font-size:20px;margin-bottom:15px;">🎯 Qoidalar</p>
-      <p style="color:#b8bdd5;line-height:1.7;margin-bottom:25px;">
-        10 ta savolga javob bering.<br>
-        Har bir to‘g‘ri javob uchun 10 ball.<br>
-        Oxirida natijangizni ko‘ring!
-      </p>
-
-      <button class="start" onclick="startGame()">
-        🚀 O‘yinni boshlash
-      </button>
+      <div class="rules-title">🎯 Qoidalar</div>
+      <div class="rules">Har o‘yinda 10 ta tasodifiy savol chiqadi. Har bir to‘g‘ri javob — <b>10 ball</b>. Savollar bazasi katta hajmga mo‘ljallangan.</div>
+      <button class="start" onclick="startGame()">🚀 O‘yinni boshlash</button>
+      <div class="small">Savollar har o‘yinda aralashtiriladi</div>
     </div>
   </div>
 
   <div id="game" class="hidden">
-
-    <div class="logo" style="font-size:30px;">🧠 AQLJANGI</div>
-
+    <div class="topbar"><b>🧠 AQLJANGI</b><span id="scoreTop">⭐ 0</span></div>
+    <div class="progress"><span id="progress"></span></div>
     <div class="card">
-
-      <div class="question-number" id="number"></div>
-
+      <div class="topbar"><span id="number">SAVOL 1 / 10</span><span id="category"></span></div>
       <div class="question" id="question"></div>
-
       <div class="answers" id="answers"></div>
-
     </div>
-
   </div>
+
+  <div id="loading" class="hidden card loading">⏳ Savollar yuklanmoqda...</div>
 
   <div id="result" class="hidden">
-
     <div class="logo">🏆</div>
-
-    <div class="card" style="text-align:center;">
-
-      <h2 style="font-size:28px;margin-bottom:15px;">
-        Natija
-      </h2>
-
-      <div class="score" id="finalScore"></div>
-
-      <button class="start" onclick="startGame()">
-        🔄 Qayta o‘ynash
-      </button>
-
+    <div class="card" style="text-align:center">
+      <h2 style="font-size:28px">Natija</h2>
+      <div class="score"><div class="bigscore" id="finalScore">0</div> ball</div>
+      <div id="resultText" class="score"></div>
+      <button class="start" onclick="startGame()">🔄 Qayta o‘ynash</button>
     </div>
-
   </div>
-
 </div>
 
 <script>
+/*
+  1M+ savol uchun backend:
+  - API_URL ga o'zingizning API manzilingizni yozing.
+  - API javobi: { "questions": [
+      {"q":"Savol","a":["A","B","C","D"],"correct":1,"category":"Umumiy"}
+    ]}
+  Agar API hali ulanmagan bo'lsa, pastdagi DEMO_QUESTIONS ishlaydi.
+*/
+const API_URL = ""; // Masalan: https://YOUR-PROJECT.supabase.co/functions/v1/questions
 
-const questions = [
-
-{
- q: "O‘zbekiston poytaxti qaysi shahar?",
- a: ["Samarqand","Toshkent","Buxoro","Andijon"],
- correct: 1
-},
-
-{
- q: "1 kilogramm necha gramm?",
- a: ["100","500","1000","2000"],
- correct: 2
-},
-
-{
- q: "Quyoshga eng yaqin sayyora qaysi?",
- a: ["Mars","Venera","Merkuriy","Yupiter"],
- correct: 2
-},
-
-{
- q: "O‘zbekistonda nechta viloyat bor?",
- a: ["10","12","14","16"],
- correct: 2
-},
-
-{
- q: "5 × 8 nechaga teng?",
- a: ["35","40","45","50"],
- correct: 1
-},
-
-{
- q: "Dunyodagi eng katta okean qaysi?",
- a: ["Atlantika","Hind","Tinch","Shimoliy Muz"],
- correct: 2
-},
-
-{
- q: "Haftada nechta kun bor?",
- a: ["5","6","7","8"],
- correct: 2
-},
-
-{
- q: "Suvning kimyoviy formulasi qaysi?",
- a: ["CO2","H2O","O2","NaCl"],
- correct: 1
-},
-
-{
- q: "Yer Quyosh atrofini taxminan qancha vaqtda aylanadi?",
- a: ["1 kun","1 oy","1 yil","10 yil"],
- correct: 2
-},
-
-{
- q: "O‘zbekiston bayrog‘ida nechta yulduz bor?",
- a: ["10","12","14","16"],
- correct: 1
-}
-
+const DEMO_QUESTIONS = [
+{q:"O‘zbekiston poytaxti qaysi shahar?",a:["Samarqand","Toshkent","Buxoro","Andijon"],correct:1,category:"O‘zbekiston"},
+{q:"1 kilogramm necha gramm?",a:["100","500","1000","2000"],correct:2,category:"Matematika"},
+{q:"Quyoshga eng yaqin sayyora qaysi?",a:["Mars","Venera","Merkuriy","Yupiter"],correct:2,category:"Fan"},
+{q:"Haftada nechta kun bor?",a:["5","6","7","8"],correct:2,category:"Umumiy"},
+{q:"Suvning kimyoviy formulasi qaysi?",a:["CO2","H2O","O2","NaCl"],correct:1,category:"Fan"},
+{q:"5 × 8 nechaga teng?",a:["35","40","45","50"],correct:1,category:"Matematika"},
+{q:"Dunyodagi eng katta okean qaysi?",a:["Atlantika","Hind","Tinch","Shimoliy Muz"],correct:2,category:"Geografiya"},
+{q:"Yer Quyosh atrofini taxminan qancha vaqtda aylanadi?",a:["1 kun","1 oy","1 yil","10 yil"],correct:2,category:"Fan"},
+{q:"O‘zbekiston bayrog‘ida nechta yulduz bor?",a:["10","12","14","16"],correct:1,category:"O‘zbekiston"},
+{q:"Eng katta qit’a qaysi?",a:["Afrika","Osiyo","Yevropa","Avstraliya"],correct:1,category:"Geografiya"}
 ];
 
-let current = 0;
-let score = 0;
+let questions=[], current=0, score=0;
 
-function startGame() {
-
-  current = 0;
-  score = 0;
-
-  document.getElementById("home").classList.add("hidden");
-  document.getElementById("result").classList.add("hidden");
-  document.getElementById("game").classList.remove("hidden");
-
-  showQuestion();
+async function loadQuestions(){
+  if(!API_URL) return shuffle([...DEMO_QUESTIONS]).slice(0,10);
+  const r=await fetch(API_URL+"?limit=10");
+  if(!r.ok) throw new Error("API error");
+  const data=await r.json();
+  return data.questions || [];
 }
 
-function showQuestion() {
+async function startGame(){
+  document.getElementById("home").classList.add("hidden");
+  document.getElementById("result").classList.add("hidden");
+  document.getElementById("game").classList.add("hidden");
+  document.getElementById("loading").classList.remove("hidden");
+  current=0; score=0;
+  try{
+    questions=await loadQuestions();
+    if(!questions.length) throw new Error("Savollar topilmadi");
+    document.getElementById("loading").classList.add("hidden");
+    document.getElementById("game").classList.remove("hidden");
+    showQuestion();
+  }catch(e){
+    document.getElementById("loading").classList.add("hidden");
+    questions=shuffle([...DEMO_QUESTIONS]).slice(0,10);
+    document.getElementById("game").classList.remove("hidden");
+    showQuestion();
+  }
+}
 
-  const item = questions[current];
-
-  document.getElementById("number").textContent =
-    "SAVOL " + (current + 1) + " / " + questions.length;
-
-  document.getElementById("question").textContent = item.q;
-
-  const answers = document.getElementById("answers");
-
-  answers.innerHTML = "";
-
-  item.a.forEach((answer,index) => {
-
-    const button = document.createElement("button");
-
-    button.className = "answer";
-    button.textContent = answer;
-
-    button.onclick = () => checkAnswer(button,index);
-
-    answers.appendChild(button);
-
+function showQuestion(){
+  const item=questions[current];
+  document.getElementById("number").textContent=`SAVOL ${current+1} / ${questions.length}`;
+  document.getElementById("scoreTop").textContent=`⭐ ${score}`;
+  document.getElementById("category").textContent=item.category||"";
+  document.getElementById("question").textContent=item.q;
+  document.getElementById("progress").style.width=((current+1)/questions.length*100)+"%";
+  const box=document.getElementById("answers"); box.innerHTML="";
+  item.a.forEach((answer,index)=>{
+    const b=document.createElement("button");
+    b.className="answer"; b.textContent=answer;
+    b.onclick=()=>checkAnswer(b,index);
+    box.appendChild(b);
   });
 }
 
-function checkAnswer(button,index) {
-
-  const buttons = document.querySelectorAll(".answer");
-
-  buttons.forEach(b => b.disabled = true);
-
-  if(index === questions[current].correct) {
-
-    button.classList.add("correct");
-    score += 10;
-
-  } else {
-
-    button.classList.add("wrong");
-
-    buttons[questions[current].correct]
-      .classList.add("correct");
-
-  }
-
-  setTimeout(() => {
-
-    current++;
-
-    if(current < questions.length) {
-
-      showQuestion();
-
-    } else {
-
-      finishGame();
-
-    }
-
-  },800);
+function checkAnswer(button,index){
+  const buttons=document.querySelectorAll(".answer");
+  buttons.forEach(b=>b.disabled=true);
+  if(index===questions[current].correct){button.classList.add("correct");score+=10}
+  else{button.classList.add("wrong");buttons[questions[current].correct].classList.add("correct")}
+  document.getElementById("scoreTop").textContent=`⭐ ${score}`;
+  setTimeout(()=>{current++; current<questions.length?showQuestion():finishGame()},650);
 }
 
-function finishGame() {
-
+function finishGame(){
   document.getElementById("game").classList.add("hidden");
   document.getElementById("result").classList.remove("hidden");
-
-  let text = "";
-
-  if(score >= 90) {
-    text = "🔥 Siz juda aqllisiz!";
-  } else if(score >= 70) {
-    text = "👏 Juda yaxshi!";
-  } else if(score >= 50) {
-    text = "👍 Yomon emas!";
-  } else {
-    text = "😅 Yana bir bor urinib ko‘ring!";
-  }
-
-  document.getElementById("finalScore").innerHTML =
-    "⭐ " + score + " ball<br><br>" + text;
+  document.getElementById("finalScore").textContent=score;
+  document.getElementById("resultText").textContent=
+    score>=90?"🔥 Siz juda aqllisiz!":
+    score>=70?"👏 Juda yaxshi!":
+    score>=50?"👍 Yomon emas!":"😅 Yana bir bor urinib ko‘ring!";
 }
-
+function shuffle(a){for(let i=a.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
 </script>
-
 </body>
 </html>
