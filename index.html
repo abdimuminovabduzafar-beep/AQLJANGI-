@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AQLJANGI</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg,#090b18,#171b35);
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game {
+  width: 100%;
+  max-width: 430px;
+  min-height: 100vh;
+  padding: 25px 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.logo {
+  text-align: center;
+  font-size: 42px;
+  font-weight: 900;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  text-align: center;
+  color: #aeb4d0;
+  margin-bottom: 35px;
+}
+
+.card {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 24px;
+  padding: 25px;
+  backdrop-filter: blur(15px);
+}
+
+.question-number {
+  color: #8f96ff;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.question {
+  font-size: 23px;
+  font-weight: bold;
+  line-height: 1.35;
+  margin-bottom: 25px;
+}
+
+.answers {
+  display: grid;
+  gap: 12px;
+}
+
+.answer {
+  border: none;
+  border-radius: 15px;
+  padding: 17px;
+  background: #252a4a;
+  color: white;
+  font-size: 16px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.answer:active {
+  transform: scale(0.98);
+}
+
+.correct {
+  background: #168c59 !important;
+}
+
+.wrong {
+  background: #b8324b !important;
+}
+
+.start {
+  width: 100%;
+  padding: 18px;
+  border: none;
+  border-radius: 16px;
+  background: linear-gradient(90deg,#6c63ff,#9b5cff);
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.score {
+  text-align: center;
+  font-size: 20px;
+  margin: 20px 0;
+}
+
+.hidden {
+  display: none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="game">
+
+  <div id="home">
+    <div class="logo">🧠 AQLJANGI</div>
+    <div class="subtitle">Bilimingizni sinab ko‘ring!</div>
+
+    <div class="card">
+      <p style="font-size:20px;margin-bottom:15px;">🎯 Qoidalar</p>
+      <p style="color:#b8bdd5;line-height:1.7;margin-bottom:25px;">
+        10 ta savolga javob bering.<br>
+        Har bir to‘g‘ri javob uchun 10 ball.<br>
+        Oxirida natijangizni ko‘ring!
+      </p>
+
+      <button class="start" onclick="startGame()">
+        🚀 O‘yinni boshlash
+      </button>
+    </div>
+  </div>
+
+  <div id="game" class="hidden">
+
+    <div class="logo" style="font-size:30px;">🧠 AQLJANGI</div>
+
+    <div class="card">
+
+      <div class="question-number" id="number"></div>
+
+      <div class="question" id="question"></div>
+
+      <div class="answers" id="answers"></div>
+
+    </div>
+
+  </div>
+
+  <div id="result" class="hidden">
+
+    <div class="logo">🏆</div>
+
+    <div class="card" style="text-align:center;">
+
+      <h2 style="font-size:28px;margin-bottom:15px;">
+        Natija
+      </h2>
+
+      <div class="score" id="finalScore"></div>
+
+      <button class="start" onclick="startGame()">
+        🔄 Qayta o‘ynash
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+
+const questions = [
+
+{
+ q: "O‘zbekiston poytaxti qaysi shahar?",
+ a: ["Samarqand","Toshkent","Buxoro","Andijon"],
+ correct: 1
+},
+
+{
+ q: "1 kilogramm necha gramm?",
+ a: ["100","500","1000","2000"],
+ correct: 2
+},
+
+{
+ q: "Quyoshga eng yaqin sayyora qaysi?",
+ a: ["Mars","Venera","Merkuriy","Yupiter"],
+ correct: 2
+},
+
+{
+ q: "O‘zbekistonda nechta viloyat bor?",
+ a: ["10","12","14","16"],
+ correct: 2
+},
+
+{
+ q: "5 × 8 nechaga teng?",
+ a: ["35","40","45","50"],
+ correct: 1
+},
+
+{
+ q: "Dunyodagi eng katta okean qaysi?",
+ a: ["Atlantika","Hind","Tinch","Shimoliy Muz"],
+ correct: 2
+},
+
+{
+ q: "Haftada nechta kun bor?",
+ a: ["5","6","7","8"],
+ correct: 2
+},
+
+{
+ q: "Suvning kimyoviy formulasi qaysi?",
+ a: ["CO2","H2O","O2","NaCl"],
+ correct: 1
+},
+
+{
+ q: "Yer Quyosh atrofini taxminan qancha vaqtda aylanadi?",
+ a: ["1 kun","1 oy","1 yil","10 yil"],
+ correct: 2
+},
+
+{
+ q: "O‘zbekiston bayrog‘ida nechta yulduz bor?",
+ a: ["10","12","14","16"],
+ correct: 1
+}
+
+];
+
+let current = 0;
+let score = 0;
+
+function startGame() {
+
+  current = 0;
+  score = 0;
+
+  document.getElementById("home").classList.add("hidden");
+  document.getElementById("result").classList.add("hidden");
+  document.getElementById("game").classList.remove("hidden");
+
+  showQuestion();
+}
+
+function showQuestion() {
+
+  const item = questions[current];
+
+  document.getElementById("number").textContent =
+    "SAVOL " + (current + 1) + " / " + questions.length;
+
+  document.getElementById("question").textContent = item.q;
+
+  const answers = document.getElementById("answers");
+
+  answers.innerHTML = "";
+
+  item.a.forEach((answer,index) => {
+
+    const button = document.createElement("button");
+
+    button.className = "answer";
+    button.textContent = answer;
+
+    button.onclick = () => checkAnswer(button,index);
+
+    answers.appendChild(button);
+
+  });
+}
+
+function checkAnswer(button,index) {
+
+  const buttons = document.querySelectorAll(".answer");
+
+  buttons.forEach(b => b.disabled = true);
+
+  if(index === questions[current].correct) {
+
+    button.classList.add("correct");
+    score += 10;
+
+  } else {
+
+    button.classList.add("wrong");
+
+    buttons[questions[current].correct]
+      .classList.add("correct");
+
+  }
+
+  setTimeout(() => {
+
+    current++;
+
+    if(current < questions.length) {
+
+      showQuestion();
+
+    } else {
+
+      finishGame();
+
+    }
+
+  },800);
+}
+
+function finishGame() {
+
+  document.getElementById("game").classList.add("hidden");
+  document.getElementById("result").classList.remove("hidden");
+
+  let text = "";
+
+  if(score >= 90) {
+    text = "🔥 Siz juda aqllisiz!";
+  } else if(score >= 70) {
+    text = "👏 Juda yaxshi!";
+  } else if(score >= 50) {
+    text = "👍 Yomon emas!";
+  } else {
+    text = "😅 Yana bir bor urinib ko‘ring!";
+  }
+
+  document.getElementById("finalScore").innerHTML =
+    "⭐ " + score + " ball<br><br>" + text;
+}
+
+</script>
+
+</body>
+</html>
