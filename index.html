@@ -446,6 +446,62 @@ button{
 
 
 /* =========================
+   REWARDS
+========================= */
+
+.reward-title{
+  text-align:center;
+
+  font-size:20px;
+  font-weight:900;
+
+  margin-bottom:10px;
+}
+
+.reward-grid{
+  display:grid;
+
+  grid-template-columns:1fr 1fr;
+
+  gap:8px;
+
+  margin-top:10px;
+}
+
+.reward-card{
+  background:#1b1a2b;
+
+  border:1px solid #303047;
+
+  border-radius:14px;
+
+  padding:12px;
+
+  text-align:center;
+}
+
+.reward-card b{
+  display:block;
+
+  font-size:18px;
+
+  margin-bottom:4px;
+}
+
+.reward-card span{
+  color:#aaa;
+
+  font-size:12px;
+}
+
+.reward-card.vip{
+  background:#2b2346;
+
+  border-color:#8c5cff;
+}
+
+
+/* =========================
    HELP
 ========================= */
 
@@ -559,96 +615,55 @@ button{
 
     <div class="categories">
 
-
-      <button
-        class="cat"
-        data-category="Mantiq"
-      >
+      <button class="cat" data-category="Mantiq">
         🧠<br>
         Mantiq
       </button>
 
-
-      <button
-        class="cat"
-        data-category="Tarix"
-      >
+      <button class="cat" data-category="Tarix">
         📜<br>
         Tarix
       </button>
 
-
-      <button
-        class="cat"
-        data-category="Geografiya"
-      >
+      <button class="cat" data-category="Geografiya">
         🌍<br>
         Geografiya
       </button>
 
-
-      <button
-        class="cat"
-        data-category="Biologiya"
-      >
+      <button class="cat" data-category="Biologiya">
         🧬<br>
         Biologiya
       </button>
 
-
-      <button
-        class="cat"
-        data-category="Fan"
-      >
+      <button class="cat" data-category="Fan">
         🔬<br>
         Fan
       </button>
 
-
-      <button
-        class="cat"
-        data-category="Texnologiya"
-      >
+      <button class="cat" data-category="Texnologiya">
         💻<br>
         Texnologiya
       </button>
 
-
-      <button
-        class="cat"
-        data-category="O‘zbekiston"
-      >
+      <button class="cat" data-category="O‘zbekiston">
         🇺🇿<br>
         O‘zbekiston
       </button>
 
-
-      <button
-        class="cat"
-        data-category="Adabiyot"
-      >
+      <button class="cat" data-category="Adabiyot">
         📚<br>
         Adabiyot
       </button>
 
-
-      <button
-        class="cat"
-        data-category="Matematika"
-      >
+      <button class="cat" data-category="Matematika">
         ➗<br>
         Matematika
       </button>
 
-
-      <button
-        class="cat"
-        data-category="Umumiy bilim"
-      >
+      <button class="cat" data-category="Umumiy bilim">
         🎯<br>
         Umumiy bilim
       </button>
-
 
     </div>
 
@@ -656,6 +671,14 @@ button{
     <div id="homeError"></div>
 
   </div>
+
+
+  <!-- REWARDS -->
+
+  <div
+    id="rewardBox"
+    class="card"
+  ></div>
 
 
   <!-- HISTORY -->
@@ -684,7 +707,6 @@ button{
   class="hide"
 >
 
-
   <button
     id="backBtn"
     class="btn back-btn"
@@ -694,7 +716,6 @@ button{
 
 
   <div class="card">
-
 
     <div class="game-top">
 
@@ -750,7 +771,6 @@ button{
       Keyingi savol ➜
     </button>
 
-
   </div>
 
 </section>
@@ -765,7 +785,6 @@ button{
   id="result"
   class="hide"
 >
-
 
   <div class="card">
 
@@ -821,7 +840,6 @@ button{
     >
       📚 Boshqa fan
     </button>
-
 
   </div>
 
@@ -911,6 +929,35 @@ let totalScore =
 
 
 /* =====================================================
+   REWARD VARIABLES
+===================================================== */
+
+let coins =
+  Number(
+    localStorage.getItem(
+      "aqljangi_coins"
+    ) || 0
+  );
+
+
+let vipUntil =
+  Number(
+    localStorage.getItem(
+      "aqljangi_vip_until"
+    ) || 0
+  );
+
+
+let rewardsClaimed =
+  JSON.parse(
+    localStorage.getItem(
+      "aqljangi_rewards_claimed"
+    ) || "[]"
+  );
+
+
+
+/* =====================================================
    ESCAPE HTML
 ===================================================== */
 
@@ -992,28 +1039,9 @@ async function loadQuestions(category){
     Math.random();
 
 
-  /*
-    MUHIM:
-
-    Bu yerda ID olinmaydi.
-
-    Eski:
-    select=id,...
-
-    YO‘Q.
-
-    Yangi:
-    select=question,...
-  */
-
-
   const selectFields =
     "question,option_a,option_b,option_c,option_d,correct_answer,category";
 
-
-  /* =========================
-     BIRINCHI SO‘ROV
-  ========================= */
 
   const url1 =
     SUPABASE_URL +
@@ -1054,10 +1082,6 @@ async function loadQuestions(category){
 
   }
 
-
-  /* =========================
-     IKKINCHI SO‘ROV
-  ========================= */
 
   if(
     !Array.isArray(data) ||
@@ -1112,10 +1136,6 @@ async function loadQuestions(category){
 
   }
 
-
-  /* =========================
-     TAKROR SAVOLLARNI OLIB TASHLASH
-  ========================= */
 
   const uniqueQuestions = [];
 
@@ -1586,10 +1606,14 @@ function nextQuestion(){
 
 
 /* =====================================================
-   SAVE HISTORY
+   SAVE GAME + REWARDS
 ===================================================== */
 
 function saveGame(){
+
+  const oldScore =
+    totalScore;
+
 
   totalScore +=
     currentScore;
@@ -1598,6 +1622,77 @@ function saveGame(){
   localStorage.setItem(
     "aqljangi_total_score",
     String(totalScore)
+  );
+
+
+  /*
+    Har bir to‘g‘ri javob:
+    +1 TOPQIR Coin
+  */
+
+  coins +=
+    correctAnswers;
+
+
+  /*
+    10/10 natija:
+    +10 bonus Coin
+  */
+
+  if(
+    correctAnswers ===
+    questions.length
+  ){
+
+    coins += 10;
+
+  }
+
+
+  /*
+    Ball chegaralariga bonus
+  */
+
+  const scoreRewards = [
+
+    {
+      score:1000,
+      coins:10
+    },
+
+    {
+      score:5000,
+      coins:60
+    },
+
+    {
+      score:10000,
+      coins:150
+    }
+
+  ];
+
+
+  for(
+    const reward of scoreRewards
+  ){
+
+    if(
+      oldScore < reward.score &&
+      totalScore >= reward.score
+    ){
+
+      coins +=
+        reward.coins;
+
+    }
+
+  }
+
+
+  localStorage.setItem(
+    "aqljangi_coins",
+    String(coins)
   );
 
 
@@ -1628,11 +1723,6 @@ function saveGame(){
     game
   );
 
-
-  /*
-    Faqat oxirgi 20 ta
-    o‘yin saqlanadi.
-  */
 
   gameHistory =
     gameHistory.slice(
@@ -1736,8 +1826,14 @@ function showResult(){
     .innerHTML =
     `
       ${message}<br><br>
+
       🏆 O‘yinlardan jami:
       <b>${totalScore} ball</b>
+
+      <br>
+
+      🪙 TOPQIR Coin:
+      <b>${coins}</b>
     `;
 
 
@@ -1749,6 +1845,257 @@ function showResult(){
     tg.BackButton.hide();
 
   }
+
+
+  renderRewards();
+
+}
+
+
+
+/* =====================================================
+   CLAIM REWARD
+===================================================== */
+
+function claimReward(
+  cost,
+  type
+){
+
+  if(
+    rewardsClaimed.includes(type)
+  ){
+
+    return;
+
+  }
+
+
+  if(
+    coins < cost
+  ){
+
+    alert(
+      "🪙 Coin yetarli emas."
+    );
+
+    return;
+
+  }
+
+
+  coins -= cost;
+
+
+  rewardsClaimed.push(
+    type
+  );
+
+
+  /*
+    VIP 1 kun
+  */
+
+  if(
+    type === "vip1"
+  ){
+
+    vipUntil =
+      Math.max(
+        Date.now(),
+        vipUntil
+      ) +
+      86400000;
+
+  }
+
+
+  /*
+    VIP 7 kun
+  */
+
+  if(
+    type === "vip7"
+  ){
+
+    vipUntil =
+      Math.max(
+        Date.now(),
+        vipUntil
+      ) +
+      7 * 86400000;
+
+  }
+
+
+  localStorage.setItem(
+    "aqljangi_coins",
+    String(coins)
+  );
+
+
+  localStorage.setItem(
+    "aqljangi_rewards_claimed",
+    JSON.stringify(
+      rewardsClaimed
+    )
+  );
+
+
+  localStorage.setItem(
+    "aqljangi_vip_until",
+    String(vipUntil)
+  );
+
+
+  renderRewards();
+
+}
+
+
+
+/* =====================================================
+   RENDER REWARDS
+===================================================== */
+
+function renderRewards(){
+
+  const vipActive =
+    vipUntil >
+    Date.now();
+
+
+  const box =
+    document
+      .getElementById(
+        "rewardBox"
+      );
+
+
+  box.innerHTML =
+    `
+
+      <div class="reward-title">
+        🎁 Mukofotlar
+      </div>
+
+
+      <div class="reward-grid">
+
+        <div class="reward-card">
+
+          <b>
+            ⭐ ${totalScore}
+          </b>
+
+          <span>
+            Jami ball
+          </span>
+
+        </div>
+
+
+        <div class="reward-card">
+
+          <b>
+            🪙 ${coins}
+          </b>
+
+          <span>
+            TOPQIR Coin
+          </span>
+
+        </div>
+
+
+        <div
+          class="
+            reward-card
+            ${vipActive ? "vip" : ""}
+          "
+        >
+
+          <b>
+            👑
+            ${
+              vipActive
+                ? "VIP faol"
+                : "VIP"
+            }
+          </b>
+
+          <span>
+
+            ${
+              vipActive
+                ? new Date(
+                    vipUntil
+                  ).toLocaleDateString(
+                    "uz-UZ"
+                  ) +
+                  " gacha"
+                : "Coin orqali olish mumkin"
+            }
+
+          </span>
+
+        </div>
+
+
+        <div class="reward-card">
+
+          <b>
+            🏆 TOP
+          </b>
+
+          <span>
+            Reyting tizimi
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <button
+        class="btn"
+        onclick="
+          claimReward(
+            20,
+            'hint5'
+          )
+        "
+      >
+        💡 20 Coin → 5 ta hint
+      </button>
+
+
+      <button
+        class="btn"
+        onclick="
+          claimReward(
+            50,
+            'vip1'
+          )
+        "
+      >
+        👑 50 Coin → 1 kun VIP
+      </button>
+
+
+      <button
+        class="btn"
+        onclick="
+          claimReward(
+            150,
+            'vip7'
+          )
+        "
+      >
+        👑 150 Coin → 7 kun VIP
+      </button>
+
+    `;
 
 }
 
@@ -1790,6 +2137,8 @@ function goHome(){
 
   renderHistory();
 
+  renderRewards();
+
 }
 
 
@@ -1813,9 +2162,15 @@ function renderHistory(){
       📊 O‘yin tarixi
     </div>
 
+
     <div class="total-score">
+
       🏆 O‘yinlardan jami:
-      <b>${totalScore} ball</b>
+
+      <b>
+        ${totalScore} ball
+      </b>
+
     </div>
 
   `;
@@ -1843,7 +2198,10 @@ function renderHistory(){
   }else{
 
     gameHistory.forEach(
-      function(game,index){
+      function(
+        game,
+        index
+      ){
 
         html += `
 
@@ -1852,21 +2210,29 @@ function renderHistory(){
             <div class="history-row">
 
               <b>
+
                 ${index + 1}.
+
                 ${escapeHTML(
                   game.category
                 )}
+
               </b>
 
+
               <b>
+
                 ⭐ ${game.score}
+
               </b>
 
             </div>
 
+
             <div class="history-small">
 
               ✅
+
               ${game.correct}/${game.total}
 
               &nbsp; • &nbsp;
@@ -1978,10 +2344,12 @@ document
 
 
 /* =====================================================
-   SHOW HISTORY ON START
+   START
 ===================================================== */
 
 renderHistory();
+
+renderRewards();
 
 </script>
 
