@@ -2,89 +2,132 @@
 <html lang="uz">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+>
 
 <title>TOPQIR — AQLJANGI</title>
 
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
 <style>
+
 *{
   box-sizing:border-box;
 }
 
+html,
 body{
   margin:0;
-  background:#090914;
-  color:#fff;
-  font-family:Arial,sans-serif;
-  min-height:100vh;
+  padding:0;
+  min-height:100%;
 }
 
-.wrap{
-  max-width:650px;
-  margin:auto;
-  padding:16px;
+body{
+  background:#090914;
+  color:#fff;
+  font-family:-apple-system,BlinkMacSystemFont,
+  "Segoe UI",Arial,sans-serif;
+}
+
+button{
+  font-family:inherit;
 }
 
 .hide{
-  display:none!important;
+  display:none !important;
 }
 
-/* LOGO */
-.top{
+.container{
+  width:100%;
+  max-width:700px;
+  margin:0 auto;
+  padding:18px 16px 35px;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header{
   text-align:center;
   padding:10px 0 18px;
 }
 
 .logo{
-  font-size:48px;
+  font-size:46px;
+  line-height:1;
+  margin-bottom:8px;
 }
 
-.title{
-  font-size:32px;
+.logo-title{
+  font-size:30px;
   font-weight:900;
+  letter-spacing:.5px;
 }
 
-.sub{
+.logo-sub{
   color:#aaa;
-  margin-top:6px;
+  font-size:15px;
+  margin-top:5px;
 }
 
-/* BADGES */
+
+/* =========================
+   STAT BADGES
+========================= */
+
 .badges{
   display:flex;
-  gap:8px;
   justify-content:center;
   flex-wrap:wrap;
+  gap:7px;
   margin:14px 0;
 }
 
 .badge{
   background:#17172a;
-  border:1px solid #30304b;
+  border:1px solid #30304a;
   border-radius:20px;
-  padding:7px 12px;
+  padding:7px 11px;
+  font-size:12px;
   color:#ddd;
-  font-size:13px;
 }
 
-/* CARD */
+
+/* =========================
+   CARD
+========================= */
+
 .card{
-  background:#121221;
-  border:1px solid #292944;
+  background:#151523;
+  border:1px solid #303047;
   border-radius:22px;
-  padding:18px;
-  margin-top:14px;
-  box-shadow:0 12px 35px #0005;
+  padding:16px;
+  margin-top:12px;
+  box-shadow:0 10px 35px rgba(0,0,0,.25);
 }
 
-/* CATEGORY */
+
+/* =========================
+   CATEGORY
+========================= */
+
 .category-title{
   text-align:center;
-  font-size:21px;
+  font-size:20px;
   font-weight:800;
-  margin:3px 0 14px;
+  margin-bottom:13px;
+}
+
+.category-sub{
+  text-align:center;
+  color:#aaa;
+  font-size:13px;
+  margin-bottom:15px;
 }
 
 .categories{
@@ -94,171 +137,414 @@ body{
 }
 
 .cat{
-  border:1px solid #30304b;
-  border-radius:13px;
-  padding:10px 7px;
-  background:#19192b;
-  color:#fff;
-  font-size:14px;
-  font-weight:700;
+  border:1px solid #333250;
+  border-radius:14px;
+  padding:9px 6px;
   min-height:72px;
+
+  background:#24213f;
+  color:#fff;
+
+  font-size:14px;
+  font-weight:800;
+
   cursor:pointer;
+
+  transition:
+    transform .15s,
+    background .15s;
 }
 
 .cat:active{
-  transform:scale(.97);
+  transform:scale(.96);
 }
 
 .cat:disabled{
   opacity:.5;
 }
 
-/* BUTTON */
+
+/* =========================
+   MAIN BUTTON
+========================= */
+
 .btn{
   width:100%;
   border:0;
   border-radius:16px;
-  padding:15px;
-  font-size:17px;
-  font-weight:800;
+
+  padding:14px 15px;
+
+  margin-top:12px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #6d35ff,
+      #bd42ff
+    );
+
   color:#fff;
-  background:linear-gradient(135deg,#6d45ff,#a33cff);
-  margin-top:14px;
+
+  font-size:16px;
+  font-weight:800;
+
   cursor:pointer;
 }
 
-.btn:disabled{
-  opacity:.5;
+.btn:active{
+  transform:scale(.98);
 }
 
-.back{
-  background:#25243d;
+.back-btn{
+  background:#282641;
 }
 
-/* GAME */
-.game-head{
+
+/* =========================
+   GAME HEADER
+========================= */
+
+.game-top{
   display:flex;
   justify-content:space-between;
   align-items:center;
+
+  font-size:16px;
   color:#ddd;
-  margin-bottom:10px;
+
+  margin-bottom:9px;
 }
+
+.game-info{
+  display:flex;
+  justify-content:space-between;
+
+  color:#aaa;
+
+  font-size:14px;
+
+  margin-bottom:8px;
+}
+
+
+/* =========================
+   PROGRESS
+========================= */
 
 .progress{
-  height:8px;
-  background:#24243a;
+  width:100%;
+  height:7px;
+
+  background:#29283d;
+
   border-radius:20px;
+
   overflow:hidden;
-  margin:8px 0 20px;
+
+  margin-bottom:18px;
 }
 
-.bar{
+.progress-bar{
   height:100%;
-  width:0;
-  background:linear-gradient(90deg,#6d45ff,#d34cff);
+  width:0%;
+
+  background:
+    linear-gradient(
+      90deg,
+      #743cff,
+      #c743ff
+    );
+
   transition:.3s;
 }
 
+
+/* =========================
+   QUESTION
+========================= */
+
 .question{
-  font-size:21px;
-  font-weight:700;
-  line-height:1.4;
-  margin:15px 0 20px;
+  font-size:20px;
+  font-weight:800;
+
+  line-height:1.45;
+
+  margin:8px 0 18px;
 }
 
-.opt{
+
+/* =========================
+   OPTIONS
+========================= */
+
+.option{
   display:block;
+
   width:100%;
+
   text-align:left;
-  background:#19192b;
+
+  border:1px solid #36354e;
+
+  background:#1c1b2c;
+
   color:#fff;
-  border:1px solid #30304a;
+
   border-radius:14px;
-  padding:14px;
-  margin:9px 0;
-  font-size:16px;
+
+  padding:14px 13px;
+
+  margin:8px 0;
+
+  font-size:15px;
+
+  line-height:1.35;
+
   cursor:pointer;
+
+  transition:.15s;
 }
 
-.opt.correct{
-  border-color:#39d98a;
-  background:#123728;
+.option:active{
+  transform:scale(.985);
 }
 
-.opt.wrong{
-  border-color:#ff5c6c;
-  background:#3b1720;
+.option.correct{
+  background:#123c2a;
+  border-color:#35d58a;
 }
 
-.opt:disabled{
-  opacity:1;
+.option.wrong{
+  background:#401b24;
+  border-color:#ff5669;
 }
 
-/* RESULT */
-.score{
-  text-align:center;
-  font-size:50px;
-  font-weight:900;
-  margin:15px 0;
+.option:disabled{
+  cursor:default;
 }
 
-.center{
-  text-align:center;
-}
 
-.small{
-  color:#aaa;
-  line-height:1.5;
-}
+/* =========================
+   ERROR
+========================= */
 
-.err{
-  background:#3a1720;
-  border:1px solid #ff5c6c;
-  padding:14px;
-  border-radius:14px;
+.error{
   margin-top:14px;
-  color:#ffd9de;
+
+  padding:14px;
+
+  border-radius:14px;
+
+  background:#391923;
+
+  border:1px solid #ff5368;
+
+  color:#ffdce1;
+
+  font-size:14px;
+
+  line-height:1.5;
+
   word-break:break-word;
 }
 
+
+/* =========================
+   RESULT
+========================= */
+
+.result-icon{
+  text-align:center;
+  font-size:55px;
+}
+
+.result-title{
+  text-align:center;
+  font-size:25px;
+  font-weight:900;
+}
+
+.result-category{
+  text-align:center;
+  color:#aaa;
+  margin-top:5px;
+}
+
+.result-score{
+  text-align:center;
+
+  font-size:48px;
+  font-weight:900;
+
+  margin:18px 0 5px;
+}
+
+.result-correct{
+  text-align:center;
+  color:#ddd;
+  font-size:15px;
+}
+
+
+/* =========================
+   HISTORY
+========================= */
+
+.history-title{
+  text-align:center;
+
+  font-size:20px;
+  font-weight:900;
+
+  margin-bottom:10px;
+}
+
+.total-score{
+  text-align:center;
+
+  background:#211d3a;
+
+  border:1px solid #383157;
+
+  border-radius:14px;
+
+  padding:12px;
+
+  margin-bottom:12px;
+
+  font-size:16px;
+}
+
+.history-item{
+  background:#1b1a2b;
+
+  border:1px solid #303047;
+
+  border-radius:13px;
+
+  padding:11px;
+
+  margin-top:8px;
+}
+
+.history-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  gap:10px;
+
+  font-size:14px;
+}
+
+.history-small{
+  color:#999;
+  font-size:12px;
+  margin-top:5px;
+}
+
+
+/* =========================
+   HELP
+========================= */
+
+.help{
+  text-align:center;
+
+  color:#aaa;
+
+  font-size:12px;
+
+  margin-top:14px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
 @media(max-width:420px){
+
+  .container{
+    padding-left:13px;
+    padding-right:13px;
+  }
+
+  .logo{
+    font-size:40px;
+  }
+
+  .logo-title{
+    font-size:27px;
+  }
+
   .cat{
     min-height:68px;
+    padding:8px 5px;
     font-size:13px;
-    padding:9px 6px;
   }
 
   .question{
-    font-size:19px;
+    font-size:18px;
   }
+
+  .option{
+    font-size:14px;
+    padding:13px 11px;
+  }
+
 }
+
 </style>
 </head>
 
+
 <body>
 
-<div class="wrap">
+<div class="container">
 
-<!-- KATEGORIYA -->
-<div id="home">
 
-  <div class="top">
-    <div class="logo">🧠</div>
+<!-- =========================
+     HOME
+========================= -->
 
-    <div class="title">
+<section id="home">
+
+  <div class="header">
+
+    <div class="logo">
+      🧠
+    </div>
+
+    <div class="logo-title">
       AQLJANGI
     </div>
 
-    <div class="sub">
+    <div class="logo-sub">
       O‘zingiz xohlagan kategoriyani tanlang
     </div>
 
     <div class="badges">
-      <div class="badge">🎯 10 ta savol</div>
-      <div class="badge">⭐ 100 ball</div>
-      <div class="badge">🏆 TOPQIR</div>
+
+      <div class="badge">
+        🎯 10 ta savol
+      </div>
+
+      <div class="badge">
+        ⭐ 100 ball
+      </div>
+
+      <div class="badge">
+        🏆 TOPQIR
+      </div>
+
     </div>
+
   </div>
+
+
+  <!-- CATEGORIES -->
 
   <div class="card">
 
@@ -266,250 +552,480 @@ body{
       📚 Fan tanlang
     </div>
 
+    <div class="category-sub">
+      O‘zingiz xohlagan kategoriyani tanlang
+    </div>
+
+
     <div class="categories">
 
-      <button class="cat" data-category="Mantiq">
-        🧠<br>Mantiq
+
+      <button
+        class="cat"
+        data-category="Mantiq"
+      >
+        🧠<br>
+        Mantiq
       </button>
 
-      <button class="cat" data-category="Tarix">
-        📜<br>Tarix
+
+      <button
+        class="cat"
+        data-category="Tarix"
+      >
+        📜<br>
+        Tarix
       </button>
 
-      <button class="cat" data-category="Geografiya">
-        🌍<br>Geografiya
+
+      <button
+        class="cat"
+        data-category="Geografiya"
+      >
+        🌍<br>
+        Geografiya
       </button>
 
-      <button class="cat" data-category="Biologiya">
-        🧬<br>Biologiya
+
+      <button
+        class="cat"
+        data-category="Biologiya"
+      >
+        🧬<br>
+        Biologiya
       </button>
 
-      <button class="cat" data-category="Fan">
-        🔬<br>Fan
+
+      <button
+        class="cat"
+        data-category="Fan"
+      >
+        🔬<br>
+        Fan
       </button>
 
-      <button class="cat" data-category="Texnologiya">
-        💻<br>Texnologiya
+
+      <button
+        class="cat"
+        data-category="Texnologiya"
+      >
+        💻<br>
+        Texnologiya
       </button>
 
-      <button class="cat" data-category="O‘zbekiston">
-        🇺🇿<br>O‘zbekiston
+
+      <button
+        class="cat"
+        data-category="O‘zbekiston"
+      >
+        🇺🇿<br>
+        O‘zbekiston
       </button>
 
-      <button class="cat" data-category="Adabiyot">
-        📚<br>Adabiyot
+
+      <button
+        class="cat"
+        data-category="Adabiyot"
+      >
+        📚<br>
+        Adabiyot
       </button>
 
-      <button class="cat" data-category="Matematika">
-        ➗<br>Matematika
+
+      <button
+        class="cat"
+        data-category="Matematika"
+      >
+        ➗<br>
+        Matematika
       </button>
 
-      <button class="cat" data-category="Umumiy bilim">
-        🎯<br>Umumiy bilim
+
+      <button
+        class="cat"
+        data-category="Umumiy bilim"
+      >
+        🎯<br>
+        Umumiy bilim
       </button>
+
 
     </div>
 
-    <div id="homeErr"></div>
+
+    <div id="homeError"></div>
 
   </div>
-</div>
 
 
-<!-- O‘YIN -->
-<div id="game" class="hide">
+  <!-- HISTORY -->
 
-  <button class="btn back" id="backBtn">
+  <div
+    id="historyBox"
+    class="card"
+  ></div>
+
+
+  <div class="help">
+    Yordam uchun:
+    @Zafarbe0
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     GAME
+========================= -->
+
+<section
+  id="game"
+  class="hide"
+>
+
+
+  <button
+    id="backBtn"
+    class="btn back-btn"
+  >
     ↩️ Kategoriyalarga qaytish
   </button>
 
+
   <div class="card">
 
-    <div class="game-head">
-      <span id="categoryName">Mantiq</span>
-      <span id="scoreTop">⭐ 0</span>
+
+    <div class="game-top">
+
+      <span id="categoryName">
+        Mantiq
+      </span>
+
+      <span id="scoreTop">
+        ⭐ 0 ball
+      </span>
+
     </div>
 
-    <div class="game-head">
-      <span id="qnum">1 / 10</span>
-      <span>10 ball</span>
+
+    <div class="game-info">
+
+      <span id="questionNumber">
+        1 / 10
+      </span>
+
+      <span>
+        Har biri 10 ball
+      </span>
+
     </div>
+
 
     <div class="progress">
-      <div class="bar" id="bar"></div>
+
+      <div
+        id="progressBar"
+        class="progress-bar"
+      ></div>
+
     </div>
 
-    <div class="question" id="question">
-      Yuklanmoqda...
+
+    <div
+      id="question"
+      class="question"
+    >
+      Savol yuklanmoqda...
     </div>
+
 
     <div id="options"></div>
 
-    <button class="btn hide" id="nextBtn">
+
+    <button
+      id="nextBtn"
+      class="btn hide"
+    >
       Keyingi savol ➜
     </button>
 
+
   </div>
-</div>
+
+</section>
 
 
-<!-- NATIJA -->
-<div id="result" class="hide">
 
-  <div class="card center">
+<!-- =========================
+     RESULT
+========================= -->
 
-    <div class="logo">
+<section
+  id="result"
+  class="hide"
+>
+
+
+  <div class="card">
+
+    <div class="result-icon">
       🏆
     </div>
 
-    <h2>Natija</h2>
+    <div class="result-title">
+      O‘yin tugadi!
+    </div>
 
-    <div class="small" id="resultCategory"></div>
+    <div
+      id="resultCategory"
+      class="result-category"
+    ></div>
 
-    <div class="score" id="score">
+
+    <div
+      id="resultScore"
+      class="result-score"
+    >
       0 / 100
     </div>
 
-    <div class="small" id="resultText"></div>
 
-    <button class="btn" id="againBtn">
+    <div
+      id="resultCorrect"
+      class="result-correct"
+    ></div>
+
+
+    <div
+      id="resultText"
+      style="
+        text-align:center;
+        margin-top:12px;
+        color:#ccc;
+      "
+    ></div>
+
+
+    <button
+      id="againBtn"
+      class="btn"
+    >
       🔄 Qayta o‘ynash
     </button>
 
-    <button class="btn back" id="categoryBtn">
+
+    <button
+      id="categoryBtn"
+      class="btn back-btn"
+    >
       📚 Boshqa fan
     </button>
 
+
   </div>
 
-</div>
+</section>
+
 
 </div>
+
 
 
 <script>
 
-/* TELEGRAM */
+/* =====================================================
+   TELEGRAM
+===================================================== */
+
 const tg =
   window.Telegram &&
   window.Telegram.WebApp
-  ? window.Telegram.WebApp
-  : null;
+    ? window.Telegram.WebApp
+    : null;
+
 
 if(tg){
+
   tg.ready();
+
   tg.expand();
+
 }
 
 
-/* SUPABASE */
+
+/* =====================================================
+   SUPABASE
+===================================================== */
+
 const SUPABASE_URL =
   "https://ayzdzhodjdzsoxovckrc.supabase.co";
+
 
 const SUPABASE_KEY =
   "sb_publishable_SVjbLTpmwn4z3lYtC3kZhg_obMt1k8p";
 
+
 const GAME_SIZE = 10;
 
 
-/* O‘YIN O‘ZGARUVCHILARI */
+
+/* =====================================================
+   GAME VARIABLES
+===================================================== */
+
 let questions = [];
-let index = 0;
-let score = 0;
+
+let currentQuestion = 0;
+
+let currentScore = 0;
+
+let correctAnswers = 0;
+
 let answered = false;
+
 let selectedCategory = "";
 
 
-/* HTML XAVFSIZLIK */
-function esc(value){
+
+/* =====================================================
+   HISTORY
+===================================================== */
+
+let gameHistory =
+  JSON.parse(
+    localStorage.getItem(
+      "aqljangi_history"
+    ) || "[]"
+  );
+
+
+let totalScore =
+  Number(
+    localStorage.getItem(
+      "aqljangi_total_score"
+    ) || 0
+  );
+
+
+
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
+
+function escapeHTML(value){
 
   return String(value ?? "")
-    .replace(/[&<>"']/g, function(m){
+    .replace(
+      /[&<>"']/g,
+      function(char){
 
-      return {
-        "&":"&amp;",
-        "<":"&lt;",
-        ">":"&gt;",
-        '"':"&quot;",
-        "'":"&#039;"
-      }[m];
+        const map = {
 
-    });
+          "&":"&amp;",
+          "<":"&lt;",
+          ">":"&gt;",
+          '"':"&quot;",
+          "'":"&#039;"
+
+        };
+
+        return map[char];
+
+      }
+    );
 
 }
 
 
-/* RANDOM ARALASHTIRISH */
+
+/* =====================================================
+   SHUFFLE
+===================================================== */
+
 function shuffle(array){
 
-  array = [...array];
+  const result = [...array];
 
   for(
-    let i = array.length - 1;
+    let i = result.length - 1;
     i > 0;
     i--
   ){
 
     const j =
       Math.floor(
-        Math.random() * (i + 1)
+        Math.random() *
+        (i + 1)
       );
 
+
     [
-      array[i],
-      array[j]
+      result[i],
+      result[j]
     ] =
     [
-      array[j],
-      array[i]
+      result[j],
+      result[i]
     ];
 
   }
 
-  return array;
+  return result;
+
 }
 
 
-/*
-  MUHIM:
-  BU YERDA "id" YO‘Q!
 
-  Eski kodda:
-  select=id,question,...
+/* =====================================================
+   LOAD QUESTIONS
+===================================================== */
 
-  edi.
+async function loadQuestions(category){
 
-  Endi:
-  select=question,...
-
-  Shuning uchun:
-  questions.id does not exist
-  xatosi chiqmaydi.
-*/
-
-
-async function fetchQuestions(category){
-
-  const encoded =
+  const encodedCategory =
     encodeURIComponent(category);
 
-  const random =
+
+  const randomNumber =
     Math.random();
 
 
-  /* 1-USUL */
+  /*
+    MUHIM:
+
+    Bu yerda ID olinmaydi.
+
+    Eski:
+    select=id,...
+
+    YO‘Q.
+
+    Yangi:
+    select=question,...
+  */
+
+
+  const selectFields =
+    "question,option_a,option_b,option_c,option_d,correct_answer,category";
+
+
+  /* =========================
+     BIRINCHI SO‘ROV
+  ========================= */
 
   const url1 =
     SUPABASE_URL +
     "/rest/v1/questions" +
-    "?select=question,option_a,option_b,option_c,option_d,correct_answer,category" +
+    "?select=" +
+    selectFields +
     "&category=eq." +
-    encoded +
+    encodedCategory +
     "&random_key=gte." +
-    random +
+    randomNumber +
     "&order=random_key.asc" +
-    "&limit=" +
-    GAME_SIZE;
+    "&limit=100";
 
 
   let response =
@@ -521,151 +1037,222 @@ async function fetchQuestions(category){
         headers:{
           "apikey":SUPABASE_KEY,
           "Authorization":
-            "Bearer " + SUPABASE_KEY
+            "Bearer " +
+            SUPABASE_KEY
         }
       }
     );
 
 
+  let data = [];
+
+
   if(response.ok){
 
-    const data =
+    data =
       await response.json();
 
-    if(
-      Array.isArray(data) &&
-      data.length > 0
-    ){
+  }
 
-      return shuffle(data)
-        .slice(0,GAME_SIZE);
+
+  /* =========================
+     IKKINCHI SO‘ROV
+  ========================= */
+
+  if(
+    !Array.isArray(data) ||
+    data.length < GAME_SIZE
+  ){
+
+    const url2 =
+      SUPABASE_URL +
+      "/rest/v1/questions" +
+      "?select=" +
+      selectFields +
+      "&category=eq." +
+      encodedCategory +
+      "&random_key=lt." +
+      randomNumber +
+      "&order=random_key.desc" +
+      "&limit=100";
+
+
+    const response2 =
+      await fetch(
+        url2,
+        {
+          method:"GET",
+
+          headers:{
+            "apikey":SUPABASE_KEY,
+            "Authorization":
+              "Bearer " +
+              SUPABASE_KEY
+          }
+        }
+      );
+
+
+    if(response2.ok){
+
+      const data2 =
+        await response2.json();
+
+
+      if(
+        Array.isArray(data2)
+      ){
+
+        data =
+          data.concat(data2);
+
+      }
 
     }
 
   }
 
 
-  /* 2-USUL */
+  /* =========================
+     TAKROR SAVOLLARNI OLIB TASHLASH
+  ========================= */
 
-  const url2 =
-    SUPABASE_URL +
-    "/rest/v1/questions" +
-    "?select=question,option_a,option_b,option_c,option_d,correct_answer,category" +
-    "&category=eq." +
-    encoded +
-    "&random_key=lt." +
-    random +
-    "&order=random_key.desc" +
-    "&limit=" +
-    GAME_SIZE;
+  const uniqueQuestions = [];
+
+  const usedQuestions = new Set();
 
 
-  response =
-    await fetch(
-      url2,
-      {
-        method:"GET",
+  for(
+    const question of data
+  ){
 
-        headers:{
-          "apikey":SUPABASE_KEY,
-          "Authorization":
-            "Bearer " + SUPABASE_KEY
-        }
-      }
+    const key =
+      String(
+        question.question || ""
+      )
+      .trim()
+      .toLowerCase();
+
+
+    if(!key){
+      continue;
+    }
+
+
+    if(
+      usedQuestions.has(key)
+    ){
+      continue;
+    }
+
+
+    usedQuestions.add(key);
+
+    uniqueQuestions.push(
+      question
     );
 
 
-  if(response.ok){
-
-    const data =
-      await response.json();
-
     if(
-      Array.isArray(data) &&
-      data.length > 0
+      uniqueQuestions.length >= GAME_SIZE
     ){
-
-      return shuffle(data)
-        .slice(0,GAME_SIZE);
-
+      break;
     }
 
   }
 
 
-  const errorText =
-    await response.text();
+  if(
+    uniqueQuestions.length >= GAME_SIZE
+  ){
+
+    return shuffle(
+      uniqueQuestions
+    ).slice(
+      0,
+      GAME_SIZE
+    );
+
+  }
+
 
   throw new Error(
-    "Supabase API xatosi: " +
-    response.status +
-    " " +
-    errorText
+    "Bu kategoriyada yetarli savol topilmadi."
   );
 
 }
 
 
-/* O‘YINNI BOSHLASH */
+
+/* =====================================================
+   START GAME
+===================================================== */
 
 async function startGame(category){
 
-  selectedCategory = category;
+  selectedCategory =
+    category;
+
 
   document
-    .getElementById("homeErr")
+    .getElementById("homeError")
     .innerHTML = "";
+
 
   document
     .querySelectorAll(".cat")
     .forEach(
-      button => button.disabled = true
+      button => {
+        button.disabled = true;
+      }
     );
 
 
   try{
 
     questions =
-      await fetchQuestions(category);
-
-
-    if(
-      !questions ||
-      !questions.length
-    ){
-
-      throw new Error(
-        "Bu kategoriyada savollar topilmadi."
+      await loadQuestions(
+        category
       );
 
-    }
 
+    currentQuestion = 0;
 
-    index = 0;
-    score = 0;
+    currentScore = 0;
+
+    correctAnswers = 0;
+
     answered = false;
 
 
     document
       .getElementById("home")
-      .classList.add("hide");
+      .classList
+      .add("hide");
+
 
     document
       .getElementById("result")
-      .classList.add("hide");
+      .classList
+      .add("hide");
+
 
     document
       .getElementById("game")
-      .classList.remove("hide");
+      .classList
+      .remove("hide");
 
 
     document
       .getElementById("categoryName")
-      .textContent = category;
+      .textContent =
+      category;
+
 
     document
       .getElementById("scoreTop")
-      .textContent = "⭐ 0";
+      .textContent =
+      "⭐ 0 ball";
 
 
     if(
@@ -676,7 +1263,7 @@ async function startGame(category){
       tg.BackButton.show();
 
       tg.BackButton.onClick(
-        goCategories
+        goHome
       );
 
     }
@@ -684,23 +1271,28 @@ async function startGame(category){
 
     showQuestion();
 
-
-  }catch(error){
+  }
+  catch(error){
 
     document
-      .getElementById("homeErr")
+      .getElementById("homeError")
       .innerHTML =
-      '<div class="err">' +
-      '❌ Savollarni yuklashda xato.<br><br>' +
-      esc(error.message) +
-      '</div>';
+      `
+      <div class="error">
+        ❌ Savollarni yuklashda xato.<br><br>
+        ${escapeHTML(error.message)}
+      </div>
+      `;
 
-  }finally{
+  }
+  finally{
 
     document
       .querySelectorAll(".cat")
       .forEach(
-        button => button.disabled = false
+        button => {
+          button.disabled = false;
+        }
       );
 
   }
@@ -708,88 +1300,112 @@ async function startGame(category){
 }
 
 
-/* SAVOLNI KO‘RSATISH */
+
+/* =====================================================
+   SHOW QUESTION
+===================================================== */
 
 function showQuestion(){
 
   answered = false;
 
+
   const q =
-    questions[index];
+    questions[
+      currentQuestion
+    ];
 
 
   document
-    .getElementById("qnum")
+    .getElementById("questionNumber")
     .textContent =
-    (index + 1) +
+    (
+      currentQuestion + 1
+    ) +
     " / " +
     questions.length;
 
 
   document
-    .getElementById("bar")
+    .getElementById("progressBar")
     .style.width =
-    ((index / questions.length) * 100) +
+    (
+      (
+        currentQuestion /
+        questions.length
+      ) *
+      100
+    ) +
     "%";
 
 
   document
     .getElementById("question")
     .textContent =
-    q.question || "Savol";
+    q.question ||
+    "Savol";
 
 
   const options = [
 
-    ["A", q.option_a],
+    {
+      key:"A",
+      text:q.option_a
+    },
 
-    ["B", q.option_b],
+    {
+      key:"B",
+      text:q.option_b
+    },
 
-    ["C", q.option_c],
+    {
+      key:"C",
+      text:q.option_c
+    },
 
-    ["D", q.option_d]
+    {
+      key:"D",
+      text:q.option_d
+    }
 
   ];
 
 
-  const box =
-    document.getElementById("options");
+  const optionsBox =
+    document
+      .getElementById("options");
 
 
-  box.innerHTML =
+  optionsBox.innerHTML =
     options
       .map(
-        function(item){
-
-          const key = item[0];
-          const value = item[1];
-
-          return `
-            <button
-              class="opt"
-              data-key="${key}"
-            >
-              <b>${key}.</b>
-              ${esc(value)}
-            </button>
-          `;
-
-        }
+        option => `
+          <button
+            class="option"
+            data-key="${option.key}"
+          >
+            <b>${option.key}.</b>
+            ${escapeHTML(option.text)}
+          </button>
+        `
       )
       .join("");
 
 
-  box
-    .querySelectorAll(".opt")
+  optionsBox
+    .querySelectorAll(".option")
     .forEach(
       button => {
 
         button.onclick =
-          () =>
-          answer(
-            button,
-            q.correct_answer
-          );
+          function(){
+
+            checkAnswer(
+              button,
+              q.correct_answer
+            );
+
+          };
 
       }
     );
@@ -803,42 +1419,51 @@ function showQuestion(){
 }
 
 
-/* JAVOB */
 
-function answer(
-  button,
-  correct
+/* =====================================================
+   CHECK ANSWER
+===================================================== */
+
+function checkAnswer(
+  selectedButton,
+  correctAnswer
 ){
 
   if(answered){
     return;
   }
 
+
   answered = true;
 
 
   const selected =
-    button.dataset.key;
+    selectedButton
+      .dataset
+      .key;
 
 
-  const right =
-    String(correct || "")
-      .trim()
-      .toUpperCase();
+  const correct =
+    String(
+      correctAnswer || ""
+    )
+    .trim()
+    .toUpperCase();
 
 
   document
-    .querySelectorAll(".opt")
+    .querySelectorAll(".option")
     .forEach(
-      option => {
+      button => {
 
-        option.disabled = true;
+        button.disabled = true;
+
 
         if(
-          option.dataset.key === right
+          button.dataset.key === correct
         ){
 
-          option.classList
+          button.classList
             .add("correct");
 
         }
@@ -847,13 +1472,19 @@ function answer(
     );
 
 
-  if(selected === right){
+  if(
+    selected === correct
+  ){
 
-    score += 10;
+    currentScore += 10;
+
+    correctAnswers++;
+
 
   }else{
 
-    button.classList
+    selectedButton
+      .classList
       .add("wrong");
 
   }
@@ -862,31 +1493,47 @@ function answer(
   document
     .getElementById("scoreTop")
     .textContent =
-    "⭐ " + score;
+    "⭐ " +
+    currentScore +
+    " ball";
 
 
   document
-    .getElementById("bar")
+    .getElementById("progressBar")
     .style.width =
     (
-      ((index + 1) /
-      questions.length) *
+      (
+        (currentQuestion + 1) /
+        questions.length
+      ) *
       100
-    ) + "%";
+    ) +
+    "%";
 
 
-  const next =
+  const nextButton =
     document
       .getElementById("nextBtn");
 
 
-  next.textContent =
-    index === questions.length - 1
-    ? "🏆 Natijani ko‘rish"
-    : "Keyingi savol ➜";
+  if(
+    currentQuestion ===
+    questions.length - 1
+  ){
+
+    nextButton.textContent =
+      "🏆 Natijani ko‘rish";
+
+  }else{
+
+    nextButton.textContent =
+      "Keyingi savol ➜";
+
+  }
 
 
-  next.classList
+  nextButton
+    .classList
     .remove("hide");
 
 
@@ -897,9 +1544,9 @@ function answer(
 
     tg.HapticFeedback
       .impactOccurred(
-        selected === right
-        ? "light"
-        : "medium"
+        selected === correct
+          ? "light"
+          : "medium"
       );
 
   }
@@ -907,7 +1554,10 @@ function answer(
 }
 
 
-/* KEYINGI SAVOL */
+
+/* =====================================================
+   NEXT QUESTION
+===================================================== */
 
 function nextQuestion(){
 
@@ -917,11 +1567,11 @@ function nextQuestion(){
 
 
   if(
-    index <
+    currentQuestion <
     questions.length - 1
   ){
 
-    index++;
+    currentQuestion++;
 
     showQuestion();
 
@@ -934,9 +1584,82 @@ function nextQuestion(){
 }
 
 
-/* NATIJA */
+
+/* =====================================================
+   SAVE HISTORY
+===================================================== */
+
+function saveGame(){
+
+  totalScore +=
+    currentScore;
+
+
+  localStorage.setItem(
+    "aqljangi_total_score",
+    String(totalScore)
+  );
+
+
+  const game = {
+
+    category:
+      selectedCategory,
+
+    score:
+      currentScore,
+
+    correct:
+      correctAnswers,
+
+    total:
+      questions.length,
+
+    date:
+      new Date()
+        .toLocaleString(
+          "uz-UZ"
+        )
+
+  };
+
+
+  gameHistory.unshift(
+    game
+  );
+
+
+  /*
+    Faqat oxirgi 20 ta
+    o‘yin saqlanadi.
+  */
+
+  gameHistory =
+    gameHistory.slice(
+      0,
+      20
+    );
+
+
+  localStorage.setItem(
+    "aqljangi_history",
+    JSON.stringify(
+      gameHistory
+    )
+  );
+
+}
+
+
+
+/* =====================================================
+   SHOW RESULT
+===================================================== */
 
 function showResult(){
+
+  saveGame();
+
 
   document
     .getElementById("game")
@@ -951,42 +1674,71 @@ function showResult(){
 
 
   document
-    .getElementById("score")
+    .getElementById("resultCategory")
     .textContent =
-    score + " / 100";
+    "📚 " +
+    selectedCategory;
 
 
   document
-    .getElementById("resultCategory")
+    .getElementById("resultScore")
     .textContent =
-    "📚 " + selectedCategory;
+    currentScore +
+    " / 100";
 
 
-  let text;
+  document
+    .getElementById("resultCorrect")
+    .textContent =
+    "✅ To‘g‘ri javoblar: " +
+    correctAnswers +
+    " / " +
+    questions.length;
 
 
-  if(score >= 90){
+  let message;
 
-    text = "🔥 Ajoyib natija!";
 
-  }else if(score >= 70){
+  if(
+    currentScore >= 90
+  ){
 
-    text = "👏 Juda yaxshi!";
+    message =
+      "🔥 Ajoyib natija!";
 
-  }else if(score >= 50){
+  }
+  else if(
+    currentScore >= 70
+  ){
 
-    text = "👍 Yaxshi!";
+    message =
+      "👏 Juda yaxshi!";
 
-  }else{
+  }
+  else if(
+    currentScore >= 50
+  ){
 
-    text = "💪 Yana urinib ko‘ring!";
+    message =
+      "👍 Yaxshi!";
+
+  }
+  else{
+
+    message =
+      "💪 Yana urinib ko‘ring!";
 
   }
 
 
   document
     .getElementById("resultText")
-    .textContent = text;
+    .innerHTML =
+    `
+      ${message}<br><br>
+      🏆 O‘yinlardan jami:
+      <b>${totalScore} ball</b>
+    `;
 
 
   if(
@@ -1001,9 +1753,12 @@ function showResult(){
 }
 
 
-/* KATEGORIYALARGA QAYTISH */
 
-function goCategories(){
+/* =====================================================
+   GO HOME
+===================================================== */
+
+function goHome(){
 
   document
     .getElementById("game")
@@ -1032,10 +1787,116 @@ function goCategories(){
 
   }
 
+
+  renderHistory();
+
 }
 
 
-/* KATEGORIYALAR */
+
+/* =====================================================
+   RENDER HISTORY
+===================================================== */
+
+function renderHistory(){
+
+  const box =
+    document
+      .getElementById(
+        "historyBox"
+      );
+
+
+  let html = `
+
+    <div class="history-title">
+      📊 O‘yin tarixi
+    </div>
+
+    <div class="total-score">
+      🏆 O‘yinlardan jami:
+      <b>${totalScore} ball</b>
+    </div>
+
+  `;
+
+
+  if(
+    gameHistory.length === 0
+  ){
+
+    html += `
+
+      <div
+        style="
+          text-align:center;
+          color:#999;
+          font-size:13px;
+          padding:8px;
+        "
+      >
+        Hali o‘yin o‘ynalmagan.
+      </div>
+
+    `;
+
+  }else{
+
+    gameHistory.forEach(
+      function(game,index){
+
+        html += `
+
+          <div class="history-item">
+
+            <div class="history-row">
+
+              <b>
+                ${index + 1}.
+                ${escapeHTML(
+                  game.category
+                )}
+              </b>
+
+              <b>
+                ⭐ ${game.score}
+              </b>
+
+            </div>
+
+            <div class="history-small">
+
+              ✅
+              ${game.correct}/${game.total}
+
+              &nbsp; • &nbsp;
+
+              ${escapeHTML(
+                game.date
+              )}
+
+            </div>
+
+          </div>
+
+        `;
+
+      }
+    );
+
+  }
+
+
+  box.innerHTML =
+    html;
+
+}
+
+
+
+/* =====================================================
+   CATEGORY BUTTONS
+===================================================== */
 
 document
   .querySelectorAll(".cat")
@@ -1057,36 +1918,70 @@ document
   );
 
 
-/* TUGMALAR */
+
+/* =====================================================
+   NEXT BUTTON
+===================================================== */
 
 document
   .getElementById("nextBtn")
-  .onclick =
-  nextQuestion;
+  .addEventListener(
+    "click",
+    nextQuestion
+  );
 
+
+
+/* =====================================================
+   BACK BUTTON
+===================================================== */
 
 document
   .getElementById("backBtn")
-  .onclick =
-  goCategories;
+  .addEventListener(
+    "click",
+    goHome
+  );
 
+
+
+/* =====================================================
+   AGAIN
+===================================================== */
 
 document
   .getElementById("againBtn")
-  .onclick =
-  function(){
+  .addEventListener(
+    "click",
+    function(){
 
-    startGame(
-      selectedCategory
-    );
+      startGame(
+        selectedCategory
+      );
 
-  };
+    }
+  );
 
+
+
+/* =====================================================
+   CATEGORY
+===================================================== */
 
 document
   .getElementById("categoryBtn")
-  .onclick =
-  goCategories;
+  .addEventListener(
+    "click",
+    goHome
+  );
+
+
+
+/* =====================================================
+   SHOW HISTORY ON START
+===================================================== */
+
+renderHistory();
 
 </script>
 
