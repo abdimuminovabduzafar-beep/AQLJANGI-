@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-
 <meta charset="UTF-8">
 
 <meta
@@ -33,8 +32,13 @@ body{
   "Segoe UI",Arial,sans-serif;
 }
 
-button{
+button,
+input{
   font-family:inherit;
+}
+
+button{
+  cursor:pointer;
 }
 
 .hide{
@@ -48,7 +52,10 @@ button{
   padding:18px 16px 35px;
 }
 
-/* HEADER */
+
+/* =========================
+   HEADER
+========================= */
 
 .header{
   text-align:center;
@@ -73,7 +80,10 @@ button{
   margin-top:5px;
 }
 
-/* BADGES */
+
+/* =========================
+   BADGES
+========================= */
 
 .badges{
   display:flex;
@@ -92,7 +102,10 @@ button{
   color:#ddd;
 }
 
-/* CARD */
+
+/* =========================
+   CARD
+========================= */
 
 .card{
   background:#151523;
@@ -103,7 +116,10 @@ button{
   box-shadow:0 10px 35px rgba(0,0,0,.25);
 }
 
-/* CATEGORY */
+
+/* =========================
+   CATEGORY
+========================= */
 
 .category-title{
   text-align:center;
@@ -130,11 +146,13 @@ button{
   border-radius:14px;
   padding:9px 6px;
   min-height:72px;
+
   background:#24213f;
   color:#fff;
+
   font-size:14px;
   font-weight:800;
-  cursor:pointer;
+
   transition:
     transform .15s,
     background .15s;
@@ -148,13 +166,18 @@ button{
   opacity:.5;
 }
 
-/* BUTTON */
+
+/* =========================
+   MAIN BUTTON
+========================= */
 
 .btn{
   width:100%;
   border:0;
   border-radius:16px;
+
   padding:14px 15px;
+
   margin-top:12px;
 
   background:
@@ -165,49 +188,188 @@ button{
     );
 
   color:#fff;
+
   font-size:16px;
   font-weight:800;
-  cursor:pointer;
 }
 
 .btn:active{
   transform:scale(.98);
 }
 
-.btn:disabled{
-  opacity:.65;
-  cursor:default;
-}
-
 .back-btn{
   background:#282641;
 }
 
-/* GAME */
+
+/* =========================
+   REWARD
+========================= */
+
+.reward-title{
+  text-align:center;
+  font-size:28px;
+  font-weight:900;
+  margin-bottom:16px;
+}
+
+.reward-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+.reward-box{
+  background:#1b1a2b;
+  border:1px solid #303047;
+  border-radius:16px;
+  padding:15px 8px;
+  text-align:center;
+  min-height:105px;
+}
+
+.reward-value{
+  font-size:28px;
+  font-weight:900;
+}
+
+.reward-label{
+  color:#aaa;
+  margin-top:5px;
+  font-size:13px;
+}
+
+.reward-btn{
+  width:100%;
+  border:0;
+  border-radius:16px;
+
+  padding:14px 10px;
+  margin-top:10px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #7136ff,
+      #c440ff
+    );
+
+  color:#fff;
+
+  font-size:15px;
+  font-weight:800;
+}
+
+.reward-btn:disabled{
+  opacity:.45;
+}
+
+
+/* =========================
+   BALANCE
+========================= */
+
+.balance-main{
+  text-align:center;
+  padding:8px 0 12px;
+}
+
+.balance-money{
+  font-size:42px;
+  font-weight:900;
+  margin:8px 0;
+}
+
+.balance-small{
+  color:#aaa;
+  font-size:13px;
+}
+
+.balance-input{
+  width:100%;
+  background:#1b1a2b;
+  border:1px solid #3b3858;
+  color:#fff;
+
+  border-radius:14px;
+  padding:14px;
+
+  margin-top:10px;
+
+  font-size:16px;
+  outline:none;
+}
+
+.balance-input:focus{
+  border-color:#8744ff;
+}
+
+.withdraw-info{
+  background:#211d3a;
+  border:1px solid #383157;
+  border-radius:14px;
+
+  padding:13px;
+  margin-top:12px;
+
+  color:#ddd;
+  font-size:13px;
+  line-height:1.5;
+}
+
+.success{
+  margin-top:12px;
+  padding:13px;
+  border-radius:14px;
+
+  background:#123c2a;
+  border:1px solid #35d58a;
+
+  color:#d9ffed;
+}
+
+
+/* =========================
+   GAME HEADER
+========================= */
 
 .game-top{
   display:flex;
   justify-content:space-between;
   align-items:center;
+
   font-size:16px;
   color:#ddd;
+
   margin-bottom:9px;
 }
 
 .game-info{
   display:flex;
   justify-content:space-between;
+
   color:#aaa;
+
   font-size:14px;
+
   margin-bottom:8px;
 }
+
+
+/* =========================
+   PROGRESS
+========================= */
 
 .progress{
   width:100%;
   height:7px;
+
   background:#29283d;
+
   border-radius:20px;
+
   overflow:hidden;
+
   margin-bottom:18px;
 }
 
@@ -225,26 +387,48 @@ button{
   transition:.3s;
 }
 
+
+/* =========================
+   QUESTION
+========================= */
+
 .question{
   font-size:20px;
   font-weight:800;
+
   line-height:1.45;
+
   margin:8px 0 18px;
 }
 
+
+/* =========================
+   OPTIONS
+========================= */
+
 .option{
   display:block;
+
   width:100%;
+
   text-align:left;
+
   border:1px solid #36354e;
+
   background:#1c1b2c;
+
   color:#fff;
+
   border-radius:14px;
+
   padding:14px 13px;
+
   margin:8px 0;
+
   font-size:15px;
+
   line-height:1.35;
-  cursor:pointer;
+
   transition:.15s;
 }
 
@@ -262,54 +446,69 @@ button{
   border-color:#ff5669;
 }
 
-.option.hinted{
-  opacity:.35;
-  text-decoration:line-through;
-}
-
 .option:disabled{
   cursor:default;
 }
 
-/* HINT */
+
+/* =========================
+   HINT
+========================= */
 
 .hint-row{
   display:flex;
-  justify-content:space-between;
-  align-items:center;
   gap:8px;
-  margin-top:10px;
-}
-
-.hint-count{
-  color:#ddd;
-  font-size:14px;
-  font-weight:700;
+  margin-top:12px;
 }
 
 .hint-btn{
-  width:auto;
-  margin-top:0;
-  padding:10px 14px;
+  flex:1;
+
+  border:1px solid #493e70;
+  border-radius:14px;
+
+  padding:12px;
+
+  background:#211d3a;
+  color:#fff;
+
   font-size:14px;
-  background:#282641;
+  font-weight:800;
 }
 
-/* ERROR */
+.hint-btn:disabled{
+  opacity:.45;
+}
+
+
+/* =========================
+   ERROR
+========================= */
 
 .error{
   margin-top:14px;
+
   padding:14px;
+
   border-radius:14px;
+
   background:#391923;
+
   border:1px solid #ff5368;
+
   color:#ffdce1;
+
   font-size:14px;
+
   line-height:1.5;
+
   word-break:break-word;
 }
 
-/* RESULT */
+
+/* =========================
+   RESULT
+========================= */
 
 .result-icon{
   text-align:center;
@@ -330,8 +529,10 @@ button{
 
 .result-score{
   text-align:center;
+
   font-size:48px;
   font-weight:900;
+
   margin:18px 0 5px;
 }
 
@@ -341,143 +542,57 @@ button{
   font-size:15px;
 }
 
-/* REWARDS */
 
-.rewards-title{
-  text-align:center;
-  font-size:30px;
-  font-weight:900;
-  margin-bottom:15px;
-}
+/* =========================
+   HISTORY
+========================= */
 
-.reward-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:8px;
-}
-
-.reward-item{
-  background:#1b1a2b;
-  border:1px solid #303047;
-  border-radius:15px;
-  padding:16px 8px;
-  text-align:center;
-  min-height:105px;
-}
-
-.reward-value{
-  font-size:27px;
-  font-weight:900;
-}
-
-.reward-label{
-  color:#aaa;
-  font-size:14px;
-  margin-top:5px;
-}
-
-.reward-exchange{
-  margin-top:10px;
-}
-
-.reward-message{
-  margin-top:12px;
-  padding:12px;
-  border-radius:14px;
-  text-align:center;
-  background:#211d3a;
-  border:1px solid #383157;
-  color:#fff;
-  font-size:14px;
-  font-weight:700;
-  line-height:1.5;
-}
-
-/* BALANCE */
-
-.balance-amount{
-  text-align:center;
-  font-size:42px;
-  font-weight:900;
-  margin:18px 0 5px;
-}
-
-.balance-points{
-  text-align:center;
-  color:#aaa;
-  font-size:15px;
-  margin-bottom:18px;
-}
-
-.balance-info{
-  background:#211d3a;
-  border:1px solid #383157;
-  border-radius:14px;
-  padding:14px;
-  text-align:center;
-  color:#ddd;
-  line-height:1.7;
-}
-
-/* HISTORY */
-
-.history-toggle{
-  width:100%;
-  border:0;
-  background:transparent;
-  color:#fff;
-
+.history-header{
   display:flex;
   justify-content:space-between;
   align-items:center;
 
-  font-size:20px;
-  font-weight:900;
-
-  padding:2px 0;
   cursor:pointer;
-}
-
-.history-arrow{
-  font-size:18px;
-  transition:transform .2s;
-}
-
-.history-toggle.open .history-arrow{
-  transform:rotate(180deg);
-}
-
-.history-content{
-  display:none;
-  margin-top:12px;
-}
-
-.history-content.show{
-  display:block;
 }
 
 .history-title{
   text-align:center;
+
   font-size:20px;
   font-weight:900;
+
   margin-bottom:10px;
+}
+
+.history-arrow{
+  font-size:20px;
 }
 
 .total-score{
   text-align:center;
+
   background:#211d3a;
+
   border:1px solid #383157;
+
   border-radius:14px;
+
   padding:12px;
+
   margin-bottom:12px;
+
   font-size:16px;
 }
 
 .history-item{
   background:#1b1a2b;
+
   border:1px solid #303047;
+
   border-radius:13px;
+
   padding:11px;
+
   margin-top:8px;
 }
 
@@ -485,7 +600,9 @@ button{
   display:flex;
   justify-content:space-between;
   align-items:center;
+
   gap:10px;
+
   font-size:14px;
 }
 
@@ -495,16 +612,25 @@ button{
   margin-top:5px;
 }
 
-/* HELP */
+
+/* =========================
+   HELP
+========================= */
 
 .help{
   text-align:center;
+
   color:#aaa;
+
   font-size:12px;
+
   margin-top:14px;
 }
 
-/* MOBILE */
+
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:420px){
 
@@ -536,24 +662,20 @@ button{
     padding:13px 11px;
   }
 
-  .reward-value{
-    font-size:24px;
-  }
-
-  .balance-amount{
-    font-size:35px;
-  }
-
 }
 
 </style>
 </head>
 
+
 <body>
 
 <div class="container">
 
-<!-- HOME -->
+
+<!-- =====================================================
+     HOME
+===================================================== -->
 
 <section id="home">
 
@@ -661,18 +783,19 @@ button{
   </div>
 
 
-  <!-- REWARDS -->
+  <!-- =================================================
+       REWARDS
+  ================================================== -->
 
-  <div class="card" id="rewardsBox">
+  <div class="card">
 
-    <div class="rewards-title">
+    <div class="reward-title">
       🎁 Mukofotlar
     </div>
 
     <div class="reward-grid">
 
-      <div class="reward-item">
-
+      <div class="reward-box">
         <div
           id="rewardScore"
           class="reward-value"
@@ -683,14 +806,12 @@ button{
         <div class="reward-label">
           Jami ball
         </div>
-
       </div>
 
 
-      <div class="reward-item">
-
+      <div class="reward-box">
         <div
-          id="coinCount"
+          id="rewardCoins"
           class="reward-value"
         >
           🪙 0
@@ -699,14 +820,12 @@ button{
         <div class="reward-label">
           TOPQIR Coin
         </div>
-
       </div>
 
 
-      <div class="reward-item">
-
+      <div class="reward-box">
         <div
-          id="vipStatus"
+          id="rewardVip"
           class="reward-value"
         >
           👑 VIP
@@ -715,14 +834,12 @@ button{
         <div class="reward-label">
           Coin orqali olish mumkin
         </div>
-
       </div>
 
 
-      <div class="reward-item">
-
+      <div class="reward-box">
         <div
-          id="hintCount"
+          id="rewardHints"
           class="reward-value"
         >
           💡 0
@@ -731,34 +848,30 @@ button{
         <div class="reward-label">
           Hint
         </div>
-
       </div>
 
     </div>
 
 
     <button
-      id="exchangeHintBtn"
-      class="btn reward-exchange"
-      type="button"
+      id="coinHintBtn"
+      class="reward-btn"
     >
       💡 20 Coin → 5 ta hint
     </button>
 
 
     <button
-      id="exchangeVip1Btn"
-      class="btn reward-exchange"
-      type="button"
+      id="vip1Btn"
+      class="reward-btn"
     >
       👑 50 Coin → 1 kun VIP
     </button>
 
 
     <button
-      id="exchangeVip7Btn"
-      class="btn reward-exchange"
-      type="button"
+      id="vip7Btn"
+      class="reward-btn"
     >
       👑 150 Coin → 7 kun VIP
     </button>
@@ -766,22 +879,17 @@ button{
 
     <button
       id="balanceBtn"
-      class="btn"
-      type="button"
+      class="reward-btn"
     >
       💰 Balansimni ko‘rish
     </button>
 
-
-    <div
-      id="rewardMessage"
-      class="reward-message hide"
-    ></div>
-
   </div>
 
 
-  <!-- HISTORY -->
+  <!-- =================================================
+       HISTORY
+  ================================================== -->
 
   <div
     id="historyBox"
@@ -797,7 +905,119 @@ button{
 </section>
 
 
-<!-- GAME -->
+
+<!-- =====================================================
+     BALANCE PAGE
+===================================================== -->
+
+<section
+  id="balancePage"
+  class="hide"
+>
+
+  <button
+    id="balanceBackBtn"
+    class="btn back-btn"
+  >
+    ↩️ Orqaga
+  </button>
+
+
+  <div class="card">
+
+    <div class="reward-title">
+      💰 Balans
+    </div>
+
+
+    <div class="balance-main">
+
+      <div class="balance-small">
+        Sizning ballaringiz
+      </div>
+
+      <div
+        id="balancePoints"
+        class="balance-money"
+      >
+        ⭐ 0
+      </div>
+
+      <div class="balance-small">
+        1 ball = 1 so‘m
+      </div>
+
+      <div
+        id="balanceMoney"
+        class="balance-money"
+      >
+        0 so‘m
+      </div>
+
+    </div>
+
+
+    <div class="withdraw-info">
+      💵 Minimal pul chiqarish:
+      <b>50 000 so‘m</b><br><br>
+
+      ⭐ 50 000 ball =
+      <b>50 000 so‘m</b><br><br>
+
+      Pul chiqarish uchun balansingiz kamida
+      50 000 ball bo‘lishi kerak.
+    </div>
+
+
+    <input
+      id="cardNumber"
+      class="balance-input"
+      type="text"
+      inputmode="numeric"
+      maxlength="19"
+      placeholder="💳 Karta raqami"
+    >
+
+
+    <input
+      id="cardOwner"
+      class="balance-input"
+      type="text"
+      maxlength="100"
+      placeholder="👤 Karta egasi"
+    >
+
+
+    <input
+      id="withdrawAmount"
+      class="balance-input"
+      type="number"
+      min="50000"
+      placeholder="💵 Summa"
+    >
+
+
+    <button
+      id="withdrawBtn"
+      class="btn"
+    >
+      💸 Pul chiqarish
+    </button>
+
+
+    <div
+      id="withdrawMessage"
+    ></div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     GAME
+===================================================== -->
 
 <section
   id="game"
@@ -863,19 +1083,11 @@ button{
 
     <div class="hint-row">
 
-      <span
-        id="gameHintCount"
-        class="hint-count"
-      >
-        💡 Hint: 0
-      </span>
-
       <button
-        id="useHintBtn"
-        class="btn hint-btn"
-        type="button"
+        id="hintBtn"
+        class="hint-btn"
       >
-        💡 Hint
+        💡 Hint (<span id="hintCount">0</span>)
       </button>
 
     </div>
@@ -893,7 +1105,10 @@ button{
 </section>
 
 
-<!-- RESULT -->
+
+<!-- =====================================================
+     RESULT
+===================================================== -->
 
 <section
   id="result"
@@ -960,75 +1175,8 @@ button{
 </section>
 
 
-<!-- BALANCE -->
-
-<section
-  id="balance"
-  class="hide"
->
-
-  <button
-    id="balanceBackBtn"
-    class="btn back-btn"
-  >
-    ↩️ Orqaga
-  </button>
-
-
-  <div class="card">
-
-    <div class="category-title">
-      💰 Balansim
-    </div>
-
-
-    <div
-      id="balanceAmount"
-      class="balance-amount"
-    >
-      0 so‘m
-    </div>
-
-
-    <div
-      id="balancePoints"
-      class="balance-points"
-    >
-      ⭐ 0 ball
-    </div>
-
-
-    <div class="balance-info">
-
-      ⭐ 1 ball = 1 so‘m
-
-      <br>
-
-      💳 Minimal yechish:
-      <b>50 000 so‘m</b>
-
-    </div>
-
-
-    <button
-      id="withdrawBtn"
-      class="btn"
-      type="button"
-    >
-      💸 50 000 so‘m yechish
-    </button>
-
-
-    <div
-      id="withdrawMessage"
-      class="reward-message hide"
-    ></div>
-
-  </div>
-
-</section>
-
 </div>
+
 
 
 <script>
@@ -1047,7 +1195,6 @@ const tg =
 if(tg){
 
   tg.ready();
-
   tg.expand();
 
 }
@@ -1063,12 +1210,29 @@ const SUPABASE_URL =
 const SUPABASE_KEY =
   "sb_publishable_SVjbLTpmwn4z3lYtC3kZhg_obMt1k8p";
 
-
 const GAME_SIZE = 10;
 
 const POINTS_PER_CORRECT = 1.2;
 
-const MIN_WITHDRAW = 50000;
+const MIN_WITHDRAW_POINTS = 50000;
+
+
+/* =====================================================
+   TELEGRAM USER
+===================================================== */
+
+let telegramUser = null;
+
+if(
+  tg &&
+  tg.initDataUnsafe &&
+  tg.initDataUnsafe.user
+){
+
+  telegramUser =
+    tg.initDataUnsafe.user;
+
+}
 
 
 /* =====================================================
@@ -1091,7 +1255,7 @@ let hintUsed = false;
 
 
 /* =====================================================
-   HISTORY
+   LOCAL DATA
 ===================================================== */
 
 let gameHistory =
@@ -1110,14 +1274,10 @@ let totalScore =
   );
 
 
-/* =====================================================
-   REWARDS
-===================================================== */
-
-let topqirCoin =
+let coins =
   Number(
     localStorage.getItem(
-      "topqir_coin"
+      "aqljangi_coins"
     ) || 0
   );
 
@@ -1125,45 +1285,146 @@ let topqirCoin =
 let hints =
   Number(
     localStorage.getItem(
-      "topqir_hints"
+      "aqljangi_hints"
     ) || 0
   );
 
 
-let vipDays =
+let vipUntil =
   Number(
     localStorage.getItem(
-      "topqir_vip_days"
+      "aqljangi_vip_until"
     ) || 0
+  );
+
+
+let withdrawals =
+  JSON.parse(
+    localStorage.getItem(
+      "aqljangi_withdrawals"
+    ) || "[]"
   );
 
 
 /* =====================================================
-   FORMAT
+   SAVE REWARD DATA
 ===================================================== */
 
-function formatNumber(value){
+function saveRewards(){
+
+  localStorage.setItem(
+    "aqljangi_total_score",
+    String(totalScore)
+  );
+
+  localStorage.setItem(
+    "aqljangi_coins",
+    String(coins)
+  );
+
+  localStorage.setItem(
+    "aqljangi_hints",
+    String(hints)
+  );
+
+  localStorage.setItem(
+    "aqljangi_vip_until",
+    String(vipUntil)
+  );
+
+}
+
+
+/* =====================================================
+   FORMAT POINTS
+===================================================== */
+
+function formatPoints(value){
 
   const number =
-    Number(value) || 0;
-
-  if(
-    Number.isInteger(number)
-  ){
-
-    return number.toLocaleString(
-      "uz-UZ"
-    );
-
-  }
+    Number(value || 0);
 
   return number
     .toFixed(1)
-    .replace(".", ",")
     .replace(
-      /\B(?=(\d{3})+(?!\d))/g,
-      " "
+      /\.0$/,
+      ""
     );
+
+}
+
+
+/* =====================================================
+   VIP STATUS
+===================================================== */
+
+function isVip(){
+
+  return (
+    vipUntil >
+    Date.now()
+  );
+
+}
+
+
+/* =====================================================
+   UPDATE REWARDS UI
+===================================================== */
+
+function updateRewardsUI(){
+
+  document
+    .getElementById("rewardScore")
+    .textContent =
+    "⭐ " +
+    formatPoints(totalScore);
+
+
+  document
+    .getElementById("rewardCoins")
+    .textContent =
+    "🪙 " +
+    coins;
+
+
+  document
+    .getElementById("rewardHints")
+    .textContent =
+    "💡 " +
+    hints;
+
+
+  document
+    .getElementById("rewardVip")
+    .textContent =
+    isVip()
+      ? "👑 VIP"
+      : "👑 VIP";
+
+
+  document
+    .getElementById("coinHintBtn")
+    .disabled =
+    coins < 20;
+
+
+  document
+    .getElementById("vip1Btn")
+    .disabled =
+    coins < 50;
+
+
+  document
+    .getElementById("vip7Btn")
+    .disabled =
+    coins < 150;
+
+
+  document
+    .getElementById("hintCount")
+    .textContent =
+    hints;
 
 }
 
@@ -1235,158 +1496,16 @@ function shuffle(array){
 
 
 /* =====================================================
-   SAVE REWARDS
-===================================================== */
-
-function saveRewards(){
-
-  localStorage.setItem(
-    "topqir_coin",
-    String(topqirCoin)
-  );
-
-  localStorage.setItem(
-    "topqir_hints",
-    String(hints)
-  );
-
-  localStorage.setItem(
-    "topqir_vip_days",
-    String(vipDays)
-  );
-
-}
-
-
-/* =====================================================
-   UPDATE REWARDS
-===================================================== */
-
-function updateRewards(){
-
-  const score =
-    document.getElementById(
-      "rewardScore"
-    );
-
-  const coin =
-    document.getElementById(
-      "coinCount"
-    );
-
-  const hint =
-    document.getElementById(
-      "hintCount"
-    );
-
-  const vip =
-    document.getElementById(
-      "vipStatus"
-    );
-
-  const gameHint =
-    document.getElementById(
-      "gameHintCount"
-    );
-
-
-  if(score){
-
-    score.textContent =
-      "⭐ " +
-      formatNumber(totalScore);
-
-  }
-
-
-  if(coin){
-
-    coin.textContent =
-      "🪙 " +
-      formatNumber(topqirCoin);
-
-  }
-
-
-  if(hint){
-
-    hint.textContent =
-      "💡 " +
-      formatNumber(hints);
-
-  }
-
-
-  if(gameHint){
-
-    gameHint.textContent =
-      "💡 Hint: " +
-      formatNumber(hints);
-
-  }
-
-
-  if(vip){
-
-    if(vipDays > 0){
-
-      vip.textContent =
-        "👑 " +
-        vipDays +
-        " kun";
-
-    }else{
-
-      vip.textContent =
-        "👑 VIP";
-
-    }
-
-  }
-
-}
-
-
-/* =====================================================
-   REWARD MESSAGE
-===================================================== */
-
-function showRewardMessage(text){
-
-  const box =
-    document.getElementById(
-      "rewardMessage"
-    );
-
-  if(!box){
-    return;
-  }
-
-  box.textContent =
-    text;
-
-  box.classList.remove(
-    "hide"
-  );
-
-}
-
-
-/* =====================================================
    LOAD QUESTIONS
 ===================================================== */
 
 async function loadQuestions(category){
 
   const encodedCategory =
-    encodeURIComponent(
-      category
-    );
-
+    encodeURIComponent(category);
 
   const randomNumber =
     Math.random();
-
 
   const selectFields =
     "question,option_a,option_b,option_c,option_d,correct_answer,category";
@@ -1412,9 +1531,7 @@ async function loadQuestions(category){
         method:"GET",
 
         headers:{
-          "apikey":
-            SUPABASE_KEY,
-
+          "apikey":SUPABASE_KEY,
           "Authorization":
             "Bearer " +
             SUPABASE_KEY
@@ -1459,9 +1576,7 @@ async function loadQuestions(category){
           method:"GET",
 
           headers:{
-            "apikey":
-              SUPABASE_KEY,
-
+            "apikey":SUPABASE_KEY,
             "Authorization":
               "Bearer " +
               SUPABASE_KEY
@@ -1481,9 +1596,7 @@ async function loadQuestions(category){
       ){
 
         data =
-          data.concat(
-            data2
-          );
+          data.concat(data2);
 
       }
 
@@ -1530,20 +1643,16 @@ async function loadQuestions(category){
 
 
     if(
-      uniqueQuestions.length >=
-      GAME_SIZE
+      uniqueQuestions.length >= GAME_SIZE
     ){
-
       break;
-
     }
 
   }
 
 
   if(
-    uniqueQuestions.length >=
-    GAME_SIZE
+    uniqueQuestions.length >= GAME_SIZE
   ){
 
     return shuffle(
@@ -1574,9 +1683,7 @@ async function startGame(category){
 
 
   document
-    .getElementById(
-      "homeError"
-    )
+    .getElementById("homeError")
     .innerHTML = "";
 
 
@@ -1584,10 +1691,7 @@ async function startGame(category){
     .querySelectorAll(".cat")
     .forEach(
       button => {
-
-        button.disabled =
-          true;
-
+        button.disabled = true;
       }
     );
 
@@ -1624,7 +1728,7 @@ async function startGame(category){
 
 
     document
-      .getElementById("balance")
+      .getElementById("balancePage")
       .classList
       .add("hide");
 
@@ -1636,38 +1740,24 @@ async function startGame(category){
 
 
     document
-      .getElementById(
-        "categoryName"
-      )
+      .getElementById("categoryName")
       .textContent =
       category;
 
 
     document
-      .getElementById(
-        "scoreTop"
-      )
+      .getElementById("scoreTop")
       .textContent =
       "⭐ 0 ball";
 
 
-    updateRewards();
+    updateRewardsUI();
 
 
     if(
       tg &&
       tg.BackButton
     ){
-
-      if(
-        tg.BackButton.offClick
-      ){
-
-        tg.BackButton.offClick(
-          goHome
-        );
-
-      }
 
       tg.BackButton.show();
 
@@ -1684,16 +1774,12 @@ async function startGame(category){
   catch(error){
 
     document
-      .getElementById(
-        "homeError"
-      )
+      .getElementById("homeError")
       .innerHTML =
       `
       <div class="error">
         ❌ Savollarni yuklashda xato.<br><br>
-        ${escapeHTML(
-          error.message
-        )}
+        ${escapeHTML(error.message)}
       </div>
       `;
 
@@ -1704,10 +1790,7 @@ async function startGame(category){
       .querySelectorAll(".cat")
       .forEach(
         button => {
-
-          button.disabled =
-            false;
-
+          button.disabled = false;
         }
       );
 
@@ -1734,9 +1817,7 @@ function showQuestion(){
 
 
   document
-    .getElementById(
-      "questionNumber"
-    )
+    .getElementById("questionNumber")
     .textContent =
     (
       currentQuestion + 1
@@ -1746,9 +1827,7 @@ function showQuestion(){
 
 
   document
-    .getElementById(
-      "progressBar"
-    )
+    .getElementById("progressBar")
     .style.width =
     (
       (
@@ -1761,9 +1840,7 @@ function showQuestion(){
 
 
   document
-    .getElementById(
-      "question"
-    )
+    .getElementById("question")
     .textContent =
     q.question ||
     "Savol";
@@ -1795,9 +1872,8 @@ function showQuestion(){
 
 
   const optionsBox =
-    document.getElementById(
-      "options"
-    );
+    document
+      .getElementById("options");
 
 
   optionsBox.innerHTML =
@@ -1807,7 +1883,6 @@ function showQuestion(){
           <button
             class="option"
             data-key="${option.key}"
-            type="button"
           >
             <b>${option.key}.</b>
             ${escapeHTML(option.text)}
@@ -1837,14 +1912,15 @@ function showQuestion(){
 
 
   document
-    .getElementById(
-      "nextBtn"
-    )
+    .getElementById("nextBtn")
     .classList
     .add("hide");
 
 
-  updateRewards();
+  document
+    .getElementById("hintBtn")
+    .disabled =
+    hints <= 0;
 
 }
 
@@ -1859,22 +1935,14 @@ function useHint(){
     return;
   }
 
-
   if(hintUsed){
-
-    showRewardMessage(
-      "ℹ️ Bu savolda Hint allaqachon ishlatilgan."
-    );
-
     return;
-
   }
-
 
   if(hints <= 0){
 
-    showRewardMessage(
-      "❌ Sizda Hint yo‘q."
+    alert(
+      "Sizda hint qolmagan."
     );
 
     return;
@@ -1898,30 +1966,23 @@ function useHint(){
 
   const wrongButtons =
     Array.from(
-      document.querySelectorAll(
-        ".option"
-      )
+      document
+        .querySelectorAll(".option")
     )
     .filter(
       button =>
-        button.dataset.key !==
-        correct &&
-        !button.classList.contains(
-          "hinted"
-        )
+        button.dataset.key !== correct
     );
 
 
   if(
     wrongButtons.length === 0
   ){
-
     return;
-
   }
 
 
-  const randomButton =
+  const randomWrong =
     wrongButtons[
       Math.floor(
         Math.random() *
@@ -1930,12 +1991,14 @@ function useHint(){
     ];
 
 
-  randomButton.classList.add(
-    "hinted"
-  );
-
-  randomButton.disabled =
+  randomWrong.disabled =
     true;
+
+  randomWrong.style.opacity =
+    "0.35";
+
+  randomWrong.style.textDecoration =
+    "line-through";
 
 
   hints--;
@@ -1944,7 +2007,13 @@ function useHint(){
 
   saveRewards();
 
-  updateRewards();
+  updateRewardsUI();
+
+
+  document
+    .getElementById("hintBtn")
+    .disabled =
+    true;
 
 
   if(
@@ -1953,8 +2022,8 @@ function useHint(){
   ){
 
     tg.HapticFeedback
-      .impactOccurred(
-        "light"
+      .notificationOccurred(
+        "success"
       );
 
   }
@@ -1994,24 +2063,19 @@ function checkAnswer(
 
 
   document
-    .querySelectorAll(
-      ".option"
-    )
+    .querySelectorAll(".option")
     .forEach(
       button => {
 
-        button.disabled =
-          true;
+        button.disabled = true;
 
 
         if(
-          button.dataset.key ===
-          correct
+          button.dataset.key === correct
         ){
 
-          button.classList.add(
-            "correct"
-          );
+          button.classList
+            .add("correct");
 
         }
 
@@ -2026,15 +2090,10 @@ function checkAnswer(
     currentScore +=
       POINTS_PER_CORRECT;
 
-    currentScore =
-      Number(
-        currentScore.toFixed(1)
-      );
-
     correctAnswers++;
 
-  }
-  else{
+
+  }else{
 
     selectedButton
       .classList
@@ -2044,21 +2103,15 @@ function checkAnswer(
 
 
   document
-    .getElementById(
-      "scoreTop"
-    )
+    .getElementById("scoreTop")
     .textContent =
     "⭐ " +
-    formatNumber(
-      currentScore
-    ) +
+    formatPoints(currentScore) +
     " ball";
 
 
   document
-    .getElementById(
-      "progressBar"
-    )
+    .getElementById("progressBar")
     .style.width =
     (
       (
@@ -2071,9 +2124,8 @@ function checkAnswer(
 
 
   const nextButton =
-    document.getElementById(
-      "nextBtn"
-    );
+    document
+      .getElementById("nextBtn");
 
 
   if(
@@ -2084,8 +2136,7 @@ function checkAnswer(
     nextButton.textContent =
       "🏆 Natijani ko‘rish";
 
-  }
-  else{
+  }else{
 
     nextButton.textContent =
       "Keyingi savol ➜";
@@ -2096,6 +2147,12 @@ function checkAnswer(
   nextButton
     .classList
     .remove("hide");
+
+
+  document
+    .getElementById("hintBtn")
+    .disabled =
+    true;
 
 
   if(
@@ -2135,12 +2192,59 @@ function nextQuestion(){
 
     showQuestion();
 
-  }
-  else{
+  }else{
 
     showResult();
 
   }
+
+}
+
+
+/* =====================================================
+   COIN REWARD
+===================================================== */
+
+function rewardCoins(){
+
+  /*
+    Har 100 ball uchun
+    1 Coin.
+  */
+
+  const oldBlocks =
+    Math.floor(
+      totalScore / 100
+    );
+
+  const savedBlocks =
+    Number(
+      localStorage.getItem(
+        "aqljangi_coin_blocks"
+      ) || 0
+    );
+
+
+  if(
+    oldBlocks > savedBlocks
+  ){
+
+    const difference =
+      oldBlocks -
+      savedBlocks;
+
+    coins +=
+      difference;
+
+    localStorage.setItem(
+      "aqljangi_coin_blocks",
+      String(oldBlocks)
+    );
+
+  }
+
+
+  saveRewards();
 
 }
 
@@ -2155,16 +2259,7 @@ function saveGame(){
     currentScore;
 
 
-  totalScore =
-    Number(
-      totalScore.toFixed(1)
-    );
-
-
-  localStorage.setItem(
-    "aqljangi_total_score",
-    String(totalScore)
-  );
+  rewardCoins();
 
 
   const game = {
@@ -2203,6 +2298,12 @@ function saveGame(){
 
 
   localStorage.setItem(
+    "aqljangi_total_score",
+    String(totalScore)
+  );
+
+
+  localStorage.setItem(
     "aqljangi_history",
     JSON.stringify(
       gameHistory
@@ -2210,7 +2311,7 @@ function saveGame(){
   );
 
 
-  updateRewards();
+  saveRewards();
 
 }
 
@@ -2237,33 +2338,21 @@ function showResult(){
 
 
   document
-    .getElementById(
-      "resultCategory"
-    )
+    .getElementById("resultCategory")
     .textContent =
     "📚 " +
     selectedCategory;
 
 
   document
-    .getElementById(
-      "resultScore"
-    )
+    .getElementById("resultScore")
     .textContent =
-    formatNumber(
-      currentScore
-    ) +
-    " / " +
-    formatNumber(
-      questions.length *
-      POINTS_PER_CORRECT
-    );
+    formatPoints(currentScore) +
+    " / 12";
 
 
   document
-    .getElementById(
-      "resultCorrect"
-    )
+    .getElementById("resultCorrect")
     .textContent =
     "✅ To‘g‘ri javoblar: " +
     correctAnswers +
@@ -2275,12 +2364,11 @@ function showResult(){
 
 
   if(
-    correctAnswers ===
-    questions.length
+    correctAnswers === 10
   ){
 
     message =
-      "🔥 Ajoyib! 10/10!";
+      "🔥 Ajoyib natija!";
 
   }
   else if(
@@ -2308,33 +2396,25 @@ function showResult(){
 
 
   document
-    .getElementById(
-      "resultText"
-    )
+    .getElementById("resultText")
     .innerHTML =
     `
       ${message}<br><br>
       🏆 O‘yinlardan jami:
-      <b>${formatNumber(
-        totalScore
-      )} ball</b>
+      <b>${formatPoints(totalScore)} ball</b>
+      <br>
+      🪙 Coin:
+      <b>${coins}</b>
     `;
+
+
+  updateRewardsUI();
 
 
   if(
     tg &&
     tg.BackButton
   ){
-
-    if(
-      tg.BackButton.offClick
-    ){
-
-      tg.BackButton.offClick(
-        goHome
-      );
-
-    }
 
     tg.BackButton.hide();
 
@@ -2362,7 +2442,7 @@ function goHome(){
 
 
   document
-    .getElementById("balance")
+    .getElementById("balancePage")
     .classList
     .add("hide");
 
@@ -2378,202 +2458,186 @@ function goHome(){
     tg.BackButton
   ){
 
-    if(
-      tg.BackButton.offClick
-    ){
-
-      tg.BackButton.offClick(
-        goHome
-      );
-
-      tg.BackButton.offClick(
-        closeBalance
-      );
-
-    }
-
     tg.BackButton.hide();
 
   }
 
 
-  renderHistory();
+  updateRewardsUI();
 
-  updateRewards();
+  renderHistory();
 
 }
 
 
 /* =====================================================
-   RENDER HISTORY
+   HISTORY
 ===================================================== */
+
+let historyOpen = false;
+
 
 function renderHistory(){
 
   const box =
-    document.getElementById(
-      "historyBox"
-    );
+    document
+      .getElementById(
+        "historyBox"
+      );
 
 
   let html = `
 
-    <button
-      id="historyToggle"
-      class="history-toggle"
-      type="button"
+    <div
+      class="history-header"
+      onclick="toggleHistory()"
     >
 
-      <span>
+      <div class="history-title">
         📊 O‘yin tarixi
-      </span>
+      </div>
 
-      <span
+      <div
         id="historyArrow"
         class="history-arrow"
       >
         ▼
-      </span>
-
-    </button>
-
-    <div
-      id="historyContent"
-      class="history-content"
-    >
-
-      <div class="total-score">
-        🏆 O‘yinlardan jami:
-        <b>
-          ${formatNumber(
-            totalScore
-          )} ball
-        </b>
       </div>
+
+    </div>
 
   `;
 
 
-  if(
-    gameHistory.length === 0
-  ){
+  if(historyOpen){
 
     html += `
 
-      <div
-        style="
-          text-align:center;
-          color:#999;
-          font-size:13px;
-          padding:8px;
-        "
-      >
-        Hali o‘yin o‘ynalmagan.
+      <div class="total-score">
+        🏆 O‘yinlardan jami:
+        <b>${formatPoints(totalScore)} ball</b>
       </div>
 
     `;
 
-  }
-  else{
 
-    gameHistory.forEach(
-      function(game,index){
+    if(
+      gameHistory.length === 0
+    ){
 
-        html += `
+      html += `
 
-          <div class="history-item">
+        <div
+          style="
+            text-align:center;
+            color:#999;
+            font-size:13px;
+            padding:8px;
+          "
+        >
+          Hali o‘yin o‘ynalmagan.
+        </div>
 
-            <div class="history-row">
+      `;
 
-              <b>
-                ${index + 1}.
+    }else{
+
+      gameHistory.forEach(
+        function(game,index){
+
+          html += `
+
+            <div class="history-item">
+
+              <div class="history-row">
+
+                <b>
+                  ${index + 1}.
+                  ${escapeHTML(
+                    game.category
+                  )}
+                </b>
+
+                <b>
+                  ⭐
+                  ${formatPoints(
+                    game.score
+                  )}
+                </b>
+
+              </div>
+
+              <div class="history-small">
+
+                ✅
+                ${game.correct}/${game.total}
+
+                &nbsp; • &nbsp;
+
                 ${escapeHTML(
-                  game.category
+                  game.date
                 )}
-              </b>
 
-              <b>
-                ⭐ ${formatNumber(
-                  game.score
-                )}
-              </b>
+              </div>
 
             </div>
 
-            <div class="history-small">
+          `;
 
-              ✅
-              ${game.correct}/${game.total}
+        }
+      );
 
-              &nbsp; • &nbsp;
-
-              ${escapeHTML(
-                game.date
-              )}
-
-            </div>
-
-          </div>
-
-        `;
-
-      }
-    );
+    }
 
   }
-
-
-  html += `
-    </div>
-  `;
 
 
   box.innerHTML =
     html;
 
 
-  const toggle =
+  const arrow =
     document.getElementById(
-      "historyToggle"
+      "historyArrow"
     );
 
 
-  const content =
-    document.getElementById(
-      "historyContent"
-    );
+  if(arrow){
 
+    arrow.textContent =
+      historyOpen
+        ? "▲"
+        : "▼";
 
-  toggle.addEventListener(
-    "click",
-    function(){
-
-      content.classList.toggle(
-        "show"
-      );
-
-      toggle.classList.toggle(
-        "open"
-      );
-
-    }
-  );
+  }
 
 }
 
 
 /* =====================================================
-   EXCHANGE HINTS
+   TOGGLE HISTORY
 ===================================================== */
 
-function exchangeHints(){
+function toggleHistory(){
 
-  if(
-    topqirCoin < 20
-  ){
+  historyOpen =
+    !historyOpen;
 
-    showRewardMessage(
-      "❌ 5 ta Hint olish uchun 20 Coin kerak."
+  renderHistory();
+
+}
+
+
+/* =====================================================
+   BUY HINTS
+===================================================== */
+
+function buyHints(){
+
+  if(coins < 20){
+
+    alert(
+      "20 Coin kerak."
     );
 
     return;
@@ -2581,35 +2645,33 @@ function exchangeHints(){
   }
 
 
-  topqirCoin -= 20;
+  coins -= 20;
 
   hints += 5;
 
 
   saveRewards();
 
-  updateRewards();
+  updateRewardsUI();
 
 
-  showRewardMessage(
-    "✅ 20 Coin evaziga 5 ta Hint olindi!"
+  alert(
+    "✅ 5 ta Hint qo‘shildi!"
   );
 
 }
 
 
 /* =====================================================
-   EXCHANGE VIP 1
+   BUY VIP 1 DAY
 ===================================================== */
 
-function exchangeVip1(){
+function buyVip1(){
 
-  if(
-    topqirCoin < 50
-  ){
+  if(coins < 50){
 
-    showRewardMessage(
-      "❌ 1 kun VIP olish uchun 50 Coin kerak."
+    alert(
+      "50 Coin kerak."
     );
 
     return;
@@ -2617,17 +2679,34 @@ function exchangeVip1(){
   }
 
 
-  topqirCoin -= 50;
+  coins -= 50;
 
-  vipDays += 1;
+
+  const now =
+    Date.now();
+
+
+  const base =
+    Math.max(
+      now,
+      vipUntil
+    );
+
+
+  vipUntil =
+    base +
+    24 *
+    60 *
+    60 *
+    1000;
 
 
   saveRewards();
 
-  updateRewards();
+  updateRewardsUI();
 
 
-  showRewardMessage(
+  alert(
     "👑 1 kunlik VIP faollashtirildi!"
   );
 
@@ -2635,17 +2714,15 @@ function exchangeVip1(){
 
 
 /* =====================================================
-   EXCHANGE VIP 7
+   BUY VIP 7 DAYS
 ===================================================== */
 
-function exchangeVip7(){
+function buyVip7(){
 
-  if(
-    topqirCoin < 150
-  ){
+  if(coins < 150){
 
-    showRewardMessage(
-      "❌ 7 kun VIP olish uchun 150 Coin kerak."
+    alert(
+      "150 Coin kerak."
     );
 
     return;
@@ -2653,17 +2730,35 @@ function exchangeVip7(){
   }
 
 
-  topqirCoin -= 150;
+  coins -= 150;
 
-  vipDays += 7;
+
+  const now =
+    Date.now();
+
+
+  const base =
+    Math.max(
+      now,
+      vipUntil
+    );
+
+
+  vipUntil =
+    base +
+    7 *
+    24 *
+    60 *
+    60 *
+    1000;
 
 
   saveRewards();
 
-  updateRewards();
+  updateRewardsUI();
 
 
-  showRewardMessage(
+  alert(
     "👑 7 kunlik VIP faollashtirildi!"
   );
 
@@ -2671,85 +2766,7 @@ function exchangeVip7(){
 
 
 /* =====================================================
-   TELEGRAM USER
-===================================================== */
-
-function getTelegramUser(){
-
-  if(
-    tg &&
-    tg.initDataUnsafe &&
-    tg.initDataUnsafe.user
-  ){
-
-    return tg.initDataUnsafe.user;
-
-  }
-
-
-  return {
-
-    id:"",
-    username:"",
-    first_name:""
-
-  };
-
-}
-
-
-/* =====================================================
-   BALANCE
-===================================================== */
-
-function renderBalance(){
-
-  const amount =
-    Math.max(
-      0,
-      totalScore
-    );
-
-
-  const balanceAmount =
-    document.getElementById(
-      "balanceAmount"
-    );
-
-
-  const balancePoints =
-    document.getElementById(
-      "balancePoints"
-    );
-
-
-  if(balanceAmount){
-
-    balanceAmount.textContent =
-      formatNumber(
-        amount
-      ) +
-      " so‘m";
-
-  }
-
-
-  if(balancePoints){
-
-    balancePoints.textContent =
-      "⭐ " +
-      formatNumber(
-        amount
-      ) +
-      " ball";
-
-  }
-
-}
-
-
-/* =====================================================
-   OPEN BALANCE
+   BALANCE PAGE
 ===================================================== */
 
 function openBalance(){
@@ -2761,58 +2778,61 @@ function openBalance(){
 
 
   document
-    .getElementById("game")
-    .classList
-    .add("hide");
-
-
-  document
     .getElementById("result")
     .classList
     .add("hide");
 
 
   document
-    .getElementById("balance")
-    .classList
-    .remove("hide");
-
-
-  document
-    .getElementById(
-      "withdrawMessage"
-    )
+    .getElementById("game")
     .classList
     .add("hide");
 
 
-  renderBalance();
+  document
+    .getElementById("balancePage")
+    .classList
+    .remove("hide");
 
 
-  if(
-    tg &&
-    tg.BackButton
-  ){
+  updateBalanceUI();
 
-    if(
-      tg.BackButton.offClick
-    ){
+}
 
-      tg.BackButton.offClick(
-        goHome
+
+/* =====================================================
+   BALANCE UI
+===================================================== */
+
+function updateBalanceUI(){
+
+  document
+    .getElementById("balancePoints")
+    .textContent =
+    "⭐ " +
+    formatPoints(totalScore);
+
+
+  document
+    .getElementById("balanceMoney")
+    .textContent =
+    formatPoints(totalScore) +
+    " so‘m";
+
+
+  const amount =
+    document
+      .getElementById(
+        "withdrawAmount"
       );
 
-      tg.BackButton.offClick(
-        closeBalance
+
+  if(amount){
+
+    amount.max =
+      Math.floor(
+        totalScore
       );
-
-    }
-
-    tg.BackButton.show();
-
-    tg.BackButton.onClick(
-      closeBalance
-    );
 
   }
 
@@ -2820,46 +2840,19 @@ function openBalance(){
 
 
 /* =====================================================
-   CLOSE BALANCE
+   CARD FORMAT
 ===================================================== */
 
-function closeBalance(){
+function formatCardNumber(value){
 
-  document
-    .getElementById("balance")
-    .classList
-    .add("hide");
-
-
-  document
-    .getElementById("home")
-    .classList
-    .remove("hide");
-
-
-  if(
-    tg &&
-    tg.BackButton
-  ){
-
-    if(
-      tg.BackButton.offClick
-    ){
-
-      tg.BackButton.offClick(
-        closeBalance
-      );
-
-    }
-
-    tg.BackButton.hide();
-
-  }
-
-
-  renderHistory();
-
-  updateRewards();
+  return String(value)
+    .replace(/\D/g,"")
+    .slice(0,16)
+    .replace(
+      /(.{4})/g,
+      "$1 "
+    )
+    .trim();
 
 }
 
@@ -2868,179 +2861,236 @@ function closeBalance(){
    WITHDRAW
 ===================================================== */
 
-async function requestWithdraw(){
+async function withdrawMoney(){
 
-  const message =
-    document.getElementById(
-      "withdrawMessage"
+  const cardNumber =
+    document
+      .getElementById(
+        "cardNumber"
+      )
+      .value
+      .replace(
+        /\D/g,
+        ""
+      );
+
+
+  const cardOwner =
+    document
+      .getElementById(
+        "cardOwner"
+      )
+      .value
+      .trim();
+
+
+  const amount =
+    Number(
+      document
+        .getElementById(
+          "withdrawAmount"
+        )
+        .value
     );
 
 
-  message.classList.remove(
-    "hide"
-  );
+  const message =
+    document
+      .getElementById(
+        "withdrawMessage"
+      );
+
+
+  message.innerHTML =
+    "";
 
 
   if(
-    totalScore < MIN_WITHDRAW
+    totalScore <
+    MIN_WITHDRAW_POINTS
   ){
-
-    message.textContent =
-      "❌ Pul yechish uchun kamida 50 000 ball kerak.";
-
-    return;
-
-  }
-
-
-  const user =
-    getTelegramUser();
-
-
-  if(!user.id){
-
-    message.textContent =
-      "❌ Telegram foydalanuvchisi aniqlanmadi.";
-
-    return;
-
-  }
-
-
-  const button =
-    document.getElementById(
-      "withdrawBtn"
-    );
-
-
-  button.disabled =
-    true;
-
-
-  button.textContent =
-    "⏳ So‘rov yuborilmoqda...";
-
-
-  try{
-
-    const amount =
-      Math.floor(
-        totalScore
-      );
-
-
-    const response =
-      await fetch(
-        SUPABASE_URL +
-        "/rest/v1/withdraw_requests",
-        {
-          method:"POST",
-
-          headers:{
-
-            "apikey":
-              SUPABASE_KEY,
-
-            "Authorization":
-              "Bearer " +
-              SUPABASE_KEY,
-
-            "Content-Type":
-              "application/json",
-
-            "Prefer":
-              "return=minimal"
-
-          },
-
-          body:
-            JSON.stringify({
-
-              telegram_id:
-                String(
-                  user.id
-                ),
-
-              username:
-                user.username ||
-                "",
-
-              first_name:
-                user.first_name ||
-                "",
-
-              balance:
-                totalScore,
-
-              amount:
-                amount,
-
-              status:
-                "pending"
-
-            })
-
-        }
-      );
-
-
-    if(!response.ok){
-
-      throw new Error(
-        "So‘rov yuborilmadi."
-      );
-
-    }
-
 
     message.innerHTML =
       `
-      ✅ Pul yechish so‘rovi yuborildi.<br><br>
-
-      💰 Summa:
-      <b>
-        ${formatNumber(
-          amount
-        )} so‘m
-      </b>
-
-      <br>
-
-      👤 Telegram:
-      <b>
-        @${escapeHTML(
-          user.username ||
-          user.first_name ||
-          "user"
-        )}
-      </b>
-
-      <br><br>
-
-      ⏳ Admin tasdiqlashini kuting.
+      <div class="error">
+        ❌ Pul chiqarish uchun kamida
+        <b>50 000 ball</b> kerak.
+        <br><br>
+        Hozirgi balans:
+        <b>${formatPoints(totalScore)} ball</b>
+      </div>
       `;
 
-
-    button.textContent =
-      "✅ So‘rov yuborildi";
-
+    return;
 
   }
-  catch(error){
-
-    message.textContent =
-      "❌ Xatolik: " +
-      error.message;
 
 
-    button.disabled =
-      false;
+  if(
+    cardNumber.length !== 16
+  ){
 
+    message.innerHTML =
+      `
+      <div class="error">
+        ❌ Karta raqami 16 xonali bo‘lishi kerak.
+      </div>
+      `;
 
-    button.textContent =
-      "💸 50 000 so‘m yechish";
+    return;
 
   }
+
+
+  if(!cardOwner){
+
+    message.innerHTML =
+      `
+      <div class="error">
+        ❌ Karta egasini kiriting.
+      </div>
+      `;
+
+    return;
+
+  }
+
+
+  if(
+    !Number.isFinite(amount) ||
+    amount < MIN_WITHDRAW_POINTS
+  ){
+
+    message.innerHTML =
+      `
+      <div class="error">
+        ❌ Minimal chiqarish summasi
+        <b>50 000 so‘m</b>.
+      </div>
+      `;
+
+    return;
+
+  }
+
+
+  if(
+    amount > Math.floor(totalScore)
+  ){
+
+    message.innerHTML =
+      `
+      <div class="error">
+        ❌ Balansingizda buncha mablag‘ yo‘q.
+      </div>
+      `;
+
+    return;
+
+  }
+
+
+  const request = {
+
+    id:
+      Date.now(),
+
+    telegram_id:
+      telegramUser
+        ? String(
+            telegramUser.id
+          )
+        : "unknown",
+
+    username:
+      telegramUser
+        ? (
+            telegramUser.username ||
+            ""
+          )
+        : "",
+
+    card_number:
+      cardNumber,
+
+    card_owner:
+      cardOwner,
+
+    amount:
+      amount,
+
+    status:
+      "Kutilmoqda",
+
+    date:
+      new Date()
+        .toLocaleString(
+          "uz-UZ"
+        )
+
+  };
+
+
+  withdrawals.unshift(
+    request
+  );
+
+
+  localStorage.setItem(
+    "aqljangi_withdrawals",
+    JSON.stringify(
+      withdrawals
+    )
+  );
+
+
+  /*
+    Eslatma:
+    Bu yerda pul balansidan
+    yechib tashlanmaydi.
+
+    Admin tasdiqlaganidan keyin
+    backend orqali balansni
+    yangilash kerak.
+  */
+
+
+  message.innerHTML =
+    `
+    <div class="success">
+      ✅ Pul chiqarish so‘rovi yuborildi.<br><br>
+
+      💵 Summa:
+      <b>${amount} so‘m</b><br>
+
+      💳 Karta:
+      <b>**** **** **** ${cardNumber.slice(-4)}</b><br><br>
+
+      📋 Holat:
+      <b>Kutilmoqda</b>
+    </div>
+    `;
+
+
+  document
+    .getElementById(
+      "withdrawAmount"
+    )
+    .value = "";
+
+
+  document
+    .getElementById(
+      "cardNumber"
+    )
+    .value = "";
+
+
+  document
+    .getElementById(
+      "cardOwner"
+    )
+    .value = "";
 
 }
 
@@ -3074,12 +3124,22 @@ document
 ===================================================== */
 
 document
-  .getElementById(
-    "nextBtn"
-  )
+  .getElementById("nextBtn")
   .addEventListener(
     "click",
     nextQuestion
+  );
+
+
+/* =====================================================
+   HINT
+===================================================== */
+
+document
+  .getElementById("hintBtn")
+  .addEventListener(
+    "click",
+    useHint
   );
 
 
@@ -3088,9 +3148,7 @@ document
 ===================================================== */
 
 document
-  .getElementById(
-    "backBtn"
-  )
+  .getElementById("backBtn")
   .addEventListener(
     "click",
     goHome
@@ -3102,9 +3160,7 @@ document
 ===================================================== */
 
 document
-  .getElementById(
-    "againBtn"
-  )
+  .getElementById("againBtn")
   .addEventListener(
     "click",
     function(){
@@ -3122,9 +3178,7 @@ document
 ===================================================== */
 
 document
-  .getElementById(
-    "categoryBtn"
-  )
+  .getElementById("categoryBtn")
   .addEventListener(
     "click",
     goHome
@@ -3132,69 +3186,35 @@ document
 
 
 /* =====================================================
-   HINT
+   REWARDS BUTTONS
 ===================================================== */
 
 document
-  .getElementById(
-    "useHintBtn"
-  )
+  .getElementById("coinHintBtn")
   .addEventListener(
     "click",
-    useHint
+    buyHints
   );
 
 
-/* =====================================================
-   COIN → HINT
-===================================================== */
-
 document
-  .getElementById(
-    "exchangeHintBtn"
-  )
+  .getElementById("vip1Btn")
   .addEventListener(
     "click",
-    exchangeHints
+    buyVip1
   );
 
 
-/* =====================================================
-   COIN → VIP 1
-===================================================== */
-
 document
-  .getElementById(
-    "exchangeVip1Btn"
-  )
+  .getElementById("vip7Btn")
   .addEventListener(
     "click",
-    exchangeVip1
+    buyVip7
   );
 
 
-/* =====================================================
-   COIN → VIP 7
-===================================================== */
-
 document
-  .getElementById(
-    "exchangeVip7Btn"
-  )
-  .addEventListener(
-    "click",
-    exchangeVip7
-  );
-
-
-/* =====================================================
-   BALANCE
-===================================================== */
-
-document
-  .getElementById(
-    "balanceBtn"
-  )
+  .getElementById("balanceBtn")
   .addEventListener(
     "click",
     openBalance
@@ -3206,12 +3226,29 @@ document
 ===================================================== */
 
 document
-  .getElementById(
-    "balanceBackBtn"
-  )
+  .getElementById("balanceBackBtn")
   .addEventListener(
     "click",
-    closeBalance
+    goHome
+  );
+
+
+/* =====================================================
+   CARD INPUT
+===================================================== */
+
+document
+  .getElementById("cardNumber")
+  .addEventListener(
+    "input",
+    function(){
+
+      this.value =
+        formatCardNumber(
+          this.value
+        );
+
+    }
   );
 
 
@@ -3220,12 +3257,10 @@ document
 ===================================================== */
 
 document
-  .getElementById(
-    "withdrawBtn"
-  )
+  .getElementById("withdrawBtn")
   .addEventListener(
     "click",
-    requestWithdraw
+    withdrawMoney
   );
 
 
@@ -3233,9 +3268,11 @@ document
    START
 ===================================================== */
 
-renderHistory();
+rewardCoins();
 
-updateRewards();
+updateRewardsUI();
+
+renderHistory();
 
 </script>
 
