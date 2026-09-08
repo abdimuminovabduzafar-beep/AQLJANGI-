@@ -453,6 +453,7 @@ button{
   text-align:center;
 
   font-size:20px;
+
   font-weight:900;
 
   margin-bottom:10px;
@@ -498,6 +499,31 @@ button{
   background:#2b2346;
 
   border-color:#8c5cff;
+}
+
+
+/* =========================
+   VIP INFO
+========================= */
+
+.vip-info{
+  margin-top:10px;
+
+  padding:12px;
+
+  border-radius:14px;
+
+  background:#211a39;
+
+  border:1px solid #7048c8;
+
+  text-align:center;
+
+  color:#ddd;
+
+  font-size:13px;
+
+  line-height:1.5;
 }
 
 
@@ -615,55 +641,95 @@ button{
 
     <div class="categories">
 
-      <button class="cat" data-category="Mantiq">
+      <button
+        class="cat"
+        data-category="Mantiq"
+      >
         🧠<br>
         Mantiq
       </button>
 
-      <button class="cat" data-category="Tarix">
+
+      <button
+        class="cat"
+        data-category="Tarix"
+      >
         📜<br>
         Tarix
       </button>
 
-      <button class="cat" data-category="Geografiya">
+
+      <button
+        class="cat"
+        data-category="Geografiya"
+      >
         🌍<br>
         Geografiya
       </button>
 
-      <button class="cat" data-category="Biologiya">
+
+      <button
+        class="cat"
+        data-category="Biologiya"
+      >
         🧬<br>
         Biologiya
       </button>
 
-      <button class="cat" data-category="Fan">
+
+      <button
+        class="cat"
+        data-category="Fan"
+      >
         🔬<br>
         Fan
       </button>
 
-      <button class="cat" data-category="Texnologiya">
+
+      <button
+        class="cat"
+        data-category="Texnologiya"
+      >
         💻<br>
         Texnologiya
       </button>
 
-      <button class="cat" data-category="O‘zbekiston">
+
+      <button
+        class="cat"
+        data-category="O‘zbekiston"
+      >
         🇺🇿<br>
         O‘zbekiston
       </button>
 
-      <button class="cat" data-category="Adabiyot">
+
+      <button
+        class="cat"
+        data-category="Adabiyot"
+      >
         📚<br>
         Adabiyot
       </button>
 
-      <button class="cat" data-category="Matematika">
+
+      <button
+        class="cat"
+        data-category="Matematika"
+      >
         ➗<br>
         Matematika
       </button>
 
-      <button class="cat" data-category="Umumiy bilim">
+
+      <button
+        class="cat"
+        data-category="Umumiy bilim"
+      >
         🎯<br>
         Umumiy bilim
       </button>
+
 
     </div>
 
@@ -707,6 +773,7 @@ button{
   class="hide"
 >
 
+
   <button
     id="backBtn"
     class="btn back-btn"
@@ -716,6 +783,7 @@ button{
 
 
   <div class="card">
+
 
     <div class="game-top">
 
@@ -771,6 +839,7 @@ button{
       Keyingi savol ➜
     </button>
 
+
   </div>
 
 </section>
@@ -785,6 +854,7 @@ button{
   id="result"
   class="hide"
 >
+
 
   <div class="card">
 
@@ -840,6 +910,7 @@ button{
     >
       📚 Boshqa fan
     </button>
+
 
   </div>
 
@@ -940,6 +1011,14 @@ let coins =
   );
 
 
+let hints =
+  Number(
+    localStorage.getItem(
+      "aqljangi_hints"
+    ) || 0
+  );
+
+
 let vipUntil =
   Number(
     localStorage.getItem(
@@ -948,12 +1027,10 @@ let vipUntil =
   );
 
 
-let rewardsClaimed =
-  JSON.parse(
-    localStorage.getItem(
-      "aqljangi_rewards_claimed"
-    ) || "[]"
-  );
+let vipDailyClaim =
+  localStorage.getItem(
+    "aqljangi_vip_daily"
+  ) || "";
 
 
 
@@ -1026,6 +1103,21 @@ function shuffle(array){
 
 
 /* =====================================================
+   VIP CHECK
+===================================================== */
+
+function isVip(){
+
+  return (
+    vipUntil >
+    Date.now()
+  );
+
+}
+
+
+
+/* =====================================================
    LOAD QUESTIONS
 ===================================================== */
 
@@ -1042,6 +1134,10 @@ async function loadQuestions(category){
   const selectFields =
     "question,option_a,option_b,option_c,option_d,correct_answer,category";
 
+
+  /* =========================
+     BIRINCHI SO‘ROV
+  ========================= */
 
   const url1 =
     SUPABASE_URL +
@@ -1082,6 +1178,10 @@ async function loadQuestions(category){
 
   }
 
+
+  /* =========================
+     IKKINCHI SO‘ROV
+  ========================= */
 
   if(
     !Array.isArray(data) ||
@@ -1136,6 +1236,10 @@ async function loadQuestions(category){
 
   }
 
+
+  /* =========================
+     TAKROR SAVOLLARNI OLIB TASHLASH
+  ========================= */
 
   const uniqueQuestions = [];
 
@@ -1496,6 +1600,15 @@ function checkAnswer(
     selected === correct
   ){
 
+    /*
+      Oddiy foydalanuvchi:
+      +10 ball
+
+      VIP:
+      +10 ball ham xuddi avvalgidek.
+      VIP qo‘shimcha ravishda 2 Coin beradi.
+    */
+
     currentScore += 10;
 
     correctAnswers++;
@@ -1606,7 +1719,79 @@ function nextQuestion(){
 
 
 /* =====================================================
-   SAVE GAME + REWARDS
+   VIP DAILY BONUS
+===================================================== */
+
+function claimVipDaily(){
+
+  if(!isVip()){
+
+    alert(
+      "👑 Bu bonus faqat VIP uchun."
+    );
+
+    return;
+
+  }
+
+
+  const today =
+    new Date()
+      .toISOString()
+      .slice(
+        0,
+        10
+      );
+
+
+  if(
+    vipDailyClaim ===
+    today
+  ){
+
+    alert(
+      "🎁 Bugungi VIP bonus allaqachon olingan."
+    );
+
+    return;
+
+  }
+
+
+  totalScore += 50;
+
+
+  vipDailyClaim =
+    today;
+
+
+  localStorage.setItem(
+    "aqljangi_total_score",
+    String(totalScore)
+  );
+
+
+  localStorage.setItem(
+    "aqljangi_vip_daily",
+    vipDailyClaim
+  );
+
+
+  alert(
+    "🎁 +50 ball olindi!"
+  );
+
+
+  renderRewards();
+
+  renderHistory();
+
+}
+
+
+
+/* =====================================================
+   SAVE GAME
 ===================================================== */
 
 function saveGame(){
@@ -1626,17 +1811,30 @@ function saveGame(){
 
 
   /*
-    Har bir to‘g‘ri javob:
-    +1 TOPQIR Coin
+    Oddiy:
+    1 to‘g‘ri javob = 1 Coin
+
+    VIP:
+    1 to‘g‘ri javob = 2 Coin
   */
 
-  coins +=
-    correctAnswers;
+  if(
+    isVip()
+  ){
+
+    coins +=
+      correctAnswers * 2;
+
+  }else{
+
+    coins +=
+      correctAnswers;
+
+  }
 
 
   /*
-    10/10 natija:
-    +10 bonus Coin
+    10/10 bonus
   */
 
   if(
@@ -1834,6 +2032,16 @@ function showResult(){
 
       🪙 TOPQIR Coin:
       <b>${coins}</b>
+
+      ${
+        isVip()
+          ? `
+            <br>
+            👑 VIP:
+            <b>Faol</b>
+          `
+          : ""
+      }
     `;
 
 
@@ -1863,15 +2071,6 @@ function claimReward(
 ){
 
   if(
-    rewardsClaimed.includes(type)
-  ){
-
-    return;
-
-  }
-
-
-  if(
     coins < cost
   ){
 
@@ -1884,46 +2083,89 @@ function claimReward(
   }
 
 
-  coins -= cost;
+  /*
+    5 ta HINT
+  */
 
+  if(
+    type === "hint5"
+  ){
 
-  rewardsClaimed.push(
-    type
-  );
+    coins -= 20;
+
+    hints += 5;
+
+  }
 
 
   /*
-    VIP 1 kun
+    1 KUN VIP
   */
 
   if(
     type === "vip1"
   ){
 
+    coins -= 50;
+
+
+    /*
+      24 soat
+    */
+
     vipUntil =
       Math.max(
         Date.now(),
         vipUntil
       ) +
-      86400000;
+      24 * 60 * 60 * 1000;
+
+
+    /*
+      5 ta hint
+    */
+
+    hints += 5;
+
+
+    /*
+      VIP kunlik bonus
+      yangi VIP muddati boshlanganida
+      bugungi bonus qayta olinadi
+    */
+
+    vipDailyClaim = "";
 
   }
 
 
   /*
-    VIP 7 kun
+    7 KUN VIP
   */
 
   if(
     type === "vip7"
   ){
 
+    coins -= 150;
+
+
     vipUntil =
       Math.max(
         Date.now(),
         vipUntil
       ) +
-      7 * 86400000;
+      7 * 24 * 60 * 60 * 1000;
+
+
+    /*
+      7 kun uchun 35 hint
+    */
+
+    hints += 35;
+
+
+    vipDailyClaim = "";
 
   }
 
@@ -1935,16 +2177,20 @@ function claimReward(
 
 
   localStorage.setItem(
-    "aqljangi_rewards_claimed",
-    JSON.stringify(
-      rewardsClaimed
-    )
+    "aqljangi_hints",
+    String(hints)
   );
 
 
   localStorage.setItem(
     "aqljangi_vip_until",
     String(vipUntil)
+  );
+
+
+  localStorage.setItem(
+    "aqljangi_vip_daily",
+    vipDailyClaim
   );
 
 
@@ -1961,8 +2207,7 @@ function claimReward(
 function renderRewards(){
 
   const vipActive =
-    vipUntil >
-    Date.now();
+    isVip();
 
 
   const box =
@@ -1970,6 +2215,26 @@ function renderRewards(){
       .getElementById(
         "rewardBox"
       );
+
+
+  let vipText =
+    "Coin orqali olish mumkin";
+
+
+  if(
+    vipActive
+  ){
+
+    vipText =
+      new Date(
+        vipUntil
+      )
+      .toLocaleString(
+        "uz-UZ"
+      ) +
+      " gacha";
+
+  }
 
 
   box.innerHTML =
@@ -1981,6 +2246,7 @@ function renderRewards(){
 
 
       <div class="reward-grid">
+
 
         <div class="reward-card">
 
@@ -2016,26 +2282,21 @@ function renderRewards(){
         >
 
           <b>
+
             👑
+
             ${
               vipActive
                 ? "VIP faol"
                 : "VIP"
             }
+
           </b>
+
 
           <span>
 
-            ${
-              vipActive
-                ? new Date(
-                    vipUntil
-                  ).toLocaleDateString(
-                    "uz-UZ"
-                  ) +
-                  " gacha"
-                : "Coin orqali olish mumkin"
-            }
+            ${vipText}
 
           </span>
 
@@ -2045,16 +2306,63 @@ function renderRewards(){
         <div class="reward-card">
 
           <b>
-            🏆 TOP
+            💡 ${hints}
           </b>
 
           <span>
-            Reyting tizimi
+            Hintlar
           </span>
 
         </div>
 
+
       </div>
+
+
+      ${
+        vipActive
+          ? `
+
+            <div class="vip-info">
+
+              👑 <b>VIP imkoniyatlari</b>
+
+              <br><br>
+
+              🪙 Har to‘g‘ri javob:
+              <b>2 Coin</b>
+
+              <br>
+
+              💡 VIP orqali:
+              <b>5 ta hint</b>
+
+              <br>
+
+              🎁 Kunlik bonus:
+              <b>+50 ball</b>
+
+            </div>
+
+          `
+          : ""
+      }
+
+
+      ${
+        vipActive
+          ? `
+
+            <button
+              class="btn"
+              onclick="claimVipDaily()"
+            >
+              🎁 Bugungi VIP bonus → +50 ball
+            </button>
+
+          `
+          : ""
+      }
 
 
       <button
