@@ -326,6 +326,115 @@ button{
 
 
 /* =========================
+   HINT BUTTON
+========================= */
+
+.hint-btn{
+  width:100%;
+  border:1px solid #6b55b5;
+  border-radius:16px;
+
+  padding:13px 15px;
+
+  margin-top:10px;
+
+  background:#211d3a;
+
+  color:#fff;
+
+  font-size:15px;
+  font-weight:800;
+
+  cursor:pointer;
+}
+
+.hint-btn:active{
+  transform:scale(.98);
+}
+
+.hint-btn:disabled{
+  opacity:.5;
+  cursor:default;
+}
+
+
+/* =========================
+   REWARD
+========================= */
+
+.reward-title{
+  text-align:center;
+  font-size:22px;
+  font-weight:900;
+  margin-bottom:14px;
+}
+
+.reward-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:9px;
+}
+
+.reward-box{
+  background:#1b1a2b;
+  border:1px solid #303047;
+  border-radius:15px;
+  padding:13px 8px;
+  text-align:center;
+  min-height:82px;
+}
+
+.reward-value{
+  font-size:23px;
+  font-weight:900;
+}
+
+.reward-label{
+  color:#aaa;
+  font-size:12px;
+  margin-top:4px;
+}
+
+.reward-btn{
+  width:100%;
+  border:0;
+  border-radius:16px;
+
+  padding:14px 12px;
+
+  margin-top:10px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #6d35ff,
+      #bd42ff
+    );
+
+  color:#fff;
+
+  font-size:15px;
+  font-weight:900;
+
+  cursor:pointer;
+}
+
+.reward-btn:active{
+  transform:scale(.98);
+}
+
+.reward-btn:disabled{
+  opacity:.45;
+  cursor:default;
+}
+
+.vip-active{
+  background:#251d3c;
+  border-color:#8d5cff;
+}
+
+
+/* =========================
    ERROR
 ========================= */
 
@@ -446,88 +555,6 @@ button{
 
 
 /* =========================
-   REWARDS
-========================= */
-
-.reward-title{
-  text-align:center;
-
-  font-size:20px;
-
-  font-weight:900;
-
-  margin-bottom:10px;
-}
-
-.reward-grid{
-  display:grid;
-
-  grid-template-columns:1fr 1fr;
-
-  gap:8px;
-
-  margin-top:10px;
-}
-
-.reward-card{
-  background:#1b1a2b;
-
-  border:1px solid #303047;
-
-  border-radius:14px;
-
-  padding:12px;
-
-  text-align:center;
-}
-
-.reward-card b{
-  display:block;
-
-  font-size:18px;
-
-  margin-bottom:4px;
-}
-
-.reward-card span{
-  color:#aaa;
-
-  font-size:12px;
-}
-
-.reward-card.vip{
-  background:#2b2346;
-
-  border-color:#8c5cff;
-}
-
-
-/* =========================
-   VIP INFO
-========================= */
-
-.vip-info{
-  margin-top:10px;
-
-  padding:12px;
-
-  border-radius:14px;
-
-  background:#211a39;
-
-  border:1px solid #7048c8;
-
-  text-align:center;
-
-  color:#ddd;
-
-  font-size:13px;
-
-  line-height:1.5;
-}
-
-
-/* =========================
    HELP
 ========================= */
 
@@ -641,6 +668,7 @@ button{
 
     <div class="categories">
 
+
       <button
         class="cat"
         data-category="Mantiq"
@@ -739,15 +767,119 @@ button{
   </div>
 
 
-  <!-- REWARDS -->
+  <!-- =========================
+       REWARDS
+  ========================= -->
 
-  <div
-    id="rewardBox"
-    class="card"
-  ></div>
+  <div class="card">
+
+    <div class="reward-title">
+      🎁 Mukofotlar
+    </div>
+
+    <div class="reward-grid">
+
+      <div class="reward-box">
+
+        <div
+          id="rewardScore"
+          class="reward-value"
+        >
+          ⭐ 0
+        </div>
+
+        <div class="reward-label">
+          Jami ball
+        </div>
+
+      </div>
 
 
-  <!-- HISTORY -->
+      <div class="reward-box">
+
+        <div
+          id="rewardCoins"
+          class="reward-value"
+        >
+          🪙 0
+        </div>
+
+        <div class="reward-label">
+          TOPQIR Coin
+        </div>
+
+      </div>
+
+
+      <div
+        id="vipBox"
+        class="reward-box"
+      >
+
+        <div
+          id="rewardVIP"
+          class="reward-value"
+        >
+          👑 VIP
+        </div>
+
+        <div
+          id="vipText"
+          class="reward-label"
+        >
+          Coin orqali olish mumkin
+        </div>
+
+      </div>
+
+
+      <div class="reward-box">
+
+        <div
+          id="rewardHints"
+          class="reward-value"
+        >
+          💡 0
+        </div>
+
+        <div class="reward-label">
+          Hint
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <button
+      id="buyHintsBtn"
+      class="reward-btn"
+    >
+      💡 20 Coin → 5 ta hint
+    </button>
+
+
+    <button
+      id="buyVip1Btn"
+      class="reward-btn"
+    >
+      👑 50 Coin → 1 kun VIP
+    </button>
+
+
+    <button
+      id="buyVip7Btn"
+      class="reward-btn"
+    >
+      👑 150 Coin → 7 kun VIP
+    </button>
+
+  </div>
+
+
+  <!-- =========================
+       HISTORY
+  ========================= -->
 
   <div
     id="historyBox"
@@ -830,6 +962,14 @@ button{
 
 
     <div id="options"></div>
+
+
+    <button
+      id="hintBtn"
+      class="hint-btn"
+    >
+      💡 Hint ishlatish (0)
+    </button>
 
 
     <button
@@ -943,7 +1083,6 @@ if(tg){
 }
 
 
-
 /* =====================================================
    SUPABASE
 ===================================================== */
@@ -957,7 +1096,6 @@ const SUPABASE_KEY =
 
 
 const GAME_SIZE = 10;
-
 
 
 /* =====================================================
@@ -975,7 +1113,6 @@ let correctAnswers = 0;
 let answered = false;
 
 let selectedCategory = "";
-
 
 
 /* =====================================================
@@ -996,7 +1133,6 @@ let totalScore =
       "aqljangi_total_score"
     ) || 0
   );
-
 
 
 /* =====================================================
@@ -1027,11 +1163,364 @@ let vipUntil =
   );
 
 
-let vipDailyClaim =
-  localStorage.getItem(
-    "aqljangi_vip_daily"
-  ) || "";
+let claimedCoinMilestones =
+  JSON.parse(
+    localStorage.getItem(
+      "aqljangi_coin_milestones"
+    ) || "[]"
+  );
 
+
+let hintUsed = false;
+
+
+/* =====================================================
+   SAVE REWARD DATA
+===================================================== */
+
+function saveRewards(){
+
+  localStorage.setItem(
+    "aqljangi_coins",
+    String(coins)
+  );
+
+  localStorage.setItem(
+    "aqljangi_hints",
+    String(hints)
+  );
+
+  localStorage.setItem(
+    "aqljangi_vip_until",
+    String(vipUntil)
+  );
+
+  localStorage.setItem(
+    "aqljangi_coin_milestones",
+    JSON.stringify(
+      claimedCoinMilestones
+    )
+  );
+
+}
+
+
+/* =====================================================
+   VIP STATUS
+===================================================== */
+
+function isVIP(){
+
+  return (
+    vipUntil > Date.now()
+  );
+
+}
+
+
+function vipText(){
+
+  if(!isVIP()){
+    return "Coin orqali olish mumkin";
+  }
+
+
+  const remaining =
+    Math.ceil(
+      (
+        vipUntil -
+        Date.now()
+      ) /
+      (
+        24 *
+        60 *
+        60 *
+        1000
+      )
+    );
+
+
+  return (
+    "Faol: " +
+    remaining +
+    " kun"
+  );
+
+}
+
+
+/* =====================================================
+   UPDATE REWARD UI
+===================================================== */
+
+function renderRewards(){
+
+  document
+    .getElementById("rewardScore")
+    .textContent =
+    "⭐ " +
+    totalScore;
+
+
+  document
+    .getElementById("rewardCoins")
+    .textContent =
+    "🪙 " +
+    coins;
+
+
+  document
+    .getElementById("rewardHints")
+    .textContent =
+    "💡 " +
+    hints;
+
+
+  document
+    .getElementById("vipText")
+    .textContent =
+    vipText();
+
+
+  const vipBox =
+    document
+      .getElementById("vipBox");
+
+
+  if(isVIP()){
+
+    vipBox.classList
+      .add("vip-active");
+
+  }else{
+
+    vipBox.classList
+      .remove("vip-active");
+
+  }
+
+
+  document
+    .getElementById("buyHintsBtn")
+    .disabled =
+    coins < 20;
+
+
+  document
+    .getElementById("buyVip1Btn")
+    .disabled =
+    coins < 50;
+
+
+  document
+    .getElementById("buyVip7Btn")
+    .disabled =
+    coins < 150;
+
+}
+
+
+/* =====================================================
+   COIN MILESTONES
+===================================================== */
+
+function checkCoinRewards(){
+
+  /*
+    Har 1000 ball uchun 10 Coin.
+  */
+
+  const milestones =
+    Math.floor(
+      totalScore / 1000
+    );
+
+
+  for(
+    let i = 1;
+    i <= milestones;
+    i++
+  ){
+
+    if(
+      !claimedCoinMilestones
+        .includes(i)
+    ){
+
+      coins += 10;
+
+      claimedCoinMilestones
+        .push(i);
+
+    }
+
+  }
+
+
+  saveRewards();
+
+  renderRewards();
+
+}
+
+
+/* =====================================================
+   BUY HINTS
+===================================================== */
+
+function buyHints(){
+
+  if(coins < 20){
+
+    alert(
+      "❌ 5 ta hint olish uchun 20 Coin kerak."
+    );
+
+    return;
+
+  }
+
+
+  coins -= 20;
+
+  hints += 5;
+
+  saveRewards();
+
+  renderRewards();
+
+
+  if(
+    tg &&
+    tg.HapticFeedback
+  ){
+
+    tg.HapticFeedback
+      .notificationOccurred(
+        "success"
+      );
+
+  }
+
+}
+
+
+/* =====================================================
+   BUY VIP 1 DAY
+===================================================== */
+
+function buyVIP1(){
+
+  if(coins < 50){
+
+    alert(
+      "❌ 1 kun VIP olish uchun 50 Coin kerak."
+    );
+
+    return;
+
+  }
+
+
+  coins -= 50;
+
+
+  const now =
+    Date.now();
+
+
+  if(
+    vipUntil > now
+  ){
+
+    vipUntil +=
+      24 *
+      60 *
+      60 *
+      1000;
+
+  }else{
+
+    vipUntil =
+      now +
+      24 *
+      60 *
+      60 *
+      1000;
+
+  }
+
+
+  saveRewards();
+
+  renderRewards();
+
+
+  alert(
+    "👑 1 kunlik VIP faollashtirildi!"
+  );
+
+}
+
+
+/* =====================================================
+   BUY VIP 7 DAYS
+===================================================== */
+
+function buyVIP7(){
+
+  if(coins < 150){
+
+    alert(
+      "❌ 7 kun VIP olish uchun 150 Coin kerak."
+    );
+
+    return;
+
+  }
+
+
+  coins -= 150;
+
+
+  const now =
+    Date.now();
+
+
+  if(
+    vipUntil > now
+  ){
+
+    vipUntil +=
+      7 *
+      24 *
+      60 *
+      60 *
+      1000;
+
+  }else{
+
+    vipUntil =
+      now +
+      7 *
+      24 *
+      60 *
+      60 *
+      1000;
+
+  }
+
+
+  saveRewards();
+
+  renderRewards();
+
+
+  alert(
+    "👑 7 kunlik VIP faollashtirildi!"
+  );
+
+}
 
 
 /* =====================================================
@@ -1061,7 +1550,6 @@ function escapeHTML(value){
     );
 
 }
-
 
 
 /* =====================================================
@@ -1101,22 +1589,6 @@ function shuffle(array){
 }
 
 
-
-/* =====================================================
-   VIP CHECK
-===================================================== */
-
-function isVip(){
-
-  return (
-    vipUntil >
-    Date.now()
-  );
-
-}
-
-
-
 /* =====================================================
    LOAD QUESTIONS
 ===================================================== */
@@ -1134,10 +1606,6 @@ async function loadQuestions(category){
   const selectFields =
     "question,option_a,option_b,option_c,option_d,correct_answer,category";
 
-
-  /* =========================
-     BIRINCHI SO‘ROV
-  ========================= */
 
   const url1 =
     SUPABASE_URL +
@@ -1178,10 +1646,6 @@ async function loadQuestions(category){
 
   }
 
-
-  /* =========================
-     IKKINCHI SO‘ROV
-  ========================= */
 
   if(
     !Array.isArray(data) ||
@@ -1236,10 +1700,6 @@ async function loadQuestions(category){
 
   }
 
-
-  /* =========================
-     TAKROR SAVOLLARNI OLIB TASHLASH
-  ========================= */
 
   const uniqueQuestions = [];
 
@@ -1305,7 +1765,6 @@ async function loadQuestions(category){
   );
 
 }
-
 
 
 /* =====================================================
@@ -1424,7 +1883,6 @@ async function startGame(category){
 }
 
 
-
 /* =====================================================
    SHOW QUESTION
 ===================================================== */
@@ -1432,6 +1890,8 @@ async function startGame(category){
 function showQuestion(){
 
   answered = false;
+
+  hintUsed = false;
 
 
   const q =
@@ -1540,8 +2000,131 @@ function showQuestion(){
     .classList
     .add("hide");
 
+
+  updateHintButton();
+
 }
 
+
+/* =====================================================
+   UPDATE HINT BUTTON
+===================================================== */
+
+function updateHintButton(){
+
+  const btn =
+    document
+      .getElementById("hintBtn");
+
+
+  btn.textContent =
+    "💡 Hint ishlatish (" +
+    hints +
+    ")";
+
+
+  btn.disabled =
+    hints <= 0 ||
+    hintUsed ||
+    answered;
+
+}
+
+
+/* =====================================================
+   USE HINT
+===================================================== */
+
+function useHint(){
+
+  if(answered){
+    return;
+  }
+
+
+  if(hintUsed){
+    return;
+  }
+
+
+  if(hints <= 0){
+
+    alert(
+      "❌ Sizda hint qolmagan."
+    );
+
+    return;
+
+  }
+
+
+  const q =
+    questions[
+      currentQuestion
+    ];
+
+
+  const correct =
+    String(
+      q.correct_answer || ""
+    )
+    .trim()
+    .toUpperCase();
+
+
+  const wrongButtons =
+    Array.from(
+      document
+        .querySelectorAll(".option")
+    )
+    .filter(
+      button =>
+        button.dataset.key !== correct
+    );
+
+
+  shuffle(
+    wrongButtons
+  )
+  .slice(
+    0,
+    2
+  )
+  .forEach(
+    button => {
+
+      button.style.display =
+        "none";
+
+    }
+  );
+
+
+  hints--;
+
+  hintUsed = true;
+
+
+  saveRewards();
+
+  updateHintButton();
+
+  renderRewards();
+
+
+  if(
+    tg &&
+    tg.HapticFeedback
+  ){
+
+    tg.HapticFeedback
+      .notificationOccurred(
+        "success"
+      );
+
+  }
+
+}
 
 
 /* =====================================================
@@ -1599,15 +2182,6 @@ function checkAnswer(
   if(
     selected === correct
   ){
-
-    /*
-      Oddiy foydalanuvchi:
-      +10 ball
-
-      VIP:
-      +10 ball ham xuddi avvalgidek.
-      VIP qo‘shimcha ravishda 2 Coin beradi.
-    */
 
     currentScore += 10;
 
@@ -1670,6 +2244,9 @@ function checkAnswer(
     .remove("hide");
 
 
+  updateHintButton();
+
+
   if(
     tg &&
     tg.HapticFeedback
@@ -1685,7 +2262,6 @@ function checkAnswer(
   }
 
 }
-
 
 
 /* =====================================================
@@ -1717,88 +2293,11 @@ function nextQuestion(){
 }
 
 
-
 /* =====================================================
-   VIP DAILY BONUS
-===================================================== */
-
-function claimVipDaily(){
-
-  if(!isVip()){
-
-    alert(
-      "👑 Bu bonus faqat VIP uchun."
-    );
-
-    return;
-
-  }
-
-
-  const today =
-    new Date()
-      .toISOString()
-      .slice(
-        0,
-        10
-      );
-
-
-  if(
-    vipDailyClaim ===
-    today
-  ){
-
-    alert(
-      "🎁 Bugungi VIP bonus allaqachon olingan."
-    );
-
-    return;
-
-  }
-
-
-  totalScore += 50;
-
-
-  vipDailyClaim =
-    today;
-
-
-  localStorage.setItem(
-    "aqljangi_total_score",
-    String(totalScore)
-  );
-
-
-  localStorage.setItem(
-    "aqljangi_vip_daily",
-    vipDailyClaim
-  );
-
-
-  alert(
-    "🎁 +50 ball olindi!"
-  );
-
-
-  renderRewards();
-
-  renderHistory();
-
-}
-
-
-
-/* =====================================================
-   SAVE GAME
+   SAVE HISTORY
 ===================================================== */
 
 function saveGame(){
-
-  const oldScore =
-    totalScore;
-
 
   totalScore +=
     currentScore;
@@ -1807,90 +2306,6 @@ function saveGame(){
   localStorage.setItem(
     "aqljangi_total_score",
     String(totalScore)
-  );
-
-
-  /*
-    Oddiy:
-    1 to‘g‘ri javob = 1 Coin
-
-    VIP:
-    1 to‘g‘ri javob = 2 Coin
-  */
-
-  if(
-    isVip()
-  ){
-
-    coins +=
-      correctAnswers * 2;
-
-  }else{
-
-    coins +=
-      correctAnswers;
-
-  }
-
-
-  /*
-    10/10 bonus
-  */
-
-  if(
-    correctAnswers ===
-    questions.length
-  ){
-
-    coins += 10;
-
-  }
-
-
-  /*
-    Ball chegaralariga bonus
-  */
-
-  const scoreRewards = [
-
-    {
-      score:1000,
-      coins:10
-    },
-
-    {
-      score:5000,
-      coins:60
-    },
-
-    {
-      score:10000,
-      coins:150
-    }
-
-  ];
-
-
-  for(
-    const reward of scoreRewards
-  ){
-
-    if(
-      oldScore < reward.score &&
-      totalScore >= reward.score
-    ){
-
-      coins +=
-        reward.coins;
-
-    }
-
-  }
-
-
-  localStorage.setItem(
-    "aqljangi_coins",
-    String(coins)
   );
 
 
@@ -1936,8 +2351,10 @@ function saveGame(){
     )
   );
 
-}
 
+  checkCoinRewards();
+
+}
 
 
 /* =====================================================
@@ -2027,21 +2444,14 @@ function showResult(){
 
       🏆 O‘yinlardan jami:
       <b>${totalScore} ball</b>
-
-      <br>
+      <br><br>
 
       🪙 TOPQIR Coin:
       <b>${coins}</b>
+      <br>
 
-      ${
-        isVip()
-          ? `
-            <br>
-            👑 VIP:
-            <b>Faol</b>
-          `
-          : ""
-      }
+      💡 Hint:
+      <b>${hints}</b>
     `;
 
 
@@ -2054,359 +2464,7 @@ function showResult(){
 
   }
 
-
-  renderRewards();
-
 }
-
-
-
-/* =====================================================
-   CLAIM REWARD
-===================================================== */
-
-function claimReward(
-  cost,
-  type
-){
-
-  if(
-    coins < cost
-  ){
-
-    alert(
-      "🪙 Coin yetarli emas."
-    );
-
-    return;
-
-  }
-
-
-  /*
-    5 ta HINT
-  */
-
-  if(
-    type === "hint5"
-  ){
-
-    coins -= 20;
-
-    hints += 5;
-
-  }
-
-
-  /*
-    1 KUN VIP
-  */
-
-  if(
-    type === "vip1"
-  ){
-
-    coins -= 50;
-
-
-    /*
-      24 soat
-    */
-
-    vipUntil =
-      Math.max(
-        Date.now(),
-        vipUntil
-      ) +
-      24 * 60 * 60 * 1000;
-
-
-    /*
-      5 ta hint
-    */
-
-    hints += 5;
-
-
-    /*
-      VIP kunlik bonus
-      yangi VIP muddati boshlanganida
-      bugungi bonus qayta olinadi
-    */
-
-    vipDailyClaim = "";
-
-  }
-
-
-  /*
-    7 KUN VIP
-  */
-
-  if(
-    type === "vip7"
-  ){
-
-    coins -= 150;
-
-
-    vipUntil =
-      Math.max(
-        Date.now(),
-        vipUntil
-      ) +
-      7 * 24 * 60 * 60 * 1000;
-
-
-    /*
-      7 kun uchun 35 hint
-    */
-
-    hints += 35;
-
-
-    vipDailyClaim = "";
-
-  }
-
-
-  localStorage.setItem(
-    "aqljangi_coins",
-    String(coins)
-  );
-
-
-  localStorage.setItem(
-    "aqljangi_hints",
-    String(hints)
-  );
-
-
-  localStorage.setItem(
-    "aqljangi_vip_until",
-    String(vipUntil)
-  );
-
-
-  localStorage.setItem(
-    "aqljangi_vip_daily",
-    vipDailyClaim
-  );
-
-
-  renderRewards();
-
-}
-
-
-
-/* =====================================================
-   RENDER REWARDS
-===================================================== */
-
-function renderRewards(){
-
-  const vipActive =
-    isVip();
-
-
-  const box =
-    document
-      .getElementById(
-        "rewardBox"
-      );
-
-
-  let vipText =
-    "Coin orqali olish mumkin";
-
-
-  if(
-    vipActive
-  ){
-
-    vipText =
-      new Date(
-        vipUntil
-      )
-      .toLocaleString(
-        "uz-UZ"
-      ) +
-      " gacha";
-
-  }
-
-
-  box.innerHTML =
-    `
-
-      <div class="reward-title">
-        🎁 Mukofotlar
-      </div>
-
-
-      <div class="reward-grid">
-
-
-        <div class="reward-card">
-
-          <b>
-            ⭐ ${totalScore}
-          </b>
-
-          <span>
-            Jami ball
-          </span>
-
-        </div>
-
-
-        <div class="reward-card">
-
-          <b>
-            🪙 ${coins}
-          </b>
-
-          <span>
-            TOPQIR Coin
-          </span>
-
-        </div>
-
-
-        <div
-          class="
-            reward-card
-            ${vipActive ? "vip" : ""}
-          "
-        >
-
-          <b>
-
-            👑
-
-            ${
-              vipActive
-                ? "VIP faol"
-                : "VIP"
-            }
-
-          </b>
-
-
-          <span>
-
-            ${vipText}
-
-          </span>
-
-        </div>
-
-
-        <div class="reward-card">
-
-          <b>
-            💡 ${hints}
-          </b>
-
-          <span>
-            Hintlar
-          </span>
-
-        </div>
-
-
-      </div>
-
-
-      ${
-        vipActive
-          ? `
-
-            <div class="vip-info">
-
-              👑 <b>VIP imkoniyatlari</b>
-
-              <br><br>
-
-              🪙 Har to‘g‘ri javob:
-              <b>2 Coin</b>
-
-              <br>
-
-              💡 VIP orqali:
-              <b>5 ta hint</b>
-
-              <br>
-
-              🎁 Kunlik bonus:
-              <b>+50 ball</b>
-
-            </div>
-
-          `
-          : ""
-      }
-
-
-      ${
-        vipActive
-          ? `
-
-            <button
-              class="btn"
-              onclick="claimVipDaily()"
-            >
-              🎁 Bugungi VIP bonus → +50 ball
-            </button>
-
-          `
-          : ""
-      }
-
-
-      <button
-        class="btn"
-        onclick="
-          claimReward(
-            20,
-            'hint5'
-          )
-        "
-      >
-        💡 20 Coin → 5 ta hint
-      </button>
-
-
-      <button
-        class="btn"
-        onclick="
-          claimReward(
-            50,
-            'vip1'
-          )
-        "
-      >
-        👑 50 Coin → 1 kun VIP
-      </button>
-
-
-      <button
-        class="btn"
-        onclick="
-          claimReward(
-            150,
-            'vip7'
-          )
-        "
-      >
-        👑 150 Coin → 7 kun VIP
-      </button>
-
-    `;
-
-}
-
 
 
 /* =====================================================
@@ -2450,7 +2508,6 @@ function goHome(){
 }
 
 
-
 /* =====================================================
    RENDER HISTORY
 ===================================================== */
@@ -2470,15 +2527,9 @@ function renderHistory(){
       📊 O‘yin tarixi
     </div>
 
-
     <div class="total-score">
-
       🏆 O‘yinlardan jami:
-
-      <b>
-        ${totalScore} ball
-      </b>
-
+      <b>${totalScore} ball</b>
     </div>
 
   `;
@@ -2506,10 +2557,7 @@ function renderHistory(){
   }else{
 
     gameHistory.forEach(
-      function(
-        game,
-        index
-      ){
+      function(game,index){
 
         html += `
 
@@ -2518,29 +2566,21 @@ function renderHistory(){
             <div class="history-row">
 
               <b>
-
                 ${index + 1}.
-
                 ${escapeHTML(
                   game.category
                 )}
-
               </b>
 
-
               <b>
-
                 ⭐ ${game.score}
-
               </b>
 
             </div>
 
-
             <div class="history-small">
 
               ✅
-
               ${game.correct}/${game.total}
 
               &nbsp; • &nbsp;
@@ -2567,7 +2607,6 @@ function renderHistory(){
 }
 
 
-
 /* =====================================================
    CATEGORY BUTTONS
 ===================================================== */
@@ -2592,7 +2631,6 @@ document
   );
 
 
-
 /* =====================================================
    NEXT BUTTON
 ===================================================== */
@@ -2603,7 +2641,6 @@ document
     "click",
     nextQuestion
   );
-
 
 
 /* =====================================================
@@ -2617,6 +2654,45 @@ document
     goHome
   );
 
+
+/* =====================================================
+   HINT BUTTON
+===================================================== */
+
+document
+  .getElementById("hintBtn")
+  .addEventListener(
+    "click",
+    useHint
+  );
+
+
+/* =====================================================
+   REWARD BUTTONS
+===================================================== */
+
+document
+  .getElementById("buyHintsBtn")
+  .addEventListener(
+    "click",
+    buyHints
+  );
+
+
+document
+  .getElementById("buyVip1Btn")
+  .addEventListener(
+    "click",
+    buyVIP1
+  );
+
+
+document
+  .getElementById("buyVip7Btn")
+  .addEventListener(
+    "click",
+    buyVIP7
+  );
 
 
 /* =====================================================
@@ -2637,7 +2713,6 @@ document
   );
 
 
-
 /* =====================================================
    CATEGORY
 ===================================================== */
@@ -2650,9 +2725,8 @@ document
   );
 
 
-
 /* =====================================================
-   START
+   INITIAL
 ===================================================== */
 
 renderHistory();
