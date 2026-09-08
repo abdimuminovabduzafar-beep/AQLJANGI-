@@ -32,13 +32,8 @@ body{
   "Segoe UI",Arial,sans-serif;
 }
 
-button,
-input{
-  font-family:inherit;
-}
-
 button{
-  cursor:pointer;
+  font-family:inherit;
 }
 
 .hide{
@@ -82,7 +77,7 @@ button{
 
 
 /* =========================
-   BADGES
+   STAT BADGES
 ========================= */
 
 .badges{
@@ -153,6 +148,8 @@ button{
   font-size:14px;
   font-weight:800;
 
+  cursor:pointer;
+
   transition:
     transform .15s,
     background .15s;
@@ -191,6 +188,8 @@ button{
 
   font-size:16px;
   font-weight:800;
+
+  cursor:pointer;
 }
 
 .btn:active{
@@ -199,133 +198,6 @@ button{
 
 .back-btn{
   background:#282641;
-}
-
-
-/* =========================
-   REWARD
-========================= */
-
-.reward-title{
-  text-align:center;
-  font-size:28px;
-  font-weight:900;
-  margin-bottom:16px;
-}
-
-.reward-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-}
-
-.reward-box{
-  background:#1b1a2b;
-  border:1px solid #303047;
-  border-radius:16px;
-  padding:15px 8px;
-  text-align:center;
-  min-height:105px;
-}
-
-.reward-value{
-  font-size:28px;
-  font-weight:900;
-}
-
-.reward-label{
-  color:#aaa;
-  margin-top:5px;
-  font-size:13px;
-}
-
-.reward-btn{
-  width:100%;
-  border:0;
-  border-radius:16px;
-
-  padding:14px 10px;
-  margin-top:10px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #7136ff,
-      #c440ff
-    );
-
-  color:#fff;
-
-  font-size:15px;
-  font-weight:800;
-}
-
-.reward-btn:disabled{
-  opacity:.45;
-}
-
-
-/* =========================
-   BALANCE
-========================= */
-
-.balance-main{
-  text-align:center;
-  padding:8px 0 12px;
-}
-
-.balance-money{
-  font-size:42px;
-  font-weight:900;
-  margin:8px 0;
-}
-
-.balance-small{
-  color:#aaa;
-  font-size:13px;
-}
-
-.balance-input{
-  width:100%;
-  background:#1b1a2b;
-  border:1px solid #3b3858;
-  color:#fff;
-
-  border-radius:14px;
-  padding:14px;
-
-  margin-top:10px;
-
-  font-size:16px;
-  outline:none;
-}
-
-.balance-input:focus{
-  border-color:#8744ff;
-}
-
-.withdraw-info{
-  background:#211d3a;
-  border:1px solid #383157;
-  border-radius:14px;
-
-  padding:13px;
-  margin-top:12px;
-
-  color:#ddd;
-  font-size:13px;
-  line-height:1.5;
-}
-
-.success{
-  margin-top:12px;
-  padding:13px;
-  border-radius:14px;
-
-  background:#123c2a;
-  border:1px solid #35d58a;
-
-  color:#d9ffed;
 }
 
 
@@ -429,6 +301,8 @@ button{
 
   line-height:1.35;
 
+  cursor:pointer;
+
   transition:.15s;
 }
 
@@ -452,31 +326,32 @@ button{
 
 
 /* =========================
-   HINT
+   HINT BUTTON
 ========================= */
 
-.hint-row{
-  display:flex;
-  gap:8px;
-  margin-top:12px;
-}
+.hint-game-btn{
+  width:100%;
+  border:1px solid #51477d;
+  background:#211d3d;
+  color:#fff;
 
-.hint-btn{
-  flex:1;
-
-  border:1px solid #493e70;
   border-radius:14px;
 
-  padding:12px;
+  padding:10px;
 
-  background:#211d3a;
-  color:#fff;
+  margin-top:10px;
 
   font-size:14px;
   font-weight:800;
+
+  cursor:pointer;
 }
 
-.hint-btn:disabled{
+.hint-game-btn:active{
+  transform:scale(.98);
+}
+
+.hint-game-btn:disabled{
   opacity:.45;
 }
 
@@ -547,14 +422,6 @@ button{
    HISTORY
 ========================= */
 
-.history-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-
-  cursor:pointer;
-}
-
 .history-title{
   text-align:center;
 
@@ -562,10 +429,6 @@ button{
   font-weight:900;
 
   margin-bottom:10px;
-}
-
-.history-arrow{
-  font-size:20px;
 }
 
 .total-score{
@@ -610,6 +473,209 @@ button{
   color:#999;
   font-size:12px;
   margin-top:5px;
+}
+
+
+/* =========================
+   HISTORY COLLAPSE
+========================= */
+
+.history-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  cursor:pointer;
+
+  padding:3px 0;
+}
+
+.history-arrow{
+  font-size:20px;
+  transition:.2s;
+}
+
+.history-content{
+  margin-top:10px;
+}
+
+.history-content.closed{
+  display:none;
+}
+
+
+/* =========================
+   REWARDS
+========================= */
+
+.rewards-card{
+  padding:12px;
+  margin-top:10px;
+  border-radius:18px;
+}
+
+.reward-title{
+  text-align:center;
+
+  font-size:24px;
+  font-weight:900;
+
+  margin-bottom:10px;
+}
+
+.reward-grid{
+  display:grid;
+
+  grid-template-columns:1fr 1fr;
+
+  gap:7px;
+}
+
+.reward-box{
+  background:#1b1a2b;
+
+  border:1px solid #303047;
+
+  border-radius:14px;
+
+  padding:9px;
+
+  min-height:62px;
+
+  text-align:center;
+}
+
+.reward-value{
+  font-size:22px;
+  font-weight:900;
+}
+
+.reward-label{
+  color:#aaa;
+  font-size:11px;
+  margin-top:3px;
+}
+
+.reward-btn{
+  width:100%;
+
+  border:0;
+
+  border-radius:13px;
+
+  padding:10px 12px;
+
+  margin-top:7px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #6d35ff,
+      #bd42ff
+    );
+
+  color:#fff;
+
+  font-size:14px;
+  font-weight:800;
+
+  cursor:pointer;
+}
+
+.reward-btn:disabled{
+  opacity:.45;
+  cursor:not-allowed;
+}
+
+.reward-message{
+  margin-top:8px;
+
+  padding:9px;
+
+  border-radius:12px;
+
+  background:#211d3a;
+
+  border:1px solid #383157;
+
+  text-align:center;
+
+  color:#ddd;
+
+  font-size:13px;
+}
+
+
+/* =========================
+   BALANCE PAGE
+========================= */
+
+.balance-card{
+  text-align:center;
+}
+
+.balance-title{
+  font-size:25px;
+  font-weight:900;
+  margin-bottom:15px;
+}
+
+.balance-main{
+  font-size:42px;
+  font-weight:900;
+  margin:10px 0;
+}
+
+.balance-sub{
+  color:#aaa;
+  font-size:14px;
+}
+
+.balance-box{
+  background:#1b1a2b;
+
+  border:1px solid #303047;
+
+  border-radius:15px;
+
+  padding:14px;
+
+  margin-top:10px;
+
+  text-align:left;
+
+  font-size:14px;
+}
+
+.withdraw-btn{
+  width:100%;
+
+  border:0;
+
+  border-radius:15px;
+
+  padding:14px;
+
+  margin-top:12px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #6d35ff,
+      #bd42ff
+    );
+
+  color:#fff;
+
+  font-size:16px;
+
+  font-weight:900;
+
+  cursor:pointer;
+}
+
+.withdraw-btn:disabled{
+  opacity:.45;
 }
 
 
@@ -662,6 +728,14 @@ button{
     padding:13px 11px;
   }
 
+  .reward-title{
+    font-size:21px;
+  }
+
+  .balance-main{
+    font-size:35px;
+  }
+
 }
 
 </style>
@@ -673,9 +747,9 @@ button{
 <div class="container">
 
 
-<!-- =====================================================
+<!-- =========================
      HOME
-===================================================== -->
+========================= -->
 
 <section id="home">
 
@@ -700,7 +774,7 @@ button{
       </div>
 
       <div class="badge">
-        ⭐ 12 ball
+        ⭐ 120 ballgacha
       </div>
 
       <div class="badge">
@@ -712,7 +786,9 @@ button{
   </div>
 
 
-  <!-- CATEGORIES -->
+  <!-- =========================
+       CATEGORIES
+  ========================= -->
 
   <div class="card">
 
@@ -723,6 +799,7 @@ button{
     <div class="category-sub">
       O‘zingiz xohlagan kategoriyani tanlang
     </div>
+
 
     <div class="categories">
 
@@ -783,24 +860,22 @@ button{
   </div>
 
 
-  <!-- =================================================
+  <!-- =========================
        REWARDS
-  ================================================== -->
+  ========================= -->
 
-  <div class="card">
+  <div class="card rewards-card">
 
     <div class="reward-title">
       🎁 Mukofotlar
     </div>
 
+
     <div class="reward-grid">
 
       <div class="reward-box">
-        <div
-          id="rewardScore"
-          class="reward-value"
-        >
-          ⭐ 0
+        <div class="reward-value">
+          ⭐ <span id="rewardPoints">0</span>
         </div>
 
         <div class="reward-label">
@@ -810,11 +885,8 @@ button{
 
 
       <div class="reward-box">
-        <div
-          id="rewardCoins"
-          class="reward-value"
-        >
-          🪙 0
+        <div class="reward-value">
+          🪙 <span id="rewardCoins">0</span>
         </div>
 
         <div class="reward-label">
@@ -824,25 +896,19 @@ button{
 
 
       <div class="reward-box">
-        <div
-          id="rewardVip"
-          class="reward-value"
-        >
-          👑 VIP
+        <div class="reward-value">
+          👑 <span id="rewardVip">Yo‘q</span>
         </div>
 
         <div class="reward-label">
-          Coin orqali olish mumkin
+          VIP
         </div>
       </div>
 
 
       <div class="reward-box">
-        <div
-          id="rewardHints"
-          class="reward-value"
-        >
-          💡 0
+        <div class="reward-value">
+          💡 <span id="rewardHints">0</span>
         </div>
 
         <div class="reward-label">
@@ -862,7 +928,7 @@ button{
 
 
     <button
-      id="vip1Btn"
+      id="coinVip1Btn"
       class="reward-btn"
     >
       👑 50 Coin → 1 kun VIP
@@ -870,7 +936,7 @@ button{
 
 
     <button
-      id="vip7Btn"
+      id="coinVip7Btn"
       class="reward-btn"
     >
       👑 150 Coin → 7 kun VIP
@@ -884,12 +950,18 @@ button{
       💰 Balansimni ko‘rish
     </button>
 
+
+    <div
+      id="rewardMessage"
+      class="reward-message hide"
+    ></div>
+
   </div>
 
 
-  <!-- =================================================
+  <!-- =========================
        HISTORY
-  ================================================== -->
+  ========================= -->
 
   <div
     id="historyBox"
@@ -906,118 +978,9 @@ button{
 
 
 
-<!-- =====================================================
-     BALANCE PAGE
-===================================================== -->
-
-<section
-  id="balancePage"
-  class="hide"
->
-
-  <button
-    id="balanceBackBtn"
-    class="btn back-btn"
-  >
-    ↩️ Orqaga
-  </button>
-
-
-  <div class="card">
-
-    <div class="reward-title">
-      💰 Balans
-    </div>
-
-
-    <div class="balance-main">
-
-      <div class="balance-small">
-        Sizning ballaringiz
-      </div>
-
-      <div
-        id="balancePoints"
-        class="balance-money"
-      >
-        ⭐ 0
-      </div>
-
-      <div class="balance-small">
-        1 ball = 1 so‘m
-      </div>
-
-      <div
-        id="balanceMoney"
-        class="balance-money"
-      >
-        0 so‘m
-      </div>
-
-    </div>
-
-
-    <div class="withdraw-info">
-      💵 Minimal pul chiqarish:
-      <b>50 000 so‘m</b><br><br>
-
-      ⭐ 50 000 ball =
-      <b>50 000 so‘m</b><br><br>
-
-      Pul chiqarish uchun balansingiz kamida
-      50 000 ball bo‘lishi kerak.
-    </div>
-
-
-    <input
-      id="cardNumber"
-      class="balance-input"
-      type="text"
-      inputmode="numeric"
-      maxlength="19"
-      placeholder="💳 Karta raqami"
-    >
-
-
-    <input
-      id="cardOwner"
-      class="balance-input"
-      type="text"
-      maxlength="100"
-      placeholder="👤 Karta egasi"
-    >
-
-
-    <input
-      id="withdrawAmount"
-      class="balance-input"
-      type="number"
-      min="50000"
-      placeholder="💵 Summa"
-    >
-
-
-    <button
-      id="withdrawBtn"
-      class="btn"
-    >
-      💸 Pul chiqarish
-    </button>
-
-
-    <div
-      id="withdrawMessage"
-    ></div>
-
-  </div>
-
-</section>
-
-
-
-<!-- =====================================================
+<!-- =========================
      GAME
-===================================================== -->
+========================= -->
 
 <section
   id="game"
@@ -1081,16 +1044,12 @@ button{
     <div id="options"></div>
 
 
-    <div class="hint-row">
-
-      <button
-        id="hintBtn"
-        class="hint-btn"
-      >
-        💡 Hint (<span id="hintCount">0</span>)
-      </button>
-
-    </div>
+    <button
+      id="hintGameBtn"
+      class="hint-game-btn"
+    >
+      💡 Hint ishlatish (<span id="gameHintCount">0</span>)
+    </button>
 
 
     <button
@@ -1106,9 +1065,9 @@ button{
 
 
 
-<!-- =====================================================
+<!-- =========================
      RESULT
-===================================================== -->
+========================= -->
 
 <section
   id="result"
@@ -1175,8 +1134,104 @@ button{
 </section>
 
 
-</div>
 
+<!-- =========================
+     BALANCE
+========================= -->
+
+<section
+  id="balance"
+  class="hide"
+>
+
+  <button
+    id="balanceBackBtn"
+    class="btn back-btn"
+  >
+    ↩️ Orqaga
+  </button>
+
+
+  <div class="card balance-card">
+
+    <div class="balance-title">
+      💰 Mening balansim
+    </div>
+
+
+    <div class="balance-main">
+      <span id="balancePoints">
+        0
+      </span>
+      so‘m
+    </div>
+
+
+    <div class="balance-sub">
+      ⭐ <span id="balanceBall">0</span> ball
+    </div>
+
+
+    <div class="balance-box">
+      👤 Foydalanuvchi:
+      <b id="balanceUser">
+        Telegram foydalanuvchi
+      </b>
+    </div>
+
+
+    <div class="balance-box">
+      🪙 TOPQIR Coin:
+      <b id="balanceCoin">
+        0
+      </b>
+    </div>
+
+
+    <div class="balance-box">
+      👑 VIP:
+      <b id="balanceVip">
+        Yo‘q
+      </b>
+    </div>
+
+
+    <div class="balance-box">
+      💡 Hint:
+      <b id="balanceHint">
+        0
+      </b>
+    </div>
+
+
+    <div class="balance-box">
+      💵 Minimal pul chiqarish:
+      <b>
+        50 000 so‘m
+      </b>
+    </div>
+
+
+    <button
+      id="withdrawBtn"
+      class="withdraw-btn"
+    >
+      💸 50 000 so‘m chiqarish
+    </button>
+
+
+    <div
+      id="withdrawMessage"
+      class="reward-message hide"
+    ></div>
+
+  </div>
+
+</section>
+
+
+
+</div>
 
 
 <script>
@@ -1195,9 +1250,11 @@ const tg =
 if(tg){
 
   tg.ready();
+
   tg.expand();
 
 }
+
 
 
 /* =====================================================
@@ -1207,32 +1264,21 @@ if(tg){
 const SUPABASE_URL =
   "https://ayzdzhodjdzsoxovckrc.supabase.co";
 
+
 const SUPABASE_KEY =
   "sb_publishable_SVjbLTpmwn4z3lYtC3kZhg_obMt1k8p";
 
+
 const GAME_SIZE = 10;
+
+
+/* =====================================================
+   REWARD SETTINGS
+===================================================== */
 
 const POINTS_PER_CORRECT = 1.2;
 
 const MIN_WITHDRAW_POINTS = 50000;
-
-
-/* =====================================================
-   TELEGRAM USER
-===================================================== */
-
-let telegramUser = null;
-
-if(
-  tg &&
-  tg.initDataUnsafe &&
-  tg.initDataUnsafe.user
-){
-
-  telegramUser =
-    tg.initDataUnsafe.user;
-
-}
 
 
 /* =====================================================
@@ -1255,7 +1301,7 @@ let hintUsed = false;
 
 
 /* =====================================================
-   LOCAL DATA
+   LOCAL REWARD DATA
 ===================================================== */
 
 let gameHistory =
@@ -1274,7 +1320,7 @@ let totalScore =
   );
 
 
-let coins =
+let totalCoins =
   Number(
     localStorage.getItem(
       "aqljangi_coins"
@@ -1282,7 +1328,7 @@ let coins =
   );
 
 
-let hints =
+let totalHints =
   Number(
     localStorage.getItem(
       "aqljangi_hints"
@@ -1298,133 +1344,67 @@ let vipUntil =
   );
 
 
-let withdrawals =
-  JSON.parse(
-    localStorage.getItem(
-      "aqljangi_withdrawals"
-    ) || "[]"
-  );
+let withdrawalRequested =
+  localStorage.getItem(
+    "aqljangi_withdrawal_requested"
+  ) === "true";
 
 
 /* =====================================================
-   SAVE REWARD DATA
+   TELEGRAM USER
 ===================================================== */
 
-function saveRewards(){
+function getTelegramUser(){
 
-  localStorage.setItem(
-    "aqljangi_total_score",
-    String(totalScore)
-  );
+  if(
+    tg &&
+    tg.initDataUnsafe &&
+    tg.initDataUnsafe.user
+  ){
 
-  localStorage.setItem(
-    "aqljangi_coins",
-    String(coins)
-  );
+    return tg.initDataUnsafe.user;
 
-  localStorage.setItem(
-    "aqljangi_hints",
-    String(hints)
-  );
+  }
 
-  localStorage.setItem(
-    "aqljangi_vip_until",
-    String(vipUntil)
-  );
+  return null;
 
 }
 
 
-/* =====================================================
-   FORMAT POINTS
-===================================================== */
+function getTelegramName(){
 
-function formatPoints(value){
+  const user =
+    getTelegramUser();
 
-  const number =
-    Number(value || 0);
+  if(!user){
 
-  return number
-    .toFixed(1)
-    .replace(
-      /\.0$/,
-      ""
+    return "Telegram foydalanuvchi";
+
+  }
+
+
+  if(user.first_name){
+
+    return (
+      user.first_name +
+      (
+        user.last_name
+          ? " " + user.last_name
+          : ""
+      )
     );
 
-}
+  }
 
 
-/* =====================================================
-   VIP STATUS
-===================================================== */
+  if(user.username){
 
-function isVip(){
+    return "@" + user.username;
 
-  return (
-    vipUntil >
-    Date.now()
-  );
-
-}
+  }
 
 
-/* =====================================================
-   UPDATE REWARDS UI
-===================================================== */
-
-function updateRewardsUI(){
-
-  document
-    .getElementById("rewardScore")
-    .textContent =
-    "⭐ " +
-    formatPoints(totalScore);
-
-
-  document
-    .getElementById("rewardCoins")
-    .textContent =
-    "🪙 " +
-    coins;
-
-
-  document
-    .getElementById("rewardHints")
-    .textContent =
-    "💡 " +
-    hints;
-
-
-  document
-    .getElementById("rewardVip")
-    .textContent =
-    isVip()
-      ? "👑 VIP"
-      : "👑 VIP";
-
-
-  document
-    .getElementById("coinHintBtn")
-    .disabled =
-    coins < 20;
-
-
-  document
-    .getElementById("vip1Btn")
-    .disabled =
-    coins < 50;
-
-
-  document
-    .getElementById("vip7Btn")
-    .disabled =
-    coins < 150;
-
-
-  document
-    .getElementById("hintCount")
-    .textContent =
-    hints;
+  return "Telegram foydalanuvchi";
 
 }
 
@@ -1459,13 +1439,94 @@ function escapeHTML(value){
 
 
 /* =====================================================
+   FORMAT NUMBER
+===================================================== */
+
+function formatNumber(value){
+
+  return Number(value || 0)
+    .toLocaleString(
+      "uz-UZ",
+      {
+        maximumFractionDigits:1
+      }
+    );
+
+}
+
+
+/* =====================================================
+   SAVE REWARDS
+===================================================== */
+
+function saveRewards(){
+
+  localStorage.setItem(
+    "aqljangi_total_score",
+    String(totalScore)
+  );
+
+
+  localStorage.setItem(
+    "aqljangi_coins",
+    String(totalCoins)
+  );
+
+
+  localStorage.setItem(
+    "aqljangi_hints",
+    String(totalHints)
+  );
+
+
+  localStorage.setItem(
+    "aqljangi_vip_until",
+    String(vipUntil)
+  );
+
+}
+
+
+/* =====================================================
+   VIP
+===================================================== */
+
+function getVipText(){
+
+  if(vipUntil <= Date.now()){
+
+    return "Yo‘q";
+
+  }
+
+
+  const days =
+    Math.ceil(
+      (
+        vipUntil -
+        Date.now()
+      ) /
+      (
+        24 *
+        60 *
+        60 *
+        1000
+      )
+    );
+
+
+  return days + " kun";
+
+}
+
+
+/* =====================================================
    SHUFFLE
 ===================================================== */
 
 function shuffle(array){
 
-  const result =
-    [...array];
+  const result = [...array];
 
   for(
     let i = result.length - 1;
@@ -1478,6 +1539,7 @@ function shuffle(array){
         Math.random() *
         (i + 1)
       );
+
 
     [
       result[i],
@@ -1504,8 +1566,10 @@ async function loadQuestions(category){
   const encodedCategory =
     encodeURIComponent(category);
 
+
   const randomNumber =
     Math.random();
+
 
   const selectFields =
     "question,option_a,option_b,option_c,option_d,correct_answer,category";
@@ -1607,8 +1671,7 @@ async function loadQuestions(category){
 
   const uniqueQuestions = [];
 
-  const usedQuestions =
-    new Set();
+  const usedQuestions = new Set();
 
 
   for(
@@ -1624,14 +1687,18 @@ async function loadQuestions(category){
 
 
     if(!key){
+
       continue;
+
     }
 
 
     if(
       usedQuestions.has(key)
     ){
+
       continue;
+
     }
 
 
@@ -1645,7 +1712,9 @@ async function loadQuestions(category){
     if(
       uniqueQuestions.length >= GAME_SIZE
     ){
+
       break;
+
     }
 
   }
@@ -1728,7 +1797,7 @@ async function startGame(category){
 
 
     document
-      .getElementById("balancePage")
+      .getElementById("balance")
       .classList
       .add("hide");
 
@@ -1751,7 +1820,7 @@ async function startGame(category){
       "⭐ 0 ball";
 
 
-    updateRewardsUI();
+    updateGameHintButton();
 
 
     if(
@@ -1917,10 +1986,49 @@ function showQuestion(){
     .add("hide");
 
 
-  document
-    .getElementById("hintBtn")
-    .disabled =
-    hints <= 0;
+  updateGameHintButton();
+
+}
+
+
+/* =====================================================
+   HINT BUTTON STATE
+===================================================== */
+
+function updateGameHintButton(){
+
+  const button =
+    document
+      .getElementById(
+        "hintGameBtn"
+      );
+
+
+  const count =
+    document
+      .getElementById(
+        "gameHintCount"
+      );
+
+
+  if(count){
+
+    count.textContent =
+      totalHints;
+
+  }
+
+
+  if(
+    button
+  ){
+
+    button.disabled =
+      totalHints <= 0 ||
+      answered ||
+      hintUsed;
+
+  }
 
 }
 
@@ -1932,17 +2040,23 @@ function showQuestion(){
 function useHint(){
 
   if(answered){
+
     return;
+
   }
+
 
   if(hintUsed){
+
     return;
+
   }
 
-  if(hints <= 0){
 
-    alert(
-      "Sizda hint qolmagan."
+  if(totalHints <= 0){
+
+    showRewardMessage(
+      "❌ Sizda Hint yo‘q. 20 Coin evaziga 5 ta Hint olishingiz mumkin."
     );
 
     return;
@@ -1966,8 +2080,9 @@ function useHint(){
 
   const wrongButtons =
     Array.from(
-      document
-        .querySelectorAll(".option")
+      document.querySelectorAll(
+        ".option"
+      )
     )
     .filter(
       button =>
@@ -1975,10 +2090,10 @@ function useHint(){
     );
 
 
-  if(
-    wrongButtons.length === 0
-  ){
+  if(wrongButtons.length === 0){
+
     return;
+
   }
 
 
@@ -1991,42 +2106,29 @@ function useHint(){
     ];
 
 
-  randomWrong.disabled =
-    true;
+  randomWrong.disabled = true;
 
-  randomWrong.style.opacity =
-    "0.35";
+  randomWrong.style.opacity = ".25";
 
   randomWrong.style.textDecoration =
     "line-through";
 
 
-  hints--;
+  totalHints--;
 
   hintUsed = true;
+
 
   saveRewards();
 
   updateRewardsUI();
 
-
-  document
-    .getElementById("hintBtn")
-    .disabled =
-    true;
+  updateGameHintButton();
 
 
-  if(
-    tg &&
-    tg.HapticFeedback
-  ){
-
-    tg.HapticFeedback
-      .notificationOccurred(
-        "success"
-      );
-
-  }
+  showRewardMessage(
+    "💡 Hint ishlatildi. 1 ta noto‘g‘ri javob olib tashlandi."
+  );
 
 }
 
@@ -2041,7 +2143,9 @@ function checkAnswer(
 ){
 
   if(answered){
+
     return;
+
   }
 
 
@@ -2102,11 +2206,17 @@ function checkAnswer(
   }
 
 
+  currentScore =
+    Math.round(
+      currentScore * 10
+    ) / 10;
+
+
   document
     .getElementById("scoreTop")
     .textContent =
     "⭐ " +
-    formatPoints(currentScore) +
+    formatNumber(currentScore) +
     " ball";
 
 
@@ -2149,10 +2259,7 @@ function checkAnswer(
     .remove("hide");
 
 
-  document
-    .getElementById("hintBtn")
-    .disabled =
-    true;
+  updateGameHintButton();
 
 
   if(
@@ -2179,7 +2286,9 @@ function checkAnswer(
 function nextQuestion(){
 
   if(!answered){
+
     return;
+
   }
 
 
@@ -2202,54 +2311,6 @@ function nextQuestion(){
 
 
 /* =====================================================
-   COIN REWARD
-===================================================== */
-
-function rewardCoins(){
-
-  /*
-    Har 100 ball uchun
-    1 Coin.
-  */
-
-  const oldBlocks =
-    Math.floor(
-      totalScore / 100
-    );
-
-  const savedBlocks =
-    Number(
-      localStorage.getItem(
-        "aqljangi_coin_blocks"
-      ) || 0
-    );
-
-
-  if(
-    oldBlocks > savedBlocks
-  ){
-
-    const difference =
-      oldBlocks -
-      savedBlocks;
-
-    coins +=
-      difference;
-
-    localStorage.setItem(
-      "aqljangi_coin_blocks",
-      String(oldBlocks)
-    );
-
-  }
-
-
-  saveRewards();
-
-}
-
-
-/* =====================================================
    SAVE HISTORY
 ===================================================== */
 
@@ -2259,7 +2320,66 @@ function saveGame(){
     currentScore;
 
 
-  rewardCoins();
+  totalScore =
+    Math.round(
+      totalScore * 10
+    ) / 10;
+
+
+  /*
+    COIN:
+
+    Har 100 ball uchun
+    1 Coin beriladi.
+
+    Shu sababli ball yig‘ilgan sari
+    Coin ham avtomatik beriladi.
+  */
+
+  const oldCoinBlock =
+    Math.floor(
+      (
+        totalScore -
+        currentScore
+      ) / 100
+    );
+
+
+  const newCoinBlock =
+    Math.floor(
+      totalScore / 100
+    );
+
+
+  if(
+    newCoinBlock >
+    oldCoinBlock
+  ){
+
+    totalCoins +=
+      newCoinBlock -
+      oldCoinBlock;
+
+  }
+
+
+  /*
+    10/10 uchun bonus
+  */
+
+  if(
+    correctAnswers ===
+    questions.length
+  ){
+
+    totalScore += 10;
+
+    totalScore =
+      Math.round(
+        totalScore * 10
+      ) / 10;
+
+  }
 
 
   const game = {
@@ -2295,12 +2415,6 @@ function saveGame(){
       0,
       20
     );
-
-
-  localStorage.setItem(
-    "aqljangi_total_score",
-    String(totalScore)
-  );
 
 
   localStorage.setItem(
@@ -2347,7 +2461,7 @@ function showResult(){
   document
     .getElementById("resultScore")
     .textContent =
-    formatPoints(currentScore) +
+    formatNumber(currentScore) +
     " / 12";
 
 
@@ -2368,11 +2482,11 @@ function showResult(){
   ){
 
     message =
-      "🔥 Ajoyib natija!";
+      "🔥 Ajoyib natija! +10 bonus ball";
 
   }
   else if(
-    correctAnswers >= 7
+    correctAnswers >= 8
   ){
 
     message =
@@ -2401,10 +2515,7 @@ function showResult(){
     `
       ${message}<br><br>
       🏆 O‘yinlardan jami:
-      <b>${formatPoints(totalScore)} ball</b>
-      <br>
-      🪙 Coin:
-      <b>${coins}</b>
+      <b>${formatNumber(totalScore)} ball</b>
     `;
 
 
@@ -2442,7 +2553,7 @@ function goHome(){
 
 
   document
-    .getElementById("balancePage")
+    .getElementById("balance")
     .classList
     .add("hide");
 
@@ -2463,19 +2574,292 @@ function goHome(){
   }
 
 
-  updateRewardsUI();
-
   renderHistory();
+
+  updateRewardsUI();
 
 }
 
 
 /* =====================================================
-   HISTORY
+   SHOW REWARD MESSAGE
 ===================================================== */
 
-let historyOpen = false;
+function showRewardMessage(message){
 
+  const box =
+    document
+      .getElementById(
+        "rewardMessage"
+      );
+
+
+  if(!box){
+
+    return;
+
+  }
+
+
+  box.textContent =
+    message;
+
+
+  box.classList
+    .remove("hide");
+
+
+  setTimeout(
+    function(){
+
+      box.classList
+        .add("hide");
+
+    },
+    3000
+  );
+
+}
+
+
+/* =====================================================
+   UPDATE REWARDS UI
+===================================================== */
+
+function updateRewardsUI(){
+
+  document
+    .getElementById("rewardPoints")
+    .textContent =
+    formatNumber(totalScore);
+
+
+  document
+    .getElementById("rewardCoins")
+    .textContent =
+    totalCoins;
+
+
+  document
+    .getElementById("rewardHints")
+    .textContent =
+    totalHints;
+
+
+  document
+    .getElementById("rewardVip")
+    .textContent =
+    getVipText();
+
+
+  const coinHintBtn =
+    document
+      .getElementById(
+        "coinHintBtn"
+      );
+
+
+  const coinVip1Btn =
+    document
+      .getElementById(
+        "coinVip1Btn"
+      );
+
+
+  const coinVip7Btn =
+    document
+      .getElementById(
+        "coinVip7Btn"
+      );
+
+
+  if(coinHintBtn){
+
+    coinHintBtn.disabled =
+      totalCoins < 20;
+
+  }
+
+
+  if(coinVip1Btn){
+
+    coinVip1Btn.disabled =
+      totalCoins < 50;
+
+  }
+
+
+  if(coinVip7Btn){
+
+    coinVip7Btn.disabled =
+      totalCoins < 150;
+
+  }
+
+}
+
+
+/* =====================================================
+   COIN → HINT
+===================================================== */
+
+function buyHints(){
+
+  if(totalCoins < 20){
+
+    showRewardMessage(
+      "❌ 5 ta Hint olish uchun 20 Coin kerak."
+    );
+
+    return;
+
+  }
+
+
+  totalCoins -= 20;
+
+  totalHints += 5;
+
+
+  saveRewards();
+
+  updateRewardsUI();
+
+
+  showRewardMessage(
+    "✅ 20 Coin evaziga 5 ta Hint olindi."
+  );
+
+}
+
+
+/* =====================================================
+   COIN → 1 DAY VIP
+===================================================== */
+
+function buyVip1(){
+
+  if(totalCoins < 50){
+
+    showRewardMessage(
+      "❌ 1 kun VIP olish uchun 50 Coin kerak."
+    );
+
+    return;
+
+  }
+
+
+  totalCoins -= 50;
+
+
+  const now =
+    Date.now();
+
+
+  if(
+    vipUntil >
+    now
+  ){
+
+    vipUntil +=
+      24 *
+      60 *
+      60 *
+      1000;
+
+  }else{
+
+    vipUntil =
+      now +
+      (
+        24 *
+        60 *
+        60 *
+        1000
+      );
+
+  }
+
+
+  saveRewards();
+
+  updateRewardsUI();
+
+
+  showRewardMessage(
+    "✅ 1 kunlik VIP faollashtirildi."
+  );
+
+}
+
+
+/* =====================================================
+   COIN → 7 DAY VIP
+===================================================== */
+
+function buyVip7(){
+
+  if(totalCoins < 150){
+
+    showRewardMessage(
+      "❌ 7 kun VIP olish uchun 150 Coin kerak."
+    );
+
+    return;
+
+  }
+
+
+  totalCoins -= 150;
+
+
+  const now =
+    Date.now();
+
+
+  if(
+    vipUntil >
+    now
+  ){
+
+    vipUntil +=
+      7 *
+      24 *
+      60 *
+      60 *
+      1000;
+
+  }else{
+
+    vipUntil =
+      now +
+      (
+        7 *
+        24 *
+        60 *
+        60 *
+        1000
+      );
+
+  }
+
+
+  saveRewards();
+
+  updateRewardsUI();
+
+
+  showRewardMessage(
+    "✅ 7 kunlik VIP faollashtirildi."
+  );
+
+}
+
+
+/* =====================================================
+   RENDER HISTORY
+===================================================== */
 
 function renderHistory(){
 
@@ -2490,7 +2874,7 @@ function renderHistory(){
 
     <div
       class="history-header"
-      onclick="toggleHistory()"
+      id="historyHeader"
     >
 
       <div class="history-title">
@@ -2498,118 +2882,108 @@ function renderHistory(){
       </div>
 
       <div
-        id="historyArrow"
         class="history-arrow"
+        id="historyArrow"
       >
         ▼
       </div>
 
     </div>
 
-  `;
-
-
-  if(historyOpen){
-
-    html += `
+    <div
+      id="historyContent"
+      class="history-content closed"
+    >
 
       <div class="total-score">
         🏆 O‘yinlardan jami:
-        <b>${formatPoints(totalScore)} ball</b>
+        <b>${formatNumber(totalScore)} ball</b>
+      </div>
+
+  `;
+
+
+  if(
+    gameHistory.length === 0
+  ){
+
+    html += `
+
+      <div
+        style="
+          text-align:center;
+          color:#999;
+          font-size:13px;
+          padding:8px;
+        "
+      >
+        Hali o‘yin o‘ynalmagan.
       </div>
 
     `;
 
+  }else{
 
-    if(
-      gameHistory.length === 0
-    ){
+    gameHistory.forEach(
+      function(game,index){
 
-      html += `
+        html += `
 
-        <div
-          style="
-            text-align:center;
-            color:#999;
-            font-size:13px;
-            padding:8px;
-          "
-        >
-          Hali o‘yin o‘ynalmagan.
-        </div>
+          <div class="history-item">
 
-      `;
+            <div class="history-row">
 
-    }else{
-
-      gameHistory.forEach(
-        function(game,index){
-
-          html += `
-
-            <div class="history-item">
-
-              <div class="history-row">
-
-                <b>
-                  ${index + 1}.
-                  ${escapeHTML(
-                    game.category
-                  )}
-                </b>
-
-                <b>
-                  ⭐
-                  ${formatPoints(
-                    game.score
-                  )}
-                </b>
-
-              </div>
-
-              <div class="history-small">
-
-                ✅
-                ${game.correct}/${game.total}
-
-                &nbsp; • &nbsp;
-
+              <b>
+                ${index + 1}.
                 ${escapeHTML(
-                  game.date
+                  game.category
                 )}
+              </b>
 
-              </div>
+              <b>
+                ⭐ ${formatNumber(game.score)}
+              </b>
 
             </div>
 
-          `;
+            <div class="history-small">
 
-        }
-      );
+              ✅
+              ${game.correct}/${game.total}
 
-    }
+              &nbsp; • &nbsp;
+
+              ${escapeHTML(
+                game.date
+              )}
+
+            </div>
+
+          </div>
+
+        `;
+
+      }
+    );
 
   }
+
+
+  html += `
+    </div>
+  `;
 
 
   box.innerHTML =
     html;
 
 
-  const arrow =
-    document.getElementById(
-      "historyArrow"
-    );
-
-
-  if(arrow){
-
-    arrow.textContent =
-      historyOpen
-        ? "▲"
-        : "▼";
-
-  }
+  document
+    .getElementById(
+      "historyHeader"
+    )
+    .onclick =
+    toggleHistory;
 
 }
 
@@ -2620,147 +2994,40 @@ function renderHistory(){
 
 function toggleHistory(){
 
-  historyOpen =
-    !historyOpen;
-
-  renderHistory();
-
-}
-
-
-/* =====================================================
-   BUY HINTS
-===================================================== */
-
-function buyHints(){
-
-  if(coins < 20){
-
-    alert(
-      "20 Coin kerak."
-    );
-
-    return;
-
-  }
+  const content =
+    document
+      .getElementById(
+        "historyContent"
+      );
 
 
-  coins -= 20;
-
-  hints += 5;
-
-
-  saveRewards();
-
-  updateRewardsUI();
+  const arrow =
+    document
+      .getElementById(
+        "historyArrow"
+      );
 
 
-  alert(
-    "✅ 5 ta Hint qo‘shildi!"
-  );
+  if(
+    content.classList
+      .contains("closed")
+  ){
 
-}
+    content.classList
+      .remove("closed");
 
+    arrow.textContent =
+      "▲";
 
-/* =====================================================
-   BUY VIP 1 DAY
-===================================================== */
+  }else{
 
-function buyVip1(){
+    content.classList
+      .add("closed");
 
-  if(coins < 50){
-
-    alert(
-      "50 Coin kerak."
-    );
-
-    return;
+    arrow.textContent =
+      "▼";
 
   }
-
-
-  coins -= 50;
-
-
-  const now =
-    Date.now();
-
-
-  const base =
-    Math.max(
-      now,
-      vipUntil
-    );
-
-
-  vipUntil =
-    base +
-    24 *
-    60 *
-    60 *
-    1000;
-
-
-  saveRewards();
-
-  updateRewardsUI();
-
-
-  alert(
-    "👑 1 kunlik VIP faollashtirildi!"
-  );
-
-}
-
-
-/* =====================================================
-   BUY VIP 7 DAYS
-===================================================== */
-
-function buyVip7(){
-
-  if(coins < 150){
-
-    alert(
-      "150 Coin kerak."
-    );
-
-    return;
-
-  }
-
-
-  coins -= 150;
-
-
-  const now =
-    Date.now();
-
-
-  const base =
-    Math.max(
-      now,
-      vipUntil
-    );
-
-
-  vipUntil =
-    base +
-    7 *
-    24 *
-    60 *
-    60 *
-    1000;
-
-
-  saveRewards();
-
-  updateRewardsUI();
-
-
-  alert(
-    "👑 7 kunlik VIP faollashtirildi!"
-  );
 
 }
 
@@ -2778,61 +3045,85 @@ function openBalance(){
 
 
   document
-    .getElementById("result")
-    .classList
-    .add("hide");
-
-
-  document
     .getElementById("game")
     .classList
     .add("hide");
 
 
   document
-    .getElementById("balancePage")
+    .getElementById("result")
+    .classList
+    .add("hide");
+
+
+  document
+    .getElementById("balance")
     .classList
     .remove("hide");
 
 
-  updateBalanceUI();
-
-}
-
-
-/* =====================================================
-   BALANCE UI
-===================================================== */
-
-function updateBalanceUI(){
-
   document
     .getElementById("balancePoints")
     .textContent =
-    "⭐ " +
-    formatPoints(totalScore);
+    formatNumber(totalScore);
 
 
   document
-    .getElementById("balanceMoney")
+    .getElementById("balanceBall")
     .textContent =
-    formatPoints(totalScore) +
-    " so‘m";
+    formatNumber(totalScore);
 
 
-  const amount =
+  document
+    .getElementById("balanceCoin")
+    .textContent =
+    totalCoins;
+
+
+  document
+    .getElementById("balanceVip")
+    .textContent =
+    getVipText();
+
+
+  document
+    .getElementById("balanceHint")
+    .textContent =
+    totalHints;
+
+
+  document
+    .getElementById("balanceUser")
+    .textContent =
+    getTelegramName();
+
+
+  const withdrawBtn =
     document
       .getElementById(
-        "withdrawAmount"
+        "withdrawBtn"
       );
 
 
-  if(amount){
+  withdrawBtn.disabled =
+    totalScore <
+    MIN_WITHDRAW_POINTS;
 
-    amount.max =
-      Math.floor(
-        totalScore
-      );
+
+  if(
+    tg &&
+    tg.BackButton
+  ){
+
+    tg.BackButton.show();
+
+    tg.BackButton.onClick(
+      function(){
+
+        goHome();
+
+      }
+    );
 
   }
 
@@ -2840,257 +3131,194 @@ function updateBalanceUI(){
 
 
 /* =====================================================
-   CARD FORMAT
+   SEND WITHDRAWAL REQUEST
 ===================================================== */
 
-function formatCardNumber(value){
-
-  return String(value)
-    .replace(/\D/g,"")
-    .slice(0,16)
-    .replace(
-      /(.{4})/g,
-      "$1 "
-    )
-    .trim();
-
-}
-
-
-/* =====================================================
-   WITHDRAW
-===================================================== */
-
-async function withdrawMoney(){
-
-  const cardNumber =
-    document
-      .getElementById(
-        "cardNumber"
-      )
-      .value
-      .replace(
-        /\D/g,
-        ""
-      );
-
-
-  const cardOwner =
-    document
-      .getElementById(
-        "cardOwner"
-      )
-      .value
-      .trim();
-
-
-  const amount =
-    Number(
-      document
-        .getElementById(
-          "withdrawAmount"
-        )
-        .value
-    );
-
-
-  const message =
-    document
-      .getElementById(
-        "withdrawMessage"
-      );
-
-
-  message.innerHTML =
-    "";
-
+async function requestWithdrawal(){
 
   if(
     totalScore <
     MIN_WITHDRAW_POINTS
   ){
 
-    message.innerHTML =
-      `
-      <div class="error">
-        ❌ Pul chiqarish uchun kamida
-        <b>50 000 ball</b> kerak.
-        <br><br>
-        Hozirgi balans:
-        <b>${formatPoints(totalScore)} ball</b>
-      </div>
-      `;
+    showWithdrawMessage(
+      "❌ Pul chiqarish uchun kamida 50 000 ball kerak."
+    );
 
     return;
 
   }
 
 
-  if(
-    cardNumber.length !== 16
-  ){
+  if(withdrawalRequested){
 
-    message.innerHTML =
-      `
-      <div class="error">
-        ❌ Karta raqami 16 xonali bo‘lishi kerak.
-      </div>
-      `;
+    showWithdrawMessage(
+      "⏳ Sizning pul chiqarish so‘rovingiz allaqachon yuborilgan."
+    );
 
     return;
 
   }
 
 
-  if(!cardOwner){
-
-    message.innerHTML =
-      `
-      <div class="error">
-        ❌ Karta egasini kiriting.
-      </div>
-      `;
-
-    return;
-
-  }
+  const user =
+    getTelegramUser();
 
 
-  if(
-    !Number.isFinite(amount) ||
-    amount < MIN_WITHDRAW_POINTS
-  ){
-
-    message.innerHTML =
-      `
-      <div class="error">
-        ❌ Minimal chiqarish summasi
-        <b>50 000 so‘m</b>.
-      </div>
-      `;
-
-    return;
-
-  }
+  const username =
+    user && user.username
+      ? "@" + user.username
+      : "Telegram foydalanuvchi";
 
 
-  if(
-    amount > Math.floor(totalScore)
-  ){
-
-    message.innerHTML =
-      `
-      <div class="error">
-        ❌ Balansingizda buncha mablag‘ yo‘q.
-      </div>
-      `;
-
-    return;
-
-  }
+  const telegramId =
+    user && user.id
+      ? String(user.id)
+      : "";
 
 
-  const request = {
+  /*
+    MUHIM:
 
-    id:
-      Date.now(),
+    Bu joy Supabase'dagi
+    withdrawal_requests jadvali bo‘lsa,
+    so‘rovni saqlash uchun ishlatiladi.
+
+    Agar jadval hali yaratilmagan bo‘lsa,
+    pastdagi fallback ishlaydi.
+  */
+
+  const requestData = {
 
     telegram_id:
-      telegramUser
-        ? String(
-            telegramUser.id
-          )
-        : "unknown",
+      telegramId,
 
     username:
-      telegramUser
-        ? (
-            telegramUser.username ||
-            ""
-          )
-        : "",
+      username,
 
-    card_number:
-      cardNumber,
-
-    card_owner:
-      cardOwner,
+    full_name:
+      getTelegramName(),
 
     amount:
-      amount,
+      50000,
+
+    points:
+      Math.floor(totalScore),
 
     status:
-      "Kutilmoqda",
-
-    date:
-      new Date()
-        .toLocaleString(
-          "uz-UZ"
-        )
+      "pending"
 
   };
 
 
-  withdrawals.unshift(
-    request
-  );
+  try{
+
+    const response =
+      await fetch(
+        SUPABASE_URL +
+        "/rest/v1/withdrawal_requests",
+        {
+          method:"POST",
+
+          headers:{
+            "apikey":
+              SUPABASE_KEY,
+
+            "Authorization":
+              "Bearer " +
+              SUPABASE_KEY,
+
+            "Content-Type":
+              "application/json",
+
+            "Prefer":
+              "return=minimal"
+          },
+
+          body:
+            JSON.stringify(
+              requestData
+            )
+
+        }
+      );
 
 
-  localStorage.setItem(
-    "aqljangi_withdrawals",
-    JSON.stringify(
-      withdrawals
-    )
-  );
+    if(!response.ok){
+
+      throw new Error(
+        "withdrawal_requests jadvali mavjud emas yoki ruxsat berilmagan."
+      );
+
+    }
 
 
-  /*
-    Eslatma:
-    Bu yerda pul balansidan
-    yechib tashlanmaydi.
-
-    Admin tasdiqlaganidan keyin
-    backend orqali balansni
-    yangilash kerak.
-  */
+    withdrawalRequested =
+      true;
 
 
-  message.innerHTML =
-    `
-    <div class="success">
-      ✅ Pul chiqarish so‘rovi yuborildi.<br><br>
-
-      💵 Summa:
-      <b>${amount} so‘m</b><br>
-
-      💳 Karta:
-      <b>**** **** **** ${cardNumber.slice(-4)}</b><br><br>
-
-      📋 Holat:
-      <b>Kutilmoqda</b>
-    </div>
-    `;
+    localStorage.setItem(
+      "aqljangi_withdrawal_requested",
+      "true"
+    );
 
 
-  document
-    .getElementById(
-      "withdrawAmount"
-    )
-    .value = "";
+    showWithdrawMessage(
+      "✅ 50 000 so‘mlik pul chiqarish so‘rovi adminga yuborish uchun saqlandi."
+    );
 
 
-  document
-    .getElementById(
-      "cardNumber"
-    )
-    .value = "";
+  }catch(error){
+
+    /*
+      Telegram ichida admin bilan
+      bog‘lanish uchun yordamchi variant.
+    */
+
+    const text =
+      encodeURIComponent(
+        "💰 TOPQIR pul chiqarish so‘rovi\n\n" +
+        "👤 " +
+        getTelegramName() +
+        "\n" +
+        "🆔 " +
+        telegramId +
+        "\n" +
+        "⭐ Ball: " +
+        formatNumber(totalScore) +
+        "\n" +
+        "💵 Summa: 50 000 so‘m"
+      );
 
 
-  document
-    .getElementById(
-      "cardOwner"
-    )
-    .value = "";
+    showWithdrawMessage(
+      "⚠️ So‘rovni serverga yuborib bo‘lmadi. Admin bilan bog‘laning: @Zafarbe0"
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   WITHDRAW MESSAGE
+===================================================== */
+
+function showWithdrawMessage(message){
+
+  const box =
+    document
+      .getElementById(
+        "withdrawMessage"
+      );
+
+
+  box.textContent =
+    message;
+
+
+  box.classList
+    .remove("hide");
 
 }
 
@@ -3120,7 +3348,7 @@ document
 
 
 /* =====================================================
-   NEXT
+   NEXT BUTTON
 ===================================================== */
 
 document
@@ -3136,7 +3364,7 @@ document
 ===================================================== */
 
 document
-  .getElementById("hintBtn")
+  .getElementById("hintGameBtn")
   .addEventListener(
     "click",
     useHint
@@ -3144,7 +3372,7 @@ document
 
 
 /* =====================================================
-   BACK
+   BACK BUTTON
 ===================================================== */
 
 document
@@ -3186,7 +3414,7 @@ document
 
 
 /* =====================================================
-   REWARDS BUTTONS
+   COIN → HINT
 ===================================================== */
 
 document
@@ -3197,21 +3425,33 @@ document
   );
 
 
+/* =====================================================
+   COIN → VIP 1
+===================================================== */
+
 document
-  .getElementById("vip1Btn")
+  .getElementById("coinVip1Btn")
   .addEventListener(
     "click",
     buyVip1
   );
 
 
+/* =====================================================
+   COIN → VIP 7
+===================================================== */
+
 document
-  .getElementById("vip7Btn")
+  .getElementById("coinVip7Btn")
   .addEventListener(
     "click",
     buyVip7
   );
 
+
+/* =====================================================
+   BALANCE
+===================================================== */
 
 document
   .getElementById("balanceBtn")
@@ -3234,25 +3474,6 @@ document
 
 
 /* =====================================================
-   CARD INPUT
-===================================================== */
-
-document
-  .getElementById("cardNumber")
-  .addEventListener(
-    "input",
-    function(){
-
-      this.value =
-        formatCardNumber(
-          this.value
-        );
-
-    }
-  );
-
-
-/* =====================================================
    WITHDRAW
 ===================================================== */
 
@@ -3260,15 +3481,13 @@ document
   .getElementById("withdrawBtn")
   .addEventListener(
     "click",
-    withdrawMoney
+    requestWithdrawal
   );
 
 
 /* =====================================================
    START
 ===================================================== */
-
-rewardCoins();
 
 updateRewardsUI();
 
